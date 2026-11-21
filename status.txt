@@ -1,0 +1,20 @@
+AIA=http://ye2.i.lencr.org/
+200 https://www.knbs.or.ke/reports/consumer-price-indices-and-inflation-rates-april-2024/
+200 https://www.knbs.or.ke/robots.txt
+200 https://www.knbs.or.ke/wp-content/uploads/2025/10/Kenya-Consumer-Price-Indices-and-Inflation-Rates-October-2025.pdf
+200 https://www.knbs.or.ke/wp-content/uploads/2026/03/Kenya-Consumer-Price-Indices-and-Inflation-Rates-March-2026.pdf
+total 3320
+drwxr-xr-x 2 runner runner    4096 Nov 21 16:52 .
+drwxr-xr-x 3 runner runner    4096 Nov 21 16:52 ..
+-rw-r--r-- 1 runner runner  181688 Nov 21 16:52 bundle.pem
+-rw-r--r-- 1 runner runner     656 Nov 21 16:52 inter.der
+-rw-r--r-- 1 runner runner     944 Nov 21 16:52 inter.pem
+-rw-r--r-- 1 runner runner  169987 Nov 21 16:52 knbs_cpi_list.html
+-rw-r--r-- 1 runner runner     599 Nov 21 16:52 knbs_links.txt
+-rw-r--r-- 1 runner runner 1414614 Nov 21 16:52 knbs_mar2026.pdf
+-rw-r--r-- 1 runner runner   30700 Nov 21 16:52 knbs_mar2026.pdf.txt
+-rw-r--r-- 1 runner runner 1521301 Nov 21 16:52 knbs_oct2025.pdf
+-rw-r--r-- 1 runner runner   33592 Nov 21 16:52 knbs_oct2025.pdf.txt
+-rw-r--r-- 1 runner runner     118 Nov 21 16:52 knbs_robots.txt
+-rw-r--r-- 1 runner runner    1298 Nov 21 16:52 leaf.pem
+-rw-r--r-- 1 runner runner     394 Nov 21 16:52 status.txt

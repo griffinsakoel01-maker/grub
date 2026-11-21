@@ -1,0 +1,5 @@
+href="https://www.knbs.or.ke/cpi-and-inflation-rates/"
+href="https://www.knbs.or.ke/reports/consumer-price-indices-and-inflation-rates-april-2024/"
+href="https://www.knbs.or.ke/wp-content/uploads/2024/04/Kenya-Consumer-Price-Indices-and-Inflation-Rates-April-2024.pdf"
+href="https://www.knbs.or.ke/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.knbs.or.ke%2Freports%2Fconsumer-price-indices-and-inflation-rates-april-2024%2F"
+href="https://www.knbs.or.ke/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.knbs.or.ke%2Freports%2Fconsumer-price-indices-and-inflation-rates-april-2024%2F&#038;format=xml"

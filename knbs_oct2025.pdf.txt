@@ -1,0 +1,526 @@
+THE KENYA CONSUMER PRICE INDEX
+     AND INFLATION REPORT
+
+
+
+
+                        Released on: 31st October 2025
+
+
+
+
+CONTACT PERSON:
+
+     Macdonald G. Obudho, PhD, EBS, MBS
+
+     Director General
+
+        directorgeneral@knbs.or.ke; info@knbs.or.ke
+
+        +254(20)3317583; +254(20)2911000/1; +254(20)3317612/22/23/51
+Table of Contents
+Overview ........................................................................................................... Error! Bookmark not defined.
+The Overall CPI and Inflation Trends, October 2024 - October 2025 ....... Error! Bookmark not defined.
+Movement of National Average Retail Prices of Selected Commodities ....... Error! Bookmark not defined.
+Core and Non-Core Index and Inflation ........................................................ Error! Bookmark not defined.
+Contribution of Core and Non-Core to the Overall Inflation ....................... Error! Bookmark not defined.
+
+
+List of Tables
+Table 1: One and Twelve-Month Percentage Changes in the Consumer Price IndicesError! Bookmark
+not defined.
+Table 2: Key Drivers of Inflation for each of the 13 Divisions ..................... Error! Bookmark not defined.
+Table 3: National Average Retail Prices of Selected Commodities ................ Error! Bookmark not defined.
+Table 4: Core and Non-Core Index and Inflation .......................................... Error! Bookmark not defined.
+Table 5: Core and Non-Core Contributions, October 2025 ......................... Error! Bookmark not defined.
+
+
+List of Figures
+Figure 1: Overall CPI ........................................................................................ Error! Bookmark not defined.
+Figure 2: Inflation Trends, October 2024 - October 2025........................... Error! Bookmark not defined.
+Figure 3: Percentage Changes in CPI Across the 13 Divisions, September 2025 -October 2025 .... Error!
+Bookmark not defined.
+Figure 4: Percentage Changes in CPI Across the 13 Divisions, October 2024 – October 2025 ....... Error!
+Bookmark not defined.
+Figure 5: Percentage Change Over Last Month, September 2025 – October 2025Error! Bookmark not
+defined.
+Overview
+Annual consumer price inflation as measured by the Consumer Price Index (CPI) was 4.6 per cent in
+October 2025. This implies that the general price level was 4.6 per cent higher in October 2025 than
+it was in October 2024. The price increase was primarily driven by a rise in prices of items in the Food
+and Non-Alcoholic Beverages (8.0%); Transport (4.8%), and Housing, Water, Electricity, Gas and other
+fuels (1.9%) over the one-year period. These three divisions together account for over 57 per cent of the
+total weight across the 13 major expenditure categories.
+Consumer Price Index (CPI) is defined as a measure of the weighted aggregate change over time in retail
+prices paid by consumers for a given basket of goods and services. The CPI measures the cost of
+purchasing this fixed basket of goods and services, comparing current prices to those of a base period,
+which for the current CPI is February 2019. Inflation rate is defined as a percentage change of the CPI
+between two periods. There are different inflation rates that can be computed, such as annual (year-on-
+year), quarterly (quarter-to-quarter) and monthly (month-on-month) inflation rates. Data used to
+derive the inflation rates is collected through a monthly survey of retail prices from a statistically
+representative sample of outlets in urban areas across 50 data collection zones nationwide. The survey
+is conducted during the second and third weeks of the month.
+
+The Overall CPI and Inflation Trends, October 2024 - October 2025
+As presented in Figure 1, the overall index increased from 146.56 in September 2025 to 146.84 in
+October 2025, resulting in a monthly inflation rate of 0.2 per cent. The increase in the general price
+level in the economy was the same during the month of September 2025 and October 2025 at 4.6 per
+cent as shown in Figure 2.
+Figure 1: Overall CPI
+
+       148.00
+                                                                                                                 146.56 146.84
+                                                                                                        146.21
+       146.00                                                                           145.58 145.74
+                                                                               144.88
+                                                                      144.09
+                                                             143.69
+       144.00                                       143.12
+                                           142.68
+
+       142.00                     141.66
+ CPI            140.44
+                         140.81
+
+       140.00
+
+
+       138.00
+
+
+       136.00
+
+
+
+
+                                                                      Month
+
+
+
+
+                                                                 1
+Figure 2: Inflation Trends, October 2024 - October 2025
+              5.0                                                                                                               4.6
+                                                                                                                       4.5              4.6
+              4.5                                                                 4.1                            4.1
+                                                                                            3.8      3.8
+              4.0                                                         3.6
+                    3.6                                             3.5
+              3.5                                         3.3
+                                                3.0
+              3.0          2.7        2.8
+
+
+  Inflation
+              2.5
+              2.0
+              1.5
+              1.0
+              0.5
+              0.0
+
+
+
+                                                                              Month
+
+
+
+
+Table 1: One and Twelve-Month Percentage Changes in the Consumer Price Indices
+                                                                                                                        % Change on same
+                                                                                                    % Change on last
+                                                                                                                       month of the previous
+                                                                                                         month
+13 COICOP Divisions                                                                   Weight %                                 year
+                                                                                                    (October 2025 /
+                                                                                                                         (October 2025 /
+                                                                                                    September 2025)
+                                                                                                                          October 2024)
+ Food and Non-Alcoholic Beverages                                                         32.9094          0.2                  8.0
+ Alcoholic Beverages, Tobacco and Narcotics                                                3.3289          0.1                  3.1
+ Clothing and Footwear                                                                     2.9914          0.1                  2.9
+ Housing, Water, Electricity, Gas and Other Fuels                                         14.6124          0.3                  1.9
+ Furnishings, Household Equipment and Routine Household Maintenance                        3.7372          0.0                  1.7
+ Health                                                                                    2.9116          0.1                  2.8
+ Transport                                                                                 9.6468          0.4                  4.8
+ Information and Communication                                                             7.7840          0.0                  0.7
+ Recreation, Sport and Culture                                                             1.7219          0.2                  2.7
+ Education Services                                                                        5.5620          0.0                  2.2
+ Restaurants and Accommodation Services                                                    8.0991          0.4                  2.3
+ Insurance and Financial Services                                                          2.2423          0.0                  0.8
+ Personal Care, Social Protection and Miscellaneous Goods and Services                     4.4532          0.1                  2.7
+Total                                                                                   100.0000           0.2                  4.6
+
+
+
+
+                                                                          2
+Figure 3: Percentage Changes in CPI Across the 13 Divisions, September 2025 -October 2025
+
+                                                         Total                         0.2
+
+Personal Care, Social Protection and Miscellaneous Goods and
+                                                                               0.1
+                           Services
+                            Insurance and Financial Services           0.0
+
+                   Restaurants and Accommodation Services                                                0.4
+
+                                          Education Services       0.0
+
+                               Recreation, Sport and Culture                           0.2
+
+                            Information and Communication               0.02
+
+                                                     Transport                                           0.4
+
+                                                       Health                  0.1
+
+  Furnishings, Household Equipment and Routine Household
+                       Maintenance                                     0.03
+
+             Housing, Water, Electricity, Gas and Other Fuels                                0.3
+
+                                       Clothing and Footwear                   0.1
+
+                 Alcoholic Beverages, Tobacco and Narcotics                    0.1
+
+                          Food and Non-Alcoholic Beverages                             0.2
+
+                                -0.4          -0.2               0.0                 0.2           0.4         0.6   0.8
+                                                                                     Inflation
+
+
+
+
+                                                                                3
+Figure 4: Percentage Changes in CPI Across the 13 Divisions, October 2024 – October 2025
+
+
+                                             Total                                             4.6
+
+Personal Care, Social Protection and Miscellaneous
+                                                                                 2.7
+                Goods and Services
+
+                 Insurance and Financial Services              0.8
+
+
+         Restaurants and Accommodation Services                            2.3
+
+
+                               Education Services                          2.2
+
+
+                    Recreation, Sport and Culture                                2.7
+
+
+                 Information and Communication              0.7
+
+
+                                        Transport                                               4.8
+
+
+                                           Health                                2.8
+
+  Furnishings, Household Equipment and Routine
+                                                                     1.7
+             Household Maintenance
+
+  Housing, Water, Electricity, Gas and Other Fuels                     1.9
+
+
+                           Clothing and Footwear                                  2.9
+
+
+      Alcoholic Beverages, Tobacco and Narcotics                                   3.1
+
+
+               Food and Non-Alcoholic Beverages                                                                         8.0
+
+                                                     0.0   1.0       2.0     3.0        4.0   5.0     6.0   7.0   8.0     9.0
+
+                                                                                   Inflation
+
+
+
+
+                                                           4
+Table 2: Key Drivers of Inflation for each of the 13 Divisions
+
+                                     Monthly                                                                             Yearly
+                                                                         Food and Non-Alcoholic Beverages
+
+                Between September and October 2025, prices of several food items recorded
+                mixed movements. The prices of maize flour (sifted) and fortified maize
+                flour decreased by 2.3 per cent and 2.2 per cent, respectively, while those of
+                eggs (exotic/chienyenji), kale (sukuma wiki), beans, and sugar dropped by                 Over the twelve months until October
+       0.2%     between 0.5 per cent and 1.2 per cent. In contrast, prices of potatoes (Irish),      8.0% 2025, the Food and Non-alcoholic
+                beef (with bones), tomatoes, and oranges increased by 1.6 per cent, 0.5                   Beverages division index rose by 8.0%.
+                percent, 1.2 per cent, and 4.2 per cent, respectively. The notable increase in
+                the price of oranges was the highest among the items monitored during the
+                period.
+
+                                                                                         Transport
+                During the period between September and October 2025, prices of transport-
+                related items showed mixed trends. The cost of international flights declined                Over the twelve months until October
+                by 0.6 per cent, while prices of petrol and diesel remained unchanged. In                    2025, the Transport division index inflation
+                contrast, country bus and matatu fares for travel between towns increased by                 rose to 4.8 per cent.
+        0.4%    1.4 per cent.                                                                        4.8%
+                                                                  Housing, Water, Electricity, Gas and Other Fuels
+
+                Between September and October 2025, the price of gas (LPG) decreased by
+                                                                                                             Over the twelve months until October
+                0.6 per cent, while electricity charges rose during the period. Specifically,
+                                                                                                             2025, the index for the division rose by 1.9
+                the cost of 200 kWh increased by 3.0 per cent, and that of 50 kWh rose by
+                                                                                                             per cent.
+         0.3%   3.3 per cent.                                                                        1.9 %
+                                                                Alcoholic Beverages, Tobacco and Narcotics
+
+                Between September and October 2025, prices of selected non-food items                        Over the twelve months until October
+                registered increases. The price of spirits rose by 0.1 per cent, while                       2025, the Alcoholic Beverages, Tobacco and
+                cigarettes recorded a 0.4 per cent increase.                                         3.1%    Narcotics index rose by 3.1%.
+       0.1%
+                                                                                     Clothing and Footwear
+
+                Between September and October 2025, clothing prices exhibited mixed
+                movements. The prices of men’s suits and girls’ school uniforms declined                     Over the twelve months until October
+                marginally by 0.1 per cent each. In contrast, the price of men’s coats                       2025, the prices under Clothing and
+       0.1%     increased significantly by 4.6 per cent, while men’s shirts recorded a modest                Footwear division rose by 2.9%.
+                                                                                                     2.9%
+                rise of 0.3 per cent over the same period.
+
+                                         Furnishings, Household Equipment and Routine Household Maintenance
+                                                                                                          Over the twelve months until October
+                Between September and October 2025, prices of cleaning products showed
+                                                                                                          2025, the prices under Furnishings,
+                slight variations. The price of detergents declined by 0.3 per cent, while
+                                                                                                          Household Equipment and Routine
+                laundry soap (bar soap) recorded a modest increase of 0.2 per cent during
+       0.03                                                                                               Household Maintenance division rose by
+                the month.                                                                           1.7% 1.7%
+
+                                                                                                  Health
+                Between September and October 2025, prices of health-related items and
+                services recorded mixed trends. Charges for general practitioner services
+                and high blood pressure apparatus declined slightly by 0.1 per cent and 0.2               Over the twelve months until October
+                per cent, respectively. On the other hand, inpatient fees for room, bed,                  2025, the Health division index rose by
+       0.1%     rehabilitation, and other hospital charges increased by 1.0 per cent, while          2.8% 2.8%
+                the price of fever and pain relief medication, such as paracetamol, rose by
+                0.6 per cent.
+
+
+
+
+                                                                         5
+                                     Monthly                                                                         Yearly
+                                                                                Information and Communication
+                Between September and October 2025, prices of communication and
+                electronic items exhibited slight movements. The prices of mobile handsets
+                                                                                                         The sector recorded a yearly inflation of
+                (basic and smartphones) and computers (laptops) declined marginally by 0.1
+                                                                                                         0.7%
+                per cent and 0.2 per cent, respectively. In contrast, television subscription
+        0.02%   fees for private providers increased by 0.3 per cent during the same period       0.7%
+
+                                                                                   Recreation, Sport and Culture
+
+                Between September and October 2025, the cost of tour and honeymoon
+                packages declined slightly by 0.1 per cent, while prices of foodstuff for pets           Over the twelve months until October
+                increased notably by 1.2 per cent. Additionally, the prices of exercise books            2025, the Recreation, Sport and Culture
+        0.2%    and secondary school textbooks rose modestly by 0.3 per cent and 0.2 per
+                                                                                                  2.7%
+                                                                                                         division index rose by 2.7%
+                cent, respectively.
+
+                                                                                           Education Services
+
+                                                                                                         Over the twelve months until October
+                The price of education services remained constant in October 2025.                       2025, the index for the Education division
+                                                                                                         rose by 2.2%
+        0.0%                                                                                      2.2%
+                                                                            Restaurants and Accommodation Services
+
+                Between September and October 2025, prices of prepared food from cafés                 Over the twelve months until October
+                and take-aways rose by 0.2 per cent, while food from canteens and kiosks               2025, the index for the Restaurants and
+                increased marginally by 0.1 per cent. Hotel and restaurant prepared foods         2.3% Accommodation Services division rose by
+        0.4%    registered a relatively higher rise of 0.5 per cent during the same period.            2.3%
+
+                                                                                     Insurance and Financial Services
+
+                                                                                                         Over the twelve months until October
+                The price of insurance and financial services remained constant in October
+                                                                                                         2025, the Insurance and Financial Services
+                2025.
+                                                                                                         division index rose by 0.8%
+        0.0%                                                                                  0.8%
+                                                         Personal Care, Social Protection and Miscellaneous Goods and Services
+
+                Between September and October 2025, the prices of toilet soap and body
+                                                                                                       Over the twelve months until October
+                lotion declined by 0.3 per cent and 0.1 per cent, respectively. In contrast,
+                                                                                                       2025, the index for the Personal Care,
+                toothpaste and mouthwash prices rose by 0.3 per cent, hairdressing services
+                                                                                                       Social Protection and Miscellaneous Goods
+        0.1%    increased by 0.2 per cent, while toilet and tissue paper recorded the highest     2.7%
+                                                                                                       and Services division rose by 2.7%
+                increase of 1.5 per cent during the month.
+
+
+
+
+Movement of National Average Retail Prices of Selected Commodities
+Between September and October 2025, prices for most food and non-alcoholic beverages items showed
+mixed movements. The price of fortified maize flour 2 kilogrammes packet decreased from KSh 172.41
+to KSh 168.56. In contrast, the cost of onions rose from KSh 109.37 to KSh 110.37 per kilogram, while
+cabbages prices increased from KSh 62.91 to KSh 63.79 per kilogram.
+The cost of electricity for 200 kWh consumption rose from KSh 5,597.16 in September 2025 to KSh
+5,764.15 in October 2025, while that for 50 kWh increased from KSh 1,274.06 to KSh 1,315.80. The
+price of petrol remained unchanged at KSh 185.59 per litre.
+
+
+
+                                                                          6
+Table 3: National Average Retail Prices of Selected Commodities
+                                                                                                            % Change over % Change over
+                                                    Unit of       Average Price Average Price Average Price last month     last year
+Commodity Name                             Quantity
+                                                    Measure       October 2024 September 2025 October 2025 October 2025/ October 2025/
+                                                                                                            September 2025 October 2024
+
+ Maize Flour - Sifted                          2         Kg             127.87        152.28         148.79          -2.3         16.4
+ Fortified Maize flour                         2         Kg             144.64        172.41         168.56          -2.2         16.5
+ Kale-Sukuma Wiki                              1         Kg              79.37         92.48          91.56          -1.0         15.4
+ Spinach                                       1         Kg              91.77        103.43         102.70          -0.7         11.9
+ Beans                                         1         Kg             183.97        182.09         180.99          -0.6         -1.6
+ Sugar                                         1         Kg             150.33        185.21         184.35          -0.5         22.6
+ Maize Grain - Loose                           1         Kg              59.84         68.14          68.05          -0.1         13.7
+ Beef - With Bones                             1         Kg             650.20        698.50         701.67          0.5           7.9
+ Onion -Leeks and Bulbs                        1         Kg              98.58        109.37         110.37          0.9          12.0
+ Tomatoes                                      1         Kg              64.01         86.88          87.88          1.2          37.3
+ Cabbages                                      1         Kg              53.04         62.91          63.79          1.4          20.3
+ Potatoes (Irish)                              1         Kg              94.90         91.27          92.69          1.6          -2.3
+ Mangoes                                       1         Kg             134.97        147.19         152.85          3.8          13.2
+ Oranges                                       1         Kg             103.94        110.84         115.54          4.2          11.2
+ Gas/LPG                                      13         Kg            3,183.29      3,151.65      3,133.49          -0.6         -1.6
+ Actual monthly house rent - single room       1     Per Month         4,115.83      4,192.66      4,192.66          0.0           1.9
+ Electricity                                 200      Kilowatts        5,728.40      5,597.16      5,764.15          3.0           0.6
+ Electricity                                  50      Kilowatts        1,278.43      1,274.06      1,315.80          3.3           2.9
+ Local Flights                                 1       Ticket         11,001.44     16,106.09     16,722.56          3.8          52.0
+ Petrol                                        1        Litre           181.33        185.59         185.59          0.0           2.3
+ Diesel                                        1        Litre           168.82        172.64         172.64          0.0           2.3
+
+
+
+
+                                                                            7
+Figure 5: Percentage Change Over Last Month, September 2025 – October 2025
+
+
+                          Local Flights                                                           3.8
+
+                 Electricity(50kWh)                                                        3.3
+
+                Electricity(200kWh)                                                      3.0
+
+                              Gas/LPG          (0.6)
+
+                               Oranges                                                                  4.2
+
+                              Mangoes                                                             3.8
+
+                        Potatoes (Irish)                                1.6
+
+                             Cabbages                                  1.4
+
+                             Tomatoes                          1.2
+
+             Onion -Leeks and Bulbs                          0.9
+
+                     Beef - With Bones                 0.5
+
+                 Maize Grain - Loose           (0.1)
+
+                                   Sugar       (0.5)
+
+                                   Beans       (0.6)
+
+                     Kale-Sukuma Wiki          (1.0)
+
+                Fortified Maize flour          (2.2)
+
+                 Maize Flour - Sifted          (2.3)
+
+  (3.0)      (2.0)         (1.0)           -             1.0                 2.0   3.0           4.0          5.0
+
+
+
+
+Core and Non-Core Index and Inflation
+Core inflation is a measure of inflation that is compiled from non-volatile commodities such as
+manufactured food items, health services, education services, and ICT. Core inflation eased to 2.7 per
+cent in October 2025, as presented in Table 4. The core index increased from 129.52 in September
+2025 to 129.56 in October 2025. Non-core inflation was 9.9 per cent during the same period.
+
+
+
+
+                                                                   8
+Table 4: Core and Non-Core Index and Inflation
+  Period           Core Index       Core Inflation       Non-Core Index       Non-Core Inflation
+      Oct-24            126.20                 1.8                197.36                        5.1
+     Nov-24             126.76                 2.1                197.51                        4.6
+     Dec-24             127.50                 2.2                198.51                        4.9
+      Jan-25            127.77                 2.0                202.87                        6.8
+      Feb-25            128.01                 1.9                204.01                        7.7
+     Mar-25             128.35                 2.2                205.55                        7.4
+     Apr-25             128.48                 2.5                206.86                        8.4
+     May-25             128.97                 2.8                209.35                        6.0
+      Jun-25            129.47                 3.0                211.24                        6.2
+       Jul-25           129.59                 3.1                211.69                        7.2
+     Aug-25             129.57                 3.0                213.85                        9.2
+      Sep-25            129.52                 2.9                215.78                        9.6
+      Oct-25            129.56                 2.7                216.87                        9.9
+
+
+
+Contribution of Core and Non-Core to the Overall Inflation
+Contribution of core and non-core inflation to the overall inflation is presented in Table 5. Core inflation
+contributed 2.8 points, while non-core inflation contributed 1.8 points to the overall inflation in
+October 2025. Food and non-alcoholic beverages contributed to 2.6 points to the overall inflation
+during the same period.
+
+
+
+
+                                                     9
+Table 5: Core and Non-Core Contributions, October 2025
+
+Broad Categories                                                 Core    Non-Core     Total
+ Food and Non-Alcoholic Beverages                                  1.1         1.4       2.6
+ Alcoholic Beverages, Tobacco and Narcotics                        0.1          0.0      0.1
+ Clothing and Footwear                                             0.2          0.0      0.2
+ Housing, Water, Electricity, Gas and Other Fuels                  0.1          0.1      0.3
+ Furnishings, Household Equipment and Routine Household            0.2          0.0      0.2
+ Health                                                            0.1          0.0      0.1
+ Transport                                                         0.2         0.2       0.4
+ Information and Communication                                     0.1          0.0      0.1
+ Recreation, Sport and Culture                                     0.1          0.0      0.1
+ Education Services                                                0.1          0.0      0.1
+ Restaurants and Accommodation Services                            0.2          0.0      0.2
+ Insurance and Financial Services                                  0.0          0.0      0.0
+ Personal Care, Social Protection and Miscellaneous Goods          0.2          0.0      0.2
+Total                                                             2.8         1.8        4.6
+
+
+
+
+Macdonald G. Obudho, PhD, EBS, MBS
+DIRECTOR GENERAL
+
+
+
+
+                                                            10
+

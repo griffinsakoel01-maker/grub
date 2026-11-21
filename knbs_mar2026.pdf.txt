@@ -1,0 +1,523 @@
+      THE KENYA CONSUMER PRICE INDEX AND
+               INFLATION REPORT
+
+
+
+
+                         Released on: 31st March 2026
+
+
+
+
+CONTACT PERSON:
+
+      Macdonald G. Obudho, PhD, EBS, MBS
+
+      Director General
+
+         directorgeneral@knbs.or.ke; info@knbs.or.ke
+
+         +254(20)3317583; +254(20)2911000/1; +254(20)3317612/22/23/51
+Table of Contents
+Overview .................................................................................................................................. 1
+The Overall CPI and Inflation Trends, January 2025 - January 2026............................... 1
+Movement of National Average Retail Prices of Selected Commodities ............................. 6
+Core and Non-Core Index and Inflation ............................................................................... 8
+Contribution of Core and Non-Core to the Overall Inflation ............................................. 9
+
+
+List of Tables
+Table 1: One and Twelve-Month Percentage Changes in the Consumer Price Indices.... 3
+Table 2: Key Drivers of Inflation for each of the 13 Divisions............................................ 5
+Table 3: National Average Retail Prices of Selected Commodities ...................................... 7
+Table 4: Core and Non-Core Index and Inflation ................................................................ 9
+Table 5: Core and Non-Core Contributions, March 2026 ................................................ 10
+
+List of Figures
+Figure 1: Overall CPI March 2025 – March 2026 .............................................................. 2
+Figure 2: Inflation Trends, March 2025 – March 2026 ..................................................... 2
+Figure 3: Percentage Changes in CPI Across the 13 Divisions, February 2026 – March
+2026 ......................................................................................................................................... 4
+Figure 4: Percentage Changes in CPI Across the 13 Divisions, March 2025 – March 2026
+.................................................................................................................................................. 5
+Figure 5: Percentage Change Over Last Month, February 2026 – March 2026 .............. 8
+Overview
+Annual consumer price inflation as measured by the Consumer Price Index (CPI) was 4.4
+per cent in March 2026. This implies that the general price level was 4.4 per cent higher
+in March 2026 than it was in March 2025. The price increase was primarily driven by
+a rise in prices of items in the Food and Non-Alcoholic Beverages (7.7%); Transport (3.8
+%), and Housing, Water, Electricity, Gas and other fuels (2.0%) over the one-year period.
+These three divisions together account for over 57 per cent of the total weight across the
+13 major expenditure categories.
+Consumer Price Index (CPI) is defined as a measure of the weighted aggregate change
+over time in retail prices paid by consumers for a given basket of goods and services. The
+CPI measures the cost of purchasing this fixed basket of goods and services, comparing
+current prices to those of a base period, which for the current CPI is February 2019.
+Inflation rate is defined as a percentage change of the CPI between two periods. There
+are different inflation rates that can be computed, such as annual (year-on-year),
+quarterly (quarter-to-quarter) and monthly (month-on-month) inflation rates. Data
+used to derive the inflation rates is collected through a monthly survey of retail prices
+from a statistically representative sample of outlets in urban areas across 50 data
+collection zones nationwide. The survey is conducted during the second and third weeks
+of the month.
+
+The Overall CPI and Inflation Trends, March 2025 – March 2026
+As presented in Figure 1, the overall index increased from 149.20 in February 2026 to
+150.00 in March 2026, resulting in a monthly inflation rate of 0.5 per cent. The year-
+on-year inflation stood at 4.4 per cent in March 2026 as shown in Figure 2.
+
+
+
+
+                                            1
+Figure 1: Overall CPI, March 2025 – March 2026
+             151.00
+                                                                                                                            150.00
+             150.00
+                                                                                                            148.96 149.20
+             149.00
+                                                                                                   148.02
+             148.00
+                                                                                   146.84 147.08
+             147.00                                                       146.56
+                                                               146.21
+             146.00                            145.58 145.74
+                                      144.88
+ CPI         145.00
+                             144.09
+             144.00 143.69
+             143.00
+             142.00
+             141.00
+             140.00
+
+
+
+                                                                          Month
+
+
+
+
+Figure 2: Inflation Trends, March 2025 – March 2026
+             5.0
+                                                               4.5        4.6      4.6             4.5
+                                                                                         4.5                4.4              4.4
+             4.5                                    4.1                                                            4.3
+                            4.1
+             4.0                  3.8      3.8
+                      3.6
+             3.5
+
+             3.0
+
+
+ Inflation
+             2.5
+
+             2.0
+
+             1.5
+
+             1.0
+
+             0.5
+
+             0.0
+
+
+
+                                                                         Month
+
+
+
+
+                                                                     2
+Table 1: One and Twelve-Month Percentage Changes in the Consumer Price Indices
+
+                                                                                                   % Change on same
+                                                                                   % Change on
+                                                                                                     month of the
+                                                                                    last month
+13 COICOP Divisions                                                      Weight %                    previous year
+                                                                                  (March 2026 /
+                                                                                                    (March 2026 /
+                                                                                  February 2026)
+                                                                                                     March 2025)
+ Food and Non-Alcoholic Beverages                                          32.9094      1.1               7.7
+ Alcoholic Beverages, Tobacco and Narcotics                                 3.3289      0.1               2.3
+ Clothing and Footwear                                                      2.9914      0.0               1.8
+ Housing, Water, Electricity, Gas and Other Fuels                          14.6124      0.4               2.0
+ Furnishings, Household Equipment and Routine Household Maintenance         3.7372      0.3               1.5
+ Health                                                                     2.9116      0.4               2.7
+ Transport                                                                  9.6468      0.0               3.8
+ Information and Communication                                              7.7840      0.1               0.5
+ Recreation, Sport and Culture                                              1.7219      0.1               2.6
+ Education Services                                                         5.5620      0.3               3.3
+ Restaurants and Accommodation Services                                     8.0991      0.1               2.4
+ Insurance and Financial Services                                           2.2423      0.0               0.7
+ Personal Care, Social Protection and Miscellaneous Goods and Services      4.4532      0.2               2.5
+Total                                                                    100.0000       0.5               4.4
+
+
+
+
+                                                              3
+Figure 3: Percentage Changes in CPI Across the 13 Divisions, February 2026 – March 2026
+
+                                                                  Total                                              0.5
+
+ Personal Care, Social Protection and Miscellaneous Goods and Services                      0.2
+
+                                      Insurance and Financial Services      0.0
+
+                             Restaurants and Accommodation Services               0.1
+
+                                                   Education Services                             0.3
+
+                                         Recreation, Sport and Culture            0.1
+
+                                     Information and Communication                0.1
+
+                                                              Transport     0.0
+
+                                                                 Health                                       0.4
+
+Furnishings, Household Equipment and Routine Household Maintenance                                0.3
+
+              Housing, Water, Electricity, Gas and Other Fuels                                                 0.4
+
+                                                Clothing and Footwear       0.0
+
+                           Alcoholic Beverages, Tobacco and Narcotics             0.1
+
+                                   Food and Non-Alcoholic Beverages                                                                     1.1
+
+             -0.8          -0.6          -0.4          -0.2               0.0            0.2            0.4           0.6   0.8   1.0         1.2
+                                                                                      Inflation
+
+
+
+
+                                                                                  4
+Figure 4: Percentage Changes in CPI Across the 13 Divisions, March 2025 – March 2026
+
+                                                          Total                                                     4.4
+
+  Personal Care, Social Protection and Miscellaneous Goods and
+                                                                                                2.5
+                             Services
+
+                              Insurance and Financial Services           0.7
+
+                     Restaurants and Accommodation Services                                    2.4
+
+                                            Education Services                                         3.3
+
+                                 Recreation, Sport and Culture                                  2.6
+
+                              Information and Communication             0.5
+
+                                                     Transport                                               3.8
+
+                                                        Health                                   2.7
+
+    Furnishings, Household Equipment and Routine Household
+                                                                                   1.5
+                         Maintenance
+
+               Housing, Water, Electricity, Gas and Other Fuels                          2.0
+
+                                        Clothing and Footwear                        1.8
+
+                   Alcoholic Beverages, Tobacco and Narcotics                              2.3
+
+                            Food and Non-Alcoholic Beverages                                                                                7.7
+
+                                                                  0.0    1.0        2.0          3.0         4.0          5.0   6.0   7.0   8.0   9.0
+
+                                                                                                              Inflation
+
+
+
+
+                                                                               5
+Table 2: Key Drivers of Inflation for each of the 13 Divisions
+                                   Monthly                                                                         Yearly
+                                                                      Food and Non-Alcoholic Beverages
+
+
+               Monthly inflation of items under Food and Non-Alcoholic Beverages
+               division between February 2026 and March 2026 was 1.1 per cent.                       Over the twelve months until March
+               Prices of sugar, maize grain loose and cabbages went down by 1.3, 2.4                 2026, the Food and Non-alcoholic
+       1.1%    and 3.8 per cent, respectively. In the same period, prices of tomatoes and       7.7% Beverages division index rose by 7.7%.
+               beef with bones rose by 13.3 per cent and 1.8 per cent respectively.
+
+
+                                                                                    Transport
+
+               During the period between February 2026 and March 2026, prices of                       Over the twelve months until March
+               transport-related items showed mixed trends. Price of diesel and petrol                 2026, the index for the Transport
+               remained the same in the review period.                                                 division rose by 3.8 per cent.
+        0.0%                                                                                    3.8%
+                                                              Housing, Water, Electricity, Gas and Other Fuels
+               Monthly inflation for the division was 0.4 per cent. Electricity price
+               increased by 2.5 per cent and 2.2 per cent for 50 kWh and 200 kWh,                    Over the twelve months until March
+               respectively between February 2026 and March 2026. However , prices                   2026, the general price levels for the
+               of gas/LPG decreased by 0.1 per cent during the same period. Price of            2.0% division rose by 2.0 per cent.
+        0.4%
+               rent for single room remained unchanged in the same period.
+                                                             Alcoholic Beverages, Tobacco and Narcotics
+               The division recorded a monthly rate of 0.1 per cent. Between February
+                                                                                                       Over the twelve months until March
+               2026 and March 2026, beer (lagers and stouts) recorded a slight price
+                                                                                                       2026, the Alcoholic Beverages, Tobacco
+               rise of 0.3 per cent. In contrast, miraa (khat) prices experienced decrease
+                                                                                                       and Narcotics index rose by 2.3%.
+        0.1%   of 1.2 per cent.                                                                 2.3%
+                                                                                 Clothing and Footwear
+
+               Monthly inflation of items under Clothing and Footwear was 0.1 per
+               cent. Between February 2026 and March 2026, boy’s trousers/shorts                     Over the twelve months until March
+               and men’s shirts recorded slight price declines of 0.2 per cent and 0.1 per           2026, the prices under Clothing and
+               cent, respectively. In contrast, prices for boy’s leather shoes and girl’s       1.8% Footwear division rose by 1.8%.
+       0.1%
+               school uniforms increased by 0.3 per cent and 0.4 per cent, respectively.
+
+                                     Furnishings, Household Equipment and Routine Household Maintenance
+
+               The division recorded an inflation rate of 0.1 per cent between February              Over the twelve months until March
+               and March 2026. Shoe polish/cream recorded the highest rise at 0.7 per                2026, the prices under Furnishings,
+       0.1%    cent, indicating a relatively stronger upward movement compared to                    Household Equipment and Routine
+               other items. Both laundry soap/bar soap and detergents experienced               1.5% Household Maintenance division rose by
+               moderate increases of 0.3 per cent each.                                              1.5%.
+
+                                                                                             Health
+
+               The Health division recorded an inflation rate of 0.3 per cent. General
+                                                                                                       Over the twelve months until March
+               practitioner’s services recorded a marginal rise of 0.1 per cent. In
+                                                                                                       2026, the Health division index rose by
+               addition, medicine for cancer experienced a sharp increase of 2.8 per
+       0.3%                                                                                            2.7%.
+               cent.                                                                            2.7%
+
+
+
+
+                                                                  5
+                                   Monthly                                                                     Yearly
+                                                                           Information and Communication
+
+               Overall, the division recorded a monthly inflation of 0.1 per cent.
+               Between February and March 2026, prices for information and
+               communication equipment showed mixed trends. The price of computers
+                                                                                                 The sector recorded a yearly inflation of
+        0.0%
+       0.1%    (tablets) declined significantly by 2.5 per cent, indicating reduced costs   0.5% 0.5%.
+               in this category. In contrast, prices for televisions and mobile handsets
+               (both basic and smartphones) increased modestly by 0.3 per cent and 0.4
+               per cent, respectively.
+
+                                                                              Recreation, Sport and Culture
+               Monthly inflation for this division was 0.1 per cent. Between February
+               and March 2026, prices in this category moved in opposite directions.             Over the twelve months until March
+               Exercise books recorded a decline of 0.4 per cent, suggesting a slight            2026, the Recreation, Sport and Culture
+       0.1%    easing in the cost of basic educational materials. In contrast, tour and     2.6% division index went up by 2.6%.
+               honeymoon packages increased by 1.7 per cent.
+                                                                               Education Services
+
+               Between February and March 2026, certificate course fees recorded went               Over the twelve months until March
+               down slightly while post graduate fee rose by 0.1 per cent. Overall the              2026, the index for the Education
+               division recorded a monthly inflation of 0.4 per cent.                               division increased by 3.3%.
+        0.4%                                                                               3.3%
+                                                                       Restaurants and Accommodation Services
+
+               Between February and March 2026, prices within the hotel and
+               restaurant category showed minimal changes. Hotel and restaurant cakes            Over the twelve months until March
+               and snacks recorded a slight decline of 0.1 per cent, indicating a small          2026, the index for the Restaurants and
+       0.1%    reduction in prices. Meanwhile, both café and take-away prepared food,       2.4% Accommodation Services division rose by
+               as well as hotel and restaurant prepared foods, registered marginal               2.4%.
+               increases of 0.1 per cent each.
+
+                                                                                Insurance and Financial Services
+                                                                                                 Over the twelve months until March
+               Medical insurance and motor vehicle insurance remained the same                   2026, the prices under Insurance and
+               between February 2026 and March 2026.                                             Financial Services division went up by
+       0.0%                                                                                 0.7% 0.7%.
+                                                     Personal Care, Social Protection and Miscellaneous Goods and Services
+
+               Between February and March 2026, prices for personal care and
+               household hygiene items increased across all listed products. Toilet              Over the twelve months until March
+               paper/tissue paper recorded the highest rise at 1.4 per cent, indicating          2026, the index for the Personal Care,
+       0.2%    notable upward pressure in essential household supplies. Body lotion              Social Protection and Miscellaneous Goods
+                                                                                            2.5%
+               prices increased by 0.4 per cent, while hair dressing services saw a              and Services division increased by 2.5%.
+               modest rise of 0.1 per cent.
+
+
+
+
+Movement of National Average Retail Prices of Selected Commodities
+Between February and March 2026, prices for selected food items recorded slight
+declines. The price of one (1) kilogram of cabbages decreased from KSh 74.33 to KSh
+71.52, while one (1) kilogram of maize grain – loose dropped from KSh 72.19 to KSh
+
+
+                                                                   6
+70.44. Similarly, spinach (1 kilogram) recorded a marginal reduction from KSh 113.11
+to KSh 111.58.
+
+The cost of gas/LPG (13 kilograms) slightly declined from KSh 3,134.75 to KSh 3,132.34.
+However, electricity prices increased, with 200 kilowatts rising from KSh 5,564.78 to
+KSh 5,689.98 and 50 kilowatts increasing from KSh 1,265.96 to KSh 1,297.26.
+Meanwhile, the price of one (1) litre of petrol remained unchanged at KSh 179.35.
+
+Table 3: National Average Retail Prices of Selected Commodities
+                                                                                           % Change
+                                                                                           over last     % Change
+                                                             Average Price                  month      over last year
+                                     Unit of Average Price                 Average Price
+       Commodity Name       Quantity                           February                     March         March
+                                     Measure March 2025                    March 2026
+                                                                 2026                       2026/         2026/
+                                                                                           February    March 2025
+                                                                                             2026
+ Cabbages                       1     Kilogram       53.46          74.33         71.52        -3.8            33.8
+ Maize Grain - Loose            1     Kilogram       64.72          72.19         70.44        -2.4             8.8
+ Spinach                        1     Kilogram       99.92         113.11        111.58        -1.4            11.7
+ Sugar                          1     Kilogram      166.08         166.56        164.37        -1.3            -1.0
+ Kale-Sukuma Wiki               1     Kilogram       88.51         104.90        104.34        -0.5            17.9
+ Cooking Oil (Salad)            1       Litre       353.01         345.83        344.50        -0.4            -2.4
+ Wheat Flour-White              2     Kilogram      167.39         170.78        170.33        -0.3             1.8
+ Onion -Leeks and Bulbs         1     Kilogram      103.37         114.37        115.37          0.9           11.6
+ Beef - With Bones              1     Kilogram      672.52         724.40        737.30          1.8            9.6
+ Potatoes (Irish)               1     Kilogram       90.22         102.16        107.16          4.9           18.8
+ Tomatoes                       1     Kilogram       80.88          87.90         99.60        13.3            23.2
+ Gas/LPG                       13     Kilogram    3,146.03       3,134.75      3,132.34        -0.1            -0.4
+ House rent - single room       1    Per Month    4,169.57       4,209.75      4,209.75          0.0            1.0
+ Electricity                  200     Kilowatts   5,687.00       5,564.78      5,689.98          2.2            0.1
+ Electricity                   50     Kilowatts   1,268.08       1,265.96      1,297.26          2.5            2.3
+ Petrol                         1       Litre       177.25         179.35        179.35          0.0            1.2
+ Diesel                         1       Litre       167.84         167.72        167.72          0.0           -0.1
+
+
+
+
+                                                  7
+Figure 5: Percentage Change Over Last Month, February 2026 – March 2026
+
+
+
+                                   Electricity                  2.5
+
+
+                                   Electricity                  2.2
+
+
+                                    Gas/LPG            -0.1
+
+
+                                   Tomatoes                                          13.3
+
+
+                              Potatoes (Irish)                          4.9
+
+
+                          Beef - With Bones                    1.8
+
+
+                     Onion -Leeks and Bulbs              0.9
+
+
+                        Wheat Flour-White          -0.3
+
+
+                        Cooking Oil (Salad)        -0.4
+
+
+                         Kale-Sukuma Wiki          -0.5
+
+
+                                       Sugar       -1.3
+
+                                     Spinach       -1.4
+
+
+                        Maize Grain - Loose        -2.4
+
+
+                                   Cabbages        -3.8
+
+                       -5.0                      0.0                  5.0     10.0     15.0
+
+
+
+
+Core and Non-Core Index and Inflation
+Core inflation is a measure of inflation that is compiled from non-volatile commodities
+such as manufactured food items, health services, education services, and ICT. Core
+inflation decreased to 2.1 per cent in March 2026, as presented in Table 4. Non-core
+inflation was 10.8 per cent during the same period.
+
+
+
+
+                                                         8
+Table 4: Core and Non-Core Index and Inflation
+
+  Period      Core Index Core Inflation Non-Core Index Non-Core Inflation
+   Mar-25       128.35             2.2        205.55                 7.4
+   Apr-25       128.48             2.5        206.86                 8.4
+   May-25       128.97             2.8        209.35                 6.0
+   Jun-25       129.47             3.0        211.24                 6.2
+     Jul-25     129.59             3.1        211.69                 7.2
+   Aug-25       129.57             3.0        213.85                 9.2
+    Sep-25      129.52             2.9        215.78                 9.6
+   Oct-25       129.56             2.7        216.87                 9.9
+   Nov-25       129.66             2.3        217.54               10.1
+   Dec-25       130.09             2.0        220.84               11.2
+    Jan-26      130.60             2.2        223.74               10.3
+    Feb-26      130.72             2.1        224.68               10.1
+   Mar-26       131.07             2.1        227.82               10.8
+
+
+Contribution of Core and Non-Core to the Overall Inflation
+Contribution of core and non-core inflation to the overall inflation is presented in Table
+5. Core inflation contributed 2.5 points, while non-core inflation contributed 1.8 points
+to the overall inflation in March 2026. Food and non-alcoholic beverages contributed to
+2.2 points to the overall inflation during the same period.
+
+
+
+
+                                            9
+Table 5: Core and Non-Core Contributions, March 2026
+
+
+Broad Categories                                            Core    Non Core    Total
+ Food and Non-Alcoholic Beverages                             0.7         1.5     2.2
+ Alcoholic Beverages, Tobacco and Narcotics                   0.1        0.0      0.1
+ Clothing and Footwear                                        0.2        0.0      0.2
+ Housing, Water, Electricity, Gas and Other Fuels             0.1        0.2      0.3
+ Furnishings, Household Equipment and Routine Household       0.2        0.0      0.2
+ Health                                                       0.2        0.0      0.2
+ Transport                                                    0.3         0.2     0.5
+ Information and Communication                                0.1        0.0      0.1
+ Recreation, Sport and Culture                                0.1        0.0      0.1
+ Education Services                                           0.2        0.0      0.2
+ Restaurants and Accommodation Services                       0.2        0.0      0.2
+ Insurance and Financial Services                             0.0        0.0      0.0
+ Personal Care, Social Protection and Miscellaneous Goods     0.2        0.0      0.2
+Total                                                        2.5         1.8       4.4
+
+
+
+
+Macdonald G. Obudho, PhD, EBS, MBS
+DIRECTOR GENERAL
+
+
+
+
+                                                 10
+
