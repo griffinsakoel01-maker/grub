@@ -9,6 +9,7 @@ import 'screens/shell.dart';
 import 'screens/splash_screen.dart';
 import 'state/app_state.dart';
 import 'widgets/common.dart';
+import 'widgets/grub_logo_animation.dart';
 
 class GrubApp extends StatelessWidget {
   const GrubApp({super.key});
@@ -20,7 +21,7 @@ class GrubApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: GrubTheme.light(),
       locale: const Locale('en', 'KE'),
-      home: const _Gate(),
+      home: kIsWeb && Uri.base.fragment == 'logo' ? const _LogoPreview() : const _Gate(),
     );
   }
 }
@@ -89,4 +90,11 @@ class _LogoHold extends StatelessWidget {
           ]),
         ),
       );
+}
+
+/// https://<site>/#logo – plays the in-app loading animation on a loop (for checking it).
+class _LogoPreview extends StatelessWidget {
+  const _LogoPreview();
+  @override
+  Widget build(BuildContext context) => const Scaffold(backgroundColor: Colors.white, body: GrubLogoAnimation(loop: true));
 }

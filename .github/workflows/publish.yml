@@ -86,6 +86,16 @@ jobs:
           flutter build web --release 2>&1 | tee ci/build-app.txt
           mkdir -p build/web/admin && cp -r "$RUNNER_TEMP/admin/." build/web/admin/
 
+      - name: Screenshots of the built app
+        if: steps.app.outcome == 'success'
+        continue-on-error: true
+        run: |
+          mkdir -p ci/shots
+          (cd build/web && python3 -m http.server 8090 >/dev/null 2>&1 &)
+          npm i --no-save --no-audit --no-fund playwright@1 >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
+          node scripts/ci_screenshots.js http://localhost:8090 ci/shots 2>&1 | tee ci/shots.txt
+
       - name: Save build report to the ci-report branch
         if: always()
         run: |
