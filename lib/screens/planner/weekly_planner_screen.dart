@@ -13,6 +13,8 @@ import '../recipes/recipes_screen.dart';
 import '../shopping/shopping_list_detail_screen.dart';
 import 'ingredient_calculator_screen.dart';
 import 'plan_builder_screen.dart';
+import 'quick_plan_screen.dart';
+import 'today_screen.dart';
 
 /// Weekly meal calendar: breakfast / lunch / dinner (+ snacks) per day.
 class WeeklyPlannerScreen extends StatefulWidget {
@@ -44,13 +46,29 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
     );
   }
 
-  Widget _empty(BuildContext context) => EmptyState(
-        emoji: '🗓️',
-        title: 'Plan your week',
-        message: 'We\'ll pick Kenyan meals that fit your budget, household and diet, then build the shopping list.',
-        actionLabel: 'Plan my meals',
-        onAction: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PlanBuilderScreen())),
-      );
+  Widget _empty(BuildContext context) => ListView(padding: const EdgeInsets.all(20), children: [
+        const SizedBox(height: 20),
+        const EmptyState(
+          emoji: '🗓️',
+          title: 'Plan your meals',
+          message: 'We\'ll pick Kenyan meals that fit your budget, household and diet, then build the shopping list.',
+        ),
+        FilledButton(
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const QuickPlanScreen())),
+          child: const Text('Quick plan (3 questions)'),
+        ),
+        const SizedBox(height: 10),
+        OutlinedButton(
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PlanBuilderScreen())),
+          child: const Text('Plan a week from my budget settings'),
+        ),
+        const SizedBox(height: 10),
+        OutlinedButton.icon(
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TodayScreen())),
+          icon: const Text('🍲'),
+          label: const Text('Just today – what can I cook?'),
+        ),
+      ]);
 
   Widget _calendar(BuildContext context, AppState s, MealPlan plan) {
     if (_day >= plan.days) _day = 0;
@@ -154,11 +172,22 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
             ),
           ]),
           const SizedBox(height: 10),
-          TextButton.icon(
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PlanBuilderScreen())),
-            icon: const Icon(Icons.refresh),
-            label: const Text('Plan a new week'),
-          ),
+          Row(children: [
+            Expanded(
+              child: TextButton.icon(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const QuickPlanScreen())),
+                icon: const Icon(Icons.refresh),
+                label: const Text('New plan'),
+              ),
+            ),
+            Expanded(
+              child: TextButton.icon(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TodayScreen())),
+                icon: const Text('🍲'),
+                label: const Text('Just today'),
+              ),
+            ),
+          ]),
         ]),
       ),
     ]);

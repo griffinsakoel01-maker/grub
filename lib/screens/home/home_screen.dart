@@ -11,10 +11,12 @@ import '../../widgets/common.dart';
 import '../ai/ai_assistant_screen.dart';
 import '../budget/budget_calculator_screen.dart';
 import '../planner/plan_builder_screen.dart';
+import '../planner/quick_plan_screen.dart';
 import '../prices/compare_prices_screen.dart';
 import '../recipes/recipe_detail_screen.dart';
 import '../recipes/recipes_screen.dart';
 import '../receipt/receipt_scan_screen.dart';
+import '../planner/today_screen.dart';
 import '../shell.dart';
 import '../shopping/shopping_list_detail_screen.dart';
 import '../budget/budget_tracking_screen.dart';
@@ -89,7 +91,22 @@ class HomeScreen extends StatelessWidget {
             ]),
           ),
           const SectionHeader('Quick actions'),
-          _QuickActions(onPlan: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PlanBuilderScreen()))),
+          _QuickActions(onPlan: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const QuickPlanScreen()))),
+          const SizedBox(height: 10),
+          SoftCard(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TodayScreen())),
+            child: const Row(children: [
+              Text('🍲', style: TextStyle(fontSize: 26)),
+              SizedBox(width: 12),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('Just today', style: TextStyle(fontWeight: FontWeight.w800)),
+                  Text('What can I cook with the money I have now?', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
+                ]),
+              ),
+              Icon(Icons.chevron_right),
+            ]),
+          ),
           if (upcoming.isNotEmpty) ...[
             SectionHeader('Upcoming meals', action: 'See plan', onAction: () => MainShell.of(context)?.goTo(1)),
             for (final m in upcoming)

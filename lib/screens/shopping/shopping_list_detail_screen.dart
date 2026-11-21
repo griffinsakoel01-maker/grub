@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/money.dart';
 import '../../core/theme.dart';
@@ -36,6 +37,14 @@ class ShoppingListDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(l.name, overflow: TextOverflow.ellipsis),
         actions: [
+          IconButton(
+            tooltip: 'Send on WhatsApp',
+            icon: const Icon(Icons.send),
+            onPressed: () => launchUrl(
+              Uri.parse('https://wa.me/?text=${Uri.encodeComponent(ExportService.asText(l, s.catalog.supermarkets))}'),
+              mode: LaunchMode.externalApplication,
+            ),
+          ),
           IconButton(tooltip: 'Share', icon: const Icon(Icons.ios_share), onPressed: () => ExportService.share(l, s.catalog.supermarkets)),
           PopupMenuButton<String>(
             onSelected: (v) async {

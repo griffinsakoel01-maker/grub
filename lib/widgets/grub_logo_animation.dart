@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 class GrubLogoAnimation extends StatefulWidget {
   final VoidCallback? onFinished;
   final bool loop;
-  const GrubLogoAnimation({super.key, this.onFinished, this.loop = false});
+  /// Returning users: start near the end (logo assembles in under a second).
+  final bool quick;
+  const GrubLogoAnimation({super.key, this.onFinished, this.loop = false, this.quick = false});
 
   static const duration = Duration(milliseconds: 4300);
 
@@ -78,7 +80,7 @@ class _GrubLogoAnimationState extends State<GrubLogoAnimation> with SingleTicker
         }
       }
     });
-    _c.forward();
+    _c.forward(from: widget.quick ? 0.8 : 0.0);
   }
 
   @override

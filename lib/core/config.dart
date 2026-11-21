@@ -8,4 +8,7 @@ class AppConfig {
 
   /// Set at startup: true when Firebase initialised successfully.
   static bool firebaseReady = false;
+
+  /// True after the full logo animation has been seen once on this device.
+  static bool introSeen = false;
 }

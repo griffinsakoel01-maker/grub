@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/money.dart';
 import '../../core/theme.dart';
 import '../../models/catalog.dart';
 import '../../models/user_data.dart';
@@ -18,7 +19,9 @@ class PlanBuilderScreen extends StatefulWidget {
   final int days;
   final bool onboarding;
   final Future<void> Function()? onAccepted;
-  const PlanBuilderScreen({super.key, this.days = 7, this.onboarding = false, this.onAccepted});
+  /// Budget for exactly these days (Quick Plan); null = from the profile.
+  final Money? budget;
+  const PlanBuilderScreen({super.key, this.days = 7, this.onboarding = false, this.onAccepted, this.budget});
   @override
   State<PlanBuilderScreen> createState() => _PlanBuilderScreenState();
 }
@@ -43,7 +46,7 @@ class _PlanBuilderScreenState extends State<PlanBuilderScreen> {
       await Future.delayed(const Duration(milliseconds: 650));
       if (!mounted) return;
       if (i == 1) {
-        _result = context.read<AppState>().generatePlan(days: widget.days, start: _start);
+        _result = context.read<AppState>().generatePlan(days: widget.days, start: _start, budget: widget.budget);
       }
       setState(() => _stage = i + 1);
     }
@@ -203,7 +206,7 @@ class _PlanBuilderScreenState extends State<PlanBuilderScreen> {
         child: Row(children: [
           IconButton.outlined(
             tooltip: 'Shuffle',
-            onPressed: _saving ? null : () => setState(() => _result = s.generatePlan(days: widget.days, start: _start, seed: math.Random().nextInt(1 << 30))),
+            onPressed: _saving ? null : () => setState(() => _result = s.generatePlan(days: widget.days, start: _start, budget: widget.budget, seed: math.Random().nextInt(1 << 30))),
             icon: const Icon(Icons.shuffle),
           ),
           const SizedBox(width: 10),

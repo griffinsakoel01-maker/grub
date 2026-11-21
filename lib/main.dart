@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
 import 'core/config.dart';
@@ -20,6 +21,12 @@ Future<void> main() async {
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
   ));
+
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    AppConfig.introSeen = prefs.getBool('intro_seen') ?? false;
+    await prefs.setBool('intro_seen', true);
+  } catch (_) {}
 
   Repository repo;
   AuthService auth;

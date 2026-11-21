@@ -9,6 +9,7 @@ import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../../widgets/pantry_picker.dart';
 import '../planner/plan_builder_screen.dart';
+import '../planner/quick_plan_screen.dart';
 import 'budget_step.dart';
 
 /// Shared option lists (also used by Profile → edit).
@@ -200,13 +201,33 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
   Widget _stepName() => _frame(
         'Karibu! What should we call you?',
         'Grub plans meals around your family and your budget.',
-        TextField(
-          controller: _name,
-          autofocus: true,
-          textCapitalization: TextCapitalization.words,
-          onChanged: (_) => setState(() {}),
-          decoration: const InputDecoration(hintText: 'Your first name', prefixIcon: Icon(Icons.waving_hand_outlined)),
-        ),
+        Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          TextField(
+            controller: _name,
+            autofocus: true,
+            textCapitalization: TextCapitalization.words,
+            onChanged: (_) => setState(() {}),
+            decoration: const InputDecoration(hintText: 'Your first name', prefixIcon: Icon(Icons.waving_hand_outlined)),
+          ),
+          const SizedBox(height: 22),
+          SoftCard(
+            color: GrubColors.greenLight,
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => QuickPlanScreen(onboarding: true, name: _name.text.trim()))),
+            child: const Row(children: [
+              Text('⚡', style: TextStyle(fontSize: 26)),
+              SizedBox(width: 12),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('In a hurry? Quick start', style: TextStyle(fontWeight: FontWeight.w800, color: GrubColors.greenDark)),
+                  Text('Just 3 questions: money, people, days.', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
+                ]),
+              ),
+              Icon(Icons.arrow_forward, color: GrubColors.greenDark),
+            ]),
+          ),
+          const SizedBox(height: 8),
+          const Text('Or tap Next for the full setup (diet, allergies, shops, pantry).', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
+        ]),
       );
 
   Widget _stepShops(Catalog c) => _frame(
