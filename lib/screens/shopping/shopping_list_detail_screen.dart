@@ -11,6 +11,7 @@ import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../budget/optimizer_screen.dart';
 import '../prices/compare_prices_screen.dart';
+import '../receipt/receipt_scan_screen.dart';
 
 const _sections = ['vegetables', 'fruits', 'cereals', 'meat', 'dairy', 'cooking', 'household'];
 
@@ -459,7 +460,13 @@ class _Totals extends StatelessWidget {
             ),
           ]),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx, false);
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ReceiptScanScreen()));
+              },
+              child: const Text('Scan receipt instead'),
+            ),
             TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Save')),
           ],
         ),

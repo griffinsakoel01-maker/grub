@@ -13,6 +13,7 @@ import '../services/auth_service.dart';
 import '../services/calculation_service.dart';
 import '../services/meal_planner_service.dart';
 import '../services/optimizer_service.dart';
+import '../services/receipt_service.dart';
 
 enum LoadStatus { idle, loading, ready, error }
 
@@ -508,6 +509,49 @@ class AppState extends ChangeNotifier {
     expenses.removeWhere((x) => x.id == e.id);
     notifyListeners();
     await repo.deleteExpense(e.userId, e.id);
+  }
+
+  // ---------------------------------------------------------------- receipts
+  /// Grub's estimate for [baseQty] of a product at a shop (falls back to any shop).
+  Money? estimateFor(String productId, double baseQty, String supermarketId) {
+    final p = CalculationService.bestPrice(productId, baseQty, catalog, supermarketId: supermarketId) ??
+        CalculationService.bestPrice(productId, baseQty, catalog);
+    return p == null ? null : CalculationService.lineCost(baseQty, p);
+  }
+
+  /// Saves a checked receipt: spending, pantry, and (optionally) shared prices.
+  /// Returns a short message for the user.
+  Future<String> saveReceipt(ReceiptScan r, {required Money paid, required Money estimate, bool addToPantry = true, bool sharePrices = true}) async {
+    final shopName = catalog.supermarkets[r.supermarketId]?.name ?? (r.shopName.isEmpty ? 'Shop' : r.shopName);
+    await saveExpense(Expense(
+      id: newId(),
+      userId: user!.uid,
+      amount: paid,
+      estimated: estimate.isZero ? null : estimate,
+      note: 'Receipt · $shopName',
+      supermarketId: r.supermarketId ?? '',
+      date: r.date,
+    ));
+    var pantryAdded = 0;
+    if (addToPantry) {
+      for (final i in r.items.where((i) => i.include && i.productId != null && (i.packageSize ?? 0) > 0)) {
+        final current = pantryMap[i.productId!] ?? 0;
+        await setPantryQuantity(i.productId!, current + i.packageSize! * i.quantity);
+        pantryAdded++;
+      }
+    }
+    var shared = 0, review = 0;
+    if (sharePrices && repo.isCloud && r.supermarketId != null) {
+      try {
+        (shared, review) = await ReceiptService.sharePrices(r);
+        if (shared > 0) await refreshCatalog();
+      } catch (_) {}
+    }
+    final parts = <String>['Saved ${paid.format()} spent at $shopName'];
+    if (pantryAdded > 0) parts.add('$pantryAdded items added to pantry');
+    if (shared > 0) parts.add('$shared prices shared – thank you!');
+    if (review > 0) parts.add('$review sent for checking');
+    return parts.join(' · ');
   }
 
   // ---------------------------------------------------------------- prices

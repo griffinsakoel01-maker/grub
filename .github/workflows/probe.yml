@@ -13,17 +13,21 @@ jobs:
           mkdir -p out && cd out
           UA="Mozilla/5.0 (compatible; GrubPriceBot/1.0)"
           get(){ curl -sSL -A "$UA" --max-time 40 -o "$1" -w "%{http_code} %{url_effective}\n" "$2" >> status.txt 2>&1 || echo "FAIL $2" >> status.txt; }
-          get kamis_home.html "https://kamis.kilimo.go.ke/"
-          get kamis_site_market.html "https://kamis.kilimo.go.ke/site/market"
-          get kamis_index_market.html "https://kamis.kilimo.go.ke/index.php/site/market"
-          get kamis_robots.txt "https://kamis.kilimo.go.ke/robots.txt"
-          get knbs_cpi_list.html "https://www.knbs.or.ke/consumer-price-indices/"
-          get knbs_robots.txt "https://www.knbs.or.ke/robots.txt"
-          get knbs_oct2025.pdf "https://www.knbs.or.ke/wp-content/uploads/2025/10/Kenya-Consumer-Price-Indices-and-Inflation-Rates-October-2025.pdf"
+          # KNBS serves an incomplete certificate chain: fetch the missing intermediate (AIA) and verify with it
+          openssl s_client -connect www.knbs.or.ke:443 -servername www.knbs.or.ke </dev/null 2>/dev/null | openssl x509 -outform PEM > leaf.pem || true
+          AIA=$(openssl x509 -in leaf.pem -noout -text | grep -o 'CA Issuers - URI:[^ ]*' | head -1 | sed 's/CA Issuers - URI://')
+          echo "AIA=$AIA" >> status.txt
+          curl -sSL --max-time 30 -o inter.der "$AIA" || true
+          openssl x509 -inform DER -in inter.der -out inter.pem 2>/dev/null || cp inter.der inter.pem
+          cat /etc/ssl/certs/ca-certificates.crt inter.pem > bundle.pem
+          getk(){ curl -sSL --cacert bundle.pem -A "$UA" --max-time 60 -o "$1" -w "%{http_code} %{url_effective}\n" "$2" >> status.txt 2>&1 || echo "FAIL $2" >> status.txt; }
+          getk knbs_cpi_list.html "https://www.knbs.or.ke/consumer-price-indices/"
+          getk knbs_robots.txt "https://www.knbs.or.ke/robots.txt"
+          getk knbs_oct2025.pdf "https://www.knbs.or.ke/wp-content/uploads/2025/10/Kenya-Consumer-Price-Indices-and-Inflation-Rates-October-2025.pdf"
+          getk knbs_mar2026.pdf "https://www.knbs.or.ke/wp-content/uploads/2026/03/Kenya-Consumer-Price-Indices-and-Inflation-Rates-March-2026.pdf"
           sudo apt-get install -y poppler-utils >/dev/null 2>&1 || true
           for f in *.pdf; do pdftotext -layout "$f" "$f.txt" || true; done
-          grep -o 'href="[^"]*"' kamis_home.html | sort -u | head -150 > kamis_links.txt || true
-          grep -o 'href="[^"]*\.pdf"' knbs_cpi_list.html | sort -u | head -80 > knbs_pdf_links.txt || true
+          grep -o 'href="[^"]*"' knbs_cpi_list.html | grep -i -E 'consumer|cpi|inflation' | sort -u | head -80 > knbs_links.txt || true
           ls -la >> status.txt
       - name: Save
         run: |
