@@ -1,6 +1,7 @@
 import 'package:cloud_functions/cloud_functions.dart';
 
 import '../core/config.dart';
+import '../core/i18n.dart';
 import '../core/money.dart';
 import '../models/catalog.dart';
 import '../models/user_data.dart';
@@ -39,6 +40,7 @@ class AiService {
           'message': message,
           'history': history.length > 10 ? history.sublist(history.length - 10) : history,
           'pantry': pantry,
+          'language': Lang.notifier.value,
         });
         final data = Map<String, dynamic>.from(res.data as Map);
         final ids = List<String>.from(data['recipeIds'] ?? const []);

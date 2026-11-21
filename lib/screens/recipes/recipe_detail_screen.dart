@@ -11,6 +11,8 @@ import '../../models/catalog.dart';
 import '../../services/calculation_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
+import '../../core/i18n.dart';
+import 'my_recipe_editor_screen.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
   final String recipeId;
@@ -61,6 +63,29 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTick
               child: CircleAvatar(backgroundColor: Colors.white, child: BackButton(color: GrubColors.greenDark)),
             ),
             actions: [
+              if (r.id.startsWith('my_'))
+                Padding(
+                  padding: const EdgeInsets.all(6),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: PopupMenuButton<String>(
+                      icon: const Icon(Icons.more_vert, color: GrubColors.greenDark),
+                      onSelected: (v) async {
+                        if (v == 'edit') {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => MyRecipeEditorScreen(recipe: r)));
+                        } else {
+                          final nav = Navigator.of(context);
+                          await s.deleteMyRecipe(r.id);
+                          nav.pop();
+                        }
+                      },
+                      itemBuilder: (_) => const [
+                        PopupMenuItem(value: 'edit', child: T('Edit')),
+                        PopupMenuItem(value: 'delete', child: T('Delete recipe')),
+                      ],
+                    ),
+                  ),
+                ),
               Padding(
                 padding: const EdgeInsets.all(6),
                 child: CircleAvatar(
@@ -110,7 +135,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTick
                       child: const Row(children: [
                         Icon(Icons.check_circle_outline, size: 18, color: GrubColors.green),
                         SizedBox(width: 6),
-                        Text('Mark as cooked', style: TextStyle(fontWeight: FontWeight.w600)),
+                        T('Mark as cooked', style: TextStyle(fontWeight: FontWeight.w600)),
                       ]),
                     ),
                   ]),
@@ -150,14 +175,14 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTick
       Row(children: [
         CountStepper(value: _servings, min: 0.5, max: 40, step: 0.5, onChanged: (v) => setState(() => _servings = v.toDouble())),
         const SizedBox(width: 8),
-        const Text('servings', style: TextStyle(color: GrubColors.muted)),
+        const T('servings', style: TextStyle(color: GrubColors.muted)),
         const Spacer(),
         Text('Recipe serves ${r.servings}', style: const TextStyle(fontSize: 12, color: GrubColors.muted)),
       ]),
       const SizedBox(height: 12),
       for (final ing in r.ingredients) _ingredientRow(s, r, ing, pantry),
       const SizedBox(height: 8),
-      const Text('Quantities scale automatically: original × (your servings ÷ recipe servings).',
+      const T('Quantities scale automatically: original × (your servings ÷ recipe servings).',
           style: TextStyle(fontSize: 11, color: GrubColors.muted)),
     ]);
   }
@@ -192,7 +217,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTick
         OutlinedButton.icon(
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CookModeScreen(recipe: r))),
           icon: const Icon(Icons.play_arrow),
-          label: const Text('Cook step-by-step'),
+          label: const T('Cook step-by-step'),
         ),
         const SizedBox(height: 14),
         for (var i = 0; i < r.instructions.length; i++)
@@ -228,11 +253,11 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> with SingleTick
     final ok = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Mark as cooked?'),
+        title: const T('Mark as cooked?'),
         content: Text('Remove the ingredients used for ${_fmt(_servings)} from your pantry?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Just mark cooked')),
-          FilledButton(onPressed: () => Navigator.pop(ctx, true), style: FilledButton.styleFrom(minimumSize: const Size(0, 44)), child: const Text('Update pantry')),
+          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const T('Just mark cooked')),
+          FilledButton(onPressed: () => Navigator.pop(ctx, true), style: FilledButton.styleFrom(minimumSize: const Size(0, 44)), child: const T('Update pantry')),
         ],
       ),
     );
@@ -298,7 +323,7 @@ class _Macros extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(children: [
-        const Text('MACROS · PER SERVING (APPROX.)', style: TextStyle(fontSize: 10, color: GrubColors.green, fontWeight: FontWeight.w700)),
+        const T('MACROS · PER SERVING (APPROX.)', style: TextStyle(fontSize: 10, color: GrubColors.green, fontWeight: FontWeight.w700)),
         const Spacer(),
         Text('${n.kcal} kcal', style: const TextStyle(fontWeight: FontWeight.w700)),
       ]),
@@ -368,7 +393,7 @@ class _CookModeScreenState extends State<CookModeScreen> {
             Expanded(
               child: OutlinedButton(
                 onPressed: _i == 0 ? null : () => _ctrl.previousPage(duration: const Duration(milliseconds: 250), curve: Curves.easeOut),
-                child: const Text('Back'),
+                child: const T('Back'),
               ),
             ),
             const SizedBox(width: 12),

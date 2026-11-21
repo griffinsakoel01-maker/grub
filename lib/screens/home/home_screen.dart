@@ -10,6 +10,7 @@ import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../ai/ai_assistant_screen.dart';
 import '../budget/budget_calculator_screen.dart';
+import '../budget/pay_day_sheet.dart';
 import '../planner/plan_builder_screen.dart';
 import '../planner/quick_plan_screen.dart';
 import '../prices/compare_prices_screen.dart';
@@ -20,6 +21,7 @@ import '../planner/today_screen.dart';
 import '../shell.dart';
 import '../shopping/shopping_list_detail_screen.dart';
 import '../budget/budget_tracking_screen.dart';
+import '../../core/i18n.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -65,7 +67,19 @@ class HomeScreen extends StatelessWidget {
           // Budget card
           SoftCard(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const BudgetTrackingScreen())),
-            child: BudgetProgress(budget: p.budget, spent: s.spentThisPeriod, label: '${budgetFrequencyLabel(p.budgetFrequency)} budget'),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              BudgetProgress(budget: p.budget, spent: s.spentThisPeriod, label: '${budgetFrequencyLabel(p.budgetFrequency)} budget'),
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  style: TextButton.styleFrom(padding: EdgeInsets.zero, visualDensity: VisualDensity.compact),
+                  onPressed: () => showPayDaySheet(context, s),
+                  icon: const Text('💸'),
+                  label: const T('I got paid today'),
+                ),
+              ),
+            ]),
           ),
           const SizedBox(height: 12),
           // Current plan card
@@ -78,11 +92,11 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: plan == null
                     ? const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text('No meal plan yet', style: TextStyle(fontWeight: FontWeight.w700)),
-                        Text('Plan your week in under a minute.', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
+                        T('No meal plan yet', style: TextStyle(fontWeight: FontWeight.w700)),
+                        T('Plan your week in under a minute.', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
                       ])
                     : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        const Text('Current shopping plan', style: TextStyle(fontWeight: FontWeight.w700)),
+                        const T('Current shopping plan', style: TextStyle(fontWeight: FontWeight.w700)),
                         Text('${plan.meals.length} meals · est. ${basket?.total.format() ?? '—'} of ${plan.budget.format()}',
                             style: const TextStyle(color: GrubColors.muted, fontSize: 12)),
                       ]),
@@ -100,8 +114,8 @@ class HomeScreen extends StatelessWidget {
               SizedBox(width: 12),
               Expanded(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('Just today', style: TextStyle(fontWeight: FontWeight.w800)),
-                  Text('What can I cook with the money I have now?', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
+                  T('Just today', style: TextStyle(fontWeight: FontWeight.w800)),
+                  T('What can I cook with the money I have now?', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
                 ]),
               ),
               Icon(Icons.chevron_right),
@@ -171,8 +185,8 @@ class HomeScreen extends StatelessWidget {
               SizedBox(width: 12),
               Expanded(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('Ask Grub AI', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
-                  Text('"What can I cook with KSh 300?"', style: TextStyle(color: Color(0xFFCDE8C3), fontSize: 13)),
+                  T('Ask Grub AI', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16)),
+                  T('"What can I cook with KSh 300?"', style: TextStyle(color: Color(0xFFCDE8C3), fontSize: 13)),
                 ]),
               ),
               Icon(Icons.arrow_forward, color: Colors.white),

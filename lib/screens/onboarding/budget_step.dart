@@ -12,6 +12,7 @@ import '../../services/calculation_service.dart';
 import '../../services/meal_planner_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
+import '../../core/i18n.dart';
 
 /// What a period of meals typically costs for this household (from price data).
 class NeedEstimate {
@@ -72,7 +73,7 @@ class _BudgetStepState extends State<BudgetStep> {
     final v = await showDialog<int>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Enter your budget'),
+        title: const T('Enter your budget'),
         content: TextField(
           controller: ctrl,
           autofocus: true,
@@ -81,8 +82,8 @@ class _BudgetStepState extends State<BudgetStep> {
           decoration: const InputDecoration(prefixText: 'KSh '),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          TextButton(onPressed: () => Navigator.pop(ctx, int.tryParse(ctrl.text)), child: const Text('Save')),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: const T('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(ctx, int.tryParse(ctrl.text)), child: const T('Save')),
         ],
       ),
     );
@@ -110,7 +111,7 @@ class _BudgetStepState extends State<BudgetStep> {
 
     final children = <Widget>[
       if (widget.showTitle) ...[
-        Text('Your grocery budget', style: Theme.of(context).textTheme.headlineSmall),
+        T('Your grocery budget', style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 4),
         Text('${p.adults} adult${p.adults == 1 ? '' : 's'} · ${p.kids} kid${p.kids == 1 ? '' : 's'} · '
             '${p.slots.length} meals/day · ${_n(p.portionsPerMeal)} portions/meal',
@@ -131,7 +132,7 @@ class _BudgetStepState extends State<BudgetStep> {
         Padding(
           padding: const EdgeInsets.only(top: 10),
           child: Row(children: [
-            const Text('Number of days'),
+            const T('Number of days'),
             const Spacer(),
             CountStepper(value: p.customBudgetDays, min: 1, max: 60, onChanged: (v) => _setFrequency(BudgetFrequency.custom, customDays: v.toInt())),
           ]),

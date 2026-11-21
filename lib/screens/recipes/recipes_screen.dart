@@ -7,7 +7,9 @@ import '../../services/calculation_service.dart';
 import '../../services/meal_planner_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
+import 'my_recipe_editor_screen.dart';
 import 'recipe_detail_screen.dart';
+import '../../core/i18n.dart';
 
 /// Explore recipes (and meal-selection mode: pass [pickSlot] to return a recipe id).
 class RecipesScreen extends StatefulWidget {
@@ -56,13 +58,19 @@ class _RecipesScreenState extends State<RecipesScreen> {
       appBar: AppBar(
         title: Text(widget.title ?? (widget.pickSlot != null ? 'Choose ${mealSlotLabel(widget.pickSlot!).toLowerCase()}' : 'Recipes')),
         actions: [
+          if (widget.pickSlot == null)
+            IconButton(
+              tooltip: tr('Add my recipe'),
+              icon: const Icon(Icons.add_circle_outline),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MyRecipeEditorScreen())),
+            ),
           PopupMenuButton<String>(
             icon: const Icon(Icons.sort),
             initialValue: _sort,
             onSelected: (v) => setState(() => _sort = v),
             itemBuilder: (_) => const [
-              PopupMenuItem(value: 'cost', child: Text('Cheapest first')),
-              PopupMenuItem(value: 'time', child: Text('Quickest first')),
+              PopupMenuItem(value: 'cost', child: T('Cheapest first')),
+              PopupMenuItem(value: 'time', child: T('Quickest first')),
               PopupMenuItem(value: 'name', child: Text('A–Z')),
             ],
           ),
@@ -72,7 +80,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
           child: TextField(
-            decoration: const InputDecoration(hintText: 'Search pilau, githeri, chapati…', prefixIcon: Icon(Icons.search)),
+            decoration: InputDecoration(hintText: tr('Search pilau, githeri, chapati…'), prefixIcon: Icon(Icons.search)),
             onChanged: (v) => setState(() => _q = v),
           ),
         ),

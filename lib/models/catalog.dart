@@ -1,3 +1,4 @@
+import '../core/i18n.dart';
 import '../core/money.dart';
 import '../core/units.dart';
 
@@ -225,12 +226,12 @@ enum MealSlot { breakfast, lunch, dinner, snack }
 
 MealSlot mealSlotFrom(String s) => MealSlot.values.firstWhere((e) => e.name == s, orElse: () => MealSlot.lunch);
 
-String mealSlotLabel(MealSlot s) => switch (s) {
+String mealSlotLabel(MealSlot s) => tr(switch (s) {
       MealSlot.breakfast => 'Breakfast',
       MealSlot.lunch => 'Lunch',
       MealSlot.dinner => 'Dinner',
       MealSlot.snack => 'Snacks',
-    };
+    });
 
 class Recipe {
   final String id;

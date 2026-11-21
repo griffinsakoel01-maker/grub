@@ -9,6 +9,7 @@ import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../onboarding/budget_step.dart';
 import '../planner/plan_builder_screen.dart';
+import '../../core/i18n.dart';
 
 /// Smart grocery budget calculator + household setup. Every change
 /// recalculates the breakdown instantly; "Save" also re-scales the plan.
@@ -33,7 +34,7 @@ class _BudgetCalculatorScreenState extends State<BudgetCalculatorScreen> {
     final days = CalculationService.periodDays(_p.budgetFrequency, _p.customBudgetDays);
     final bd = CalculationService.breakdown(periodBudget: _p.budget, days: days, slots: _p.slots, portionsPerMeal: _p.portionsPerMeal);
     return Scaffold(
-      appBar: AppBar(title: const Text('Grocery calculator')),
+      appBar: AppBar(title: const T('Grocery calculator')),
       body: ListView(padding: const EdgeInsets.only(bottom: 24), children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
@@ -64,7 +65,7 @@ class _BudgetCalculatorScreenState extends State<BudgetCalculatorScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SoftCard(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text('How your money is shared per day', style: TextStyle(fontWeight: FontWeight.w700)),
+              const T('How your money is shared per day', style: TextStyle(fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
               for (final e in bd.perSlotPerDay.entries)
                 Padding(
@@ -77,7 +78,7 @@ class _BudgetCalculatorScreenState extends State<BudgetCalculatorScreen> {
                 ),
               const Divider(),
               Row(children: [
-                const Text('Per day'),
+                const T('Per day'),
                 const Spacer(),
                 Text(bd.perDay.format(), style: const TextStyle(fontWeight: FontWeight.w800, color: GrubColors.greenDark)),
               ]),
@@ -93,7 +94,7 @@ class _BudgetCalculatorScreenState extends State<BudgetCalculatorScreen> {
               if (!context.mounted) return;
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => PlanBuilderScreen(days: days > 14 ? 7 : days)));
             },
-            child: const Text('Save & plan my meals'),
+            child: const T('Save & plan my meals'),
           ),
         ),
         Padding(
@@ -106,7 +107,7 @@ class _BudgetCalculatorScreenState extends State<BudgetCalculatorScreen> {
                 Navigator.pop(context);
               }
             },
-            child: const Text('Just save budget'),
+            child: const T('Just save budget'),
           ),
         ),
       ]),

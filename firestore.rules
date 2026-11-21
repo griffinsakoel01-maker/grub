@@ -45,6 +45,25 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+    // ---------- households (shared shopping lists) ----------
+    match /households/{hid} {
+      allow read: if signedIn() && request.auth.uid in resource.data.members;
+      allow create: if signedIn()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.members == [request.auth.uid];
+      // members may rename or leave; owner and invite code never change; nobody else is added here (joining uses a server function)
+      allow update: if signedIn() && request.auth.uid in resource.data.members
+        && request.resource.data.ownerId == resource.data.ownerId
+        && request.resource.data.inviteCode == resource.data.inviteCode
+        && request.resource.data.members.hasOnly(resource.data.members);
+      allow delete: if signedIn() && resource.data.ownerId == request.auth.uid;
+
+      match /shoppingLists/{listId} {
+        allow read, write: if signedIn()
+          && request.auth.uid in get(/databases/$(database)/documents/households/$(hid)).data.members;
+      }
+    }
+
     // ---------- private user data ----------
     match /users/{uid} {
       allow read: if isOwner(uid) || isAdmin();
@@ -55,7 +74,7 @@ service cloud.firestore {
 
       match /{collection}/{docId} {
         allow read, write: if isOwner(uid)
-          && collection in ['mealPlans', 'shoppingLists', 'pantry', 'expenses'];
+          && collection in ['mealPlans', 'shoppingLists', 'pantry', 'expenses', 'recipes'];
         allow read: if isAdmin();
       }
     }

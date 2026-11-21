@@ -11,6 +11,7 @@ import '../../widgets/pantry_picker.dart';
 import '../planner/plan_builder_screen.dart';
 import '../planner/quick_plan_screen.dart';
 import 'budget_step.dart';
+import '../../core/i18n.dart';
 
 /// Shared option lists (also used by Profile → edit).
 const dietOptions = <(String, String, String, String)>[
@@ -159,7 +160,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
                 ),
                 const SizedBox(width: 12),
                 const GrubLogo(height: 26, iconOnly: true),
-                if (_optional) TextButton(onPressed: () => _go(_step + 1), child: const Text('Skip')),
+                if (_optional) TextButton(onPressed: () => _go(_step + 1), child: const T('Skip')),
               ]),
             ),
             Expanded(child: PageView(controller: _page, physics: const NeverScrollableScrollPhysics(), children: pages)),
@@ -167,7 +168,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
               child: FilledButton(
                 onPressed: _canContinue ? (last ? _finish : () => _go(_step + 1)) : null,
-                child: Text(last ? 'Build my week' : _nextLabel()),
+                child: Text(last ? tr('Build my week') : _nextLabel()),
               ),
             ),
           ]),
@@ -177,22 +178,22 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
   }
 
   String _nextLabel() {
-    if (_step == 1) return _p.preferredSupermarkets.isEmpty ? 'Next' : 'Confirm shops';
+    if (_step == 1) return tr(_p.preferredSupermarkets.isEmpty ? 'Next' : 'Confirm shops');
     if (_step == 9) {
       final n = context.read<AppState>().pantry.length;
-      return n == 0 ? 'Next' : 'Continue · $n selected';
+      return n == 0 ? tr('Next') : '${tr('Next')} · $n';
     }
-    if (_step == 7) return 'Confirm & continue';
-    return 'Next';
+    if (_step == 7) return tr('Confirm & continue');
+    return tr('Next');
   }
 
   // ---------------------------------------------------------------- steps
   Widget _frame(String title, String subtitle, Widget body, {bool scroll = true}) => Padding(
         padding: const EdgeInsets.fromLTRB(20, 18, 20, 0),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(title, style: Theme.of(context).textTheme.headlineSmall),
+          Text(tr(title), style: Theme.of(context).textTheme.headlineSmall),
           const SizedBox(height: 6),
-          Text(subtitle, style: const TextStyle(color: GrubColors.muted)),
+          Text(tr(subtitle), style: const TextStyle(color: GrubColors.muted)),
           const SizedBox(height: 20),
           Expanded(child: scroll ? SingleChildScrollView(child: body) : body),
         ]),
@@ -207,7 +208,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
             autofocus: true,
             textCapitalization: TextCapitalization.words,
             onChanged: (_) => setState(() {}),
-            decoration: const InputDecoration(hintText: 'Your first name', prefixIcon: Icon(Icons.waving_hand_outlined)),
+            decoration: InputDecoration(hintText: tr('Your first name'), prefixIcon: Icon(Icons.waving_hand_outlined)),
           ),
           const SizedBox(height: 22),
           SoftCard(
@@ -218,15 +219,15 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
               SizedBox(width: 12),
               Expanded(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('In a hurry? Quick start', style: TextStyle(fontWeight: FontWeight.w800, color: GrubColors.greenDark)),
-                  Text('Just 3 questions: money, people, days.', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
+                  T('In a hurry? Quick start', style: TextStyle(fontWeight: FontWeight.w800, color: GrubColors.greenDark)),
+                  T('Just 3 questions: money, people, days.', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
                 ]),
               ),
               Icon(Icons.arrow_forward, color: GrubColors.greenDark),
             ]),
           ),
           const SizedBox(height: 8),
-          const Text('Or tap Next for the full setup (diet, allergies, shops, pantry).', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
+          const T('Or tap Next for the full setup (diet, allergies, shops, pantry).', style: TextStyle(color: GrubColors.muted, fontSize: 12)),
         ]),
       );
 
@@ -264,7 +265,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
           SoftCard(
             color: GrubColors.greenLight,
             child: Row(children: [
-              const Text('Portions per meal', style: TextStyle(fontWeight: FontWeight.w600)),
+              const T('Portions per meal', style: TextStyle(fontWeight: FontWeight.w600)),
               const Spacer(),
               Text(_fmtPortions(_p.portionsPerMeal),
                   style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: GrubColors.green)),
@@ -435,7 +436,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
       'We\'ll keep these out of every plan.',
       Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         TextField(
-          decoration: const InputDecoration(hintText: 'Search any food…', prefixIcon: Icon(Icons.search)),
+          decoration: InputDecoration(hintText: tr('Search any food…'), prefixIcon: Icon(Icons.search)),
           onChanged: (v) => setState(() => _dislikeQuery = v),
         ),
         const SizedBox(height: 14),
@@ -453,7 +454,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
         const SizedBox(height: 16),
         DropdownButtonFormField<String>(
           value: _p.county.isEmpty ? null : _p.county,
-          decoration: const InputDecoration(labelText: 'Your county (optional)', prefixIcon: Icon(Icons.place_outlined)),
+          decoration: InputDecoration(labelText: tr('Your county (optional)'), prefixIcon: Icon(Icons.place_outlined)),
           items: [for (final c in kenyanCounties) DropdownMenuItem(value: c, child: Text(c))],
           onChanged: (v) => setState(() => _p = _p.copyWith(county: v ?? '')),
         ),

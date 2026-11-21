@@ -7,6 +7,7 @@ import '../../services/calculation_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../../widgets/pantry_picker.dart';
+import '../../core/i18n.dart';
 
 /// Combined ingredients for the whole plan: required · at home · to buy.
 class IngredientCalculatorScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class IngredientCalculatorScreen extends StatelessWidget {
     final s = context.watch<AppState>();
     final plan = s.plan;
     if (plan == null) {
-      return Scaffold(appBar: AppBar(title: const Text('Ingredients')), body: const EmptyState(emoji: '⚖️', title: 'No plan yet', message: 'Plan your meals first.'));
+      return Scaffold(appBar: AppBar(title: const T('Ingredients')), body: const EmptyState(emoji: '⚖️', title: 'No plan yet', message: 'Plan your meals first.'));
     }
     final req = CalculationService.planRequirements(plan.meals, s.catalog);
     final pantry = s.pantryMap;
@@ -30,7 +31,7 @@ class IngredientCalculatorScreen extends StatelessWidget {
     final toBuyCount = rows.where((r) => CalculationService.toPurchase(r.quantity, pantry[r.productId] ?? 0) > 1e-6).length;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Ingredients for your plan')),
+      appBar: AppBar(title: const T('Ingredients for your plan')),
       body: ListView(padding: const EdgeInsets.all(16), children: [
         SoftCard(
           color: GrubColors.greenLight,
@@ -42,10 +43,10 @@ class IngredientCalculatorScreen extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         Row(children: const [
-          Expanded(flex: 5, child: Text('INGREDIENT', style: _h)),
-          Expanded(flex: 3, child: Text('NEEDED', style: _h, textAlign: TextAlign.right)),
-          Expanded(flex: 3, child: Text('AT HOME', style: _h, textAlign: TextAlign.right)),
-          Expanded(flex: 3, child: Text('TO BUY', style: _h, textAlign: TextAlign.right)),
+          Expanded(flex: 5, child: T('INGREDIENT', style: _h)),
+          Expanded(flex: 3, child: T('NEEDED', style: _h, textAlign: TextAlign.right)),
+          Expanded(flex: 3, child: T('AT HOME', style: _h, textAlign: TextAlign.right)),
+          Expanded(flex: 3, child: T('TO BUY', style: _h, textAlign: TextAlign.right)),
         ]),
         const Divider(),
         for (final r in rows)
@@ -86,7 +87,7 @@ class IngredientCalculatorScreen extends StatelessWidget {
             );
           }),
         const SizedBox(height: 8),
-        const Text('Tap a row to set how much you have at home.', style: TextStyle(fontSize: 11, color: GrubColors.muted)),
+        const T('Tap a row to set how much you have at home.', style: TextStyle(fontSize: 11, color: GrubColors.muted)),
       ]),
     );
   }

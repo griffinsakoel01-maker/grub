@@ -156,6 +156,42 @@
   "imageUrl": ""
  },
  {
+  "id": "muthokoi",
+  "name": "Muthokoi (dehulled maize)",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🌽",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "maize_dry"
+  ],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "millet_flour",
+  "name": "Millet / sorghum flour",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🌾",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg packet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "maize_flour"
+  ],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
   "id": "beans",
   "name": "Beans (rosecoco)",
   "category": "legumes",
@@ -427,6 +463,76 @@
    "potatoes"
   ],
   "shelfLifeDays": 7,
+  "imageUrl": ""
+ },
+ {
+  "id": "mrenda",
+  "name": "Mrenda (jute mallow)",
+  "category": "vegetables",
+  "unit": "bunch",
+  "emoji": "🌿",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 bunch",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "kienyeji_veg"
+  ],
+  "shelfLifeDays": 3,
+  "imageUrl": ""
+ },
+ {
+  "id": "cassava",
+  "name": "Cassava (mihogo)",
+  "category": "vegetables",
+  "unit": "g",
+  "emoji": "🥔",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "sweet_potatoes"
+  ],
+  "shelfLifeDays": 7,
+  "imageUrl": ""
+ },
+ {
+  "id": "arrowroots",
+  "name": "Arrowroots (nduma)",
+  "category": "vegetables",
+  "unit": "g",
+  "emoji": "🍠",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "sweet_potatoes"
+  ],
+  "shelfLifeDays": 10,
+  "imageUrl": ""
+ },
+ {
+  "id": "lemons",
+  "name": "Lemons",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🍋",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 lemon",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 14,
   "imageUrl": ""
  },
  {
@@ -891,6 +997,38 @@
   "emoji": "🥄",
   "defaultPackageSize": 200,
   "defaultPackageLabel": "200 g",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "cardamom",
+  "name": "Cardamom (iliki)",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🫚",
+  "defaultPackageSize": 50,
+  "defaultPackageLabel": "50 g packet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "bicarb",
+  "name": "Bicarbonate of soda",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🧂",
+  "defaultPackageSize": 100,
+  "defaultPackageLabel": "100 g",
   "allergens": [],
   "dietTags": [
    "plant"

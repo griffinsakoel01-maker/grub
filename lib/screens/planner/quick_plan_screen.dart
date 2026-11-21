@@ -9,6 +9,7 @@ import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../onboarding/onboarding_flow.dart' show allergyOptions;
 import 'plan_builder_screen.dart';
+import '../../core/i18n.dart';
 
 /// Quick Plan: 3 questions → a costed meal plan and shopping list.
 /// Used as the fast start during sign-up and from the Meal Planner.
@@ -77,9 +78,9 @@ class _QuickPlanScreenState extends State<QuickPlanScreen> {
   Widget build(BuildContext context) {
     final perDay = (_ksh ?? 0) / _days;
     return Scaffold(
-      appBar: AppBar(title: const Text('Quick plan')),
+      appBar: AppBar(title: const T('Quick plan')),
       body: ListView(padding: const EdgeInsets.fromLTRB(20, 0, 20, 24), children: [
-        Text('3 questions, then your meals and shopping list.', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: GrubColors.muted)),
+        T('3 questions, then your meals and shopping list.', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: GrubColors.muted)),
         const SizedBox(height: 18),
         _q('1', 'How much do you have for food?'),
         TextField(
@@ -143,10 +144,10 @@ class _QuickPlanScreenState extends State<QuickPlanScreen> {
             ]),
           ),
         const SizedBox(height: 24),
-        FilledButton(onPressed: _ok ? _go : null, child: const Text('Plan my meals')),
+        FilledButton(onPressed: _ok ? _go : null, child: const T('Plan my meals')),
         if (widget.onboarding) ...[
           const SizedBox(height: 10),
-          const Text('You can add diet, dislikes and favourite shops later in Profile.',
+          const T('You can add diet, dislikes and favourite shops later in Profile.',
               textAlign: TextAlign.center, style: TextStyle(color: GrubColors.muted, fontSize: 12)),
         ],
       ]),

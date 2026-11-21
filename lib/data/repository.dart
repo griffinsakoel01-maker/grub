@@ -39,4 +39,20 @@ abstract class Repository {
   });
 
   Future<void> deleteAllUserData(String uid);
+
+  // ---- households (shared shopping lists) – cloud only
+  bool get supportsHouseholds => isCloud;
+  Future<Household?> loadHousehold(String householdId) async => null;
+  Stream<Household?> householdStream(String householdId) => const Stream.empty();
+  Stream<List<ShoppingList>> householdListsStream(String householdId) => const Stream.empty();
+  Future<Household> createHousehold({required String uid, required String displayName, required String name}) =>
+      throw UnsupportedError('Households need the online version.');
+  Future<Household> joinHousehold(String code) => throw UnsupportedError('Households need the online version.');
+  Future<void> leaveHousehold(String uid, String householdId) async {}
+  Future<void> deleteSharedList(String householdId, String listId) async {}
+
+  // ---- the family's own recipes
+  Future<List<Recipe>> loadMyRecipes(String uid);
+  Future<void> saveMyRecipe(String uid, Recipe r);
+  Future<void> deleteMyRecipe(String uid, String id);
 }

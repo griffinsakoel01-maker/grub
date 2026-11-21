@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
@@ -86,10 +88,91 @@ class FirestoreRepository implements Repository {
   }
 
   @override
-  Future<void> saveList(ShoppingList list) => _user(list.userId).collection('shoppingLists').doc(list.id).set(list.toMap());
+  Future<void> saveList(ShoppingList list) => list.shared
+      ? db.collection('households').doc(list.householdId).collection('shoppingLists').doc(list.id).set(list.toMap())
+      : _user(list.userId).collection('shoppingLists').doc(list.id).set(list.toMap());
 
   @override
   Future<void> deleteList(String uid, String listId) => _user(uid).collection('shoppingLists').doc(listId).delete();
+
+  @override
+  Future<void> deleteSharedList(String householdId, String listId) =>
+      db.collection('households').doc(householdId).collection('shoppingLists').doc(listId).delete();
+
+  // ------------------------------------------------------------ households
+  @override
+  bool get supportsHouseholds => true;
+
+  @override
+  Future<Household?> loadHousehold(String householdId) async {
+    final s = await db.collection('households').doc(householdId).get();
+    return s.exists ? Household.fromMap(s.id, s.data()!) : null;
+  }
+
+  @override
+  Stream<Household?> householdStream(String householdId) => db
+      .collection('households')
+      .doc(householdId)
+      .snapshots()
+      .map((s) => s.exists ? Household.fromMap(s.id, s.data()!) : null);
+
+  @override
+  Stream<List<ShoppingList>> householdListsStream(String householdId) => db
+      .collection('households')
+      .doc(householdId)
+      .collection('shoppingLists')
+      .snapshots()
+      .map((q) => q.docs.map((d) => ShoppingList.fromMap(d.id, d.data())).toList());
+
+  @override
+  Future<Household> createHousehold({required String uid, required String displayName, required String name}) async {
+    const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    final rnd = math.Random.secure();
+    final code = List.generate(6, (_) => letters[rnd.nextInt(letters.length)]).join();
+    final ref = db.collection('households').doc();
+    final data = {
+      'name': name,
+      'ownerId': uid,
+      'members': [uid],
+      'memberNames': {uid: displayName},
+      'inviteCode': code,
+      'createdAt': FieldValue.serverTimestamp(),
+    };
+    await ref.set(data);
+    await _user(uid).set({'householdId': ref.id}, SetOptions(merge: true));
+    return Household.fromMap(ref.id, data);
+  }
+
+  @override
+  Future<Household> joinHousehold(String code) async {
+    final res = await FirebaseFunctions.instanceFor(region: AppConfig.functionsRegion)
+        .httpsCallable('joinHousehold')
+        .call({'code': code.trim().toUpperCase()});
+    final m = Map<String, dynamic>.from(res.data as Map);
+    return Household.fromMap(m['id'] as String, Map<String, dynamic>.from(m['household'] as Map));
+  }
+
+  @override
+  Future<void> leaveHousehold(String uid, String householdId) async {
+    await db.collection('households').doc(householdId).update({
+      'members': FieldValue.arrayRemove([uid]),
+      'memberNames.$uid': FieldValue.delete(),
+    });
+    await _user(uid).set({'householdId': ''}, SetOptions(merge: true));
+  }
+
+  // ------------------------------------------------------------ my recipes
+  @override
+  Future<List<Recipe>> loadMyRecipes(String uid) async {
+    final docs = await _docs(_user(uid).collection('recipes'));
+    return docs.map((d) => Recipe.fromMap(d.data(), d.id)).toList();
+  }
+
+  @override
+  Future<void> saveMyRecipe(String uid, Recipe r) => _user(uid).collection('recipes').doc(r.id).set(r.toMap());
+
+  @override
+  Future<void> deleteMyRecipe(String uid, String id) => _user(uid).collection('recipes').doc(id).delete();
 
   @override
   Future<List<PantryItem>> loadPantry(String uid) async {

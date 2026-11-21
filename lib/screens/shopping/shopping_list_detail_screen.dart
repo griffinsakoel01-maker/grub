@@ -13,6 +13,8 @@ import '../../widgets/common.dart';
 import '../budget/optimizer_screen.dart';
 import '../prices/compare_prices_screen.dart';
 import '../receipt/receipt_scan_screen.dart';
+import '../../core/i18n.dart';
+import '../../services/calculation_service.dart';
 
 const _sections = ['vegetables', 'fruits', 'cereals', 'meat', 'dairy', 'cooking', 'household'];
 
@@ -38,14 +40,14 @@ class ShoppingListDetailScreen extends StatelessWidget {
         title: Text(l.name, overflow: TextOverflow.ellipsis),
         actions: [
           IconButton(
-            tooltip: 'Send on WhatsApp',
+            tooltip: tr('Send on WhatsApp'),
             icon: const Icon(Icons.send),
             onPressed: () => launchUrl(
               Uri.parse('https://wa.me/?text=${Uri.encodeComponent(ExportService.asText(l, s.catalog.supermarkets))}'),
               mode: LaunchMode.externalApplication,
             ),
           ),
-          IconButton(tooltip: 'Share', icon: const Icon(Icons.ios_share), onPressed: () => ExportService.share(l, s.catalog.supermarkets)),
+          IconButton(tooltip: tr('Share'), icon: const Icon(Icons.ios_share), onPressed: () => ExportService.share(l, s.catalog.supermarkets)),
           PopupMenuButton<String>(
             onSelected: (v) async {
               switch (v) {
@@ -59,6 +61,9 @@ class ShoppingListDetailScreen extends StatelessWidget {
                   await _editBudget(context, s, l);
                 case 'compare':
                   if (context.mounted) Navigator.of(context).push(MaterialPageRoute(builder: (_) => ComparePricesScreen(listId: l.id)));
+                case 'household':
+                  await s.shareListWithHousehold(l);
+                  if (context.mounted) showSnack(context, 'Shared with ${s.household?.name ?? 'your household'} 🏠');
                 case 'save':
                   await s.saveList(ShoppingList(
                     id: s.newId(),
@@ -72,19 +77,21 @@ class ShoppingListDetailScreen extends StatelessWidget {
                   if (context.mounted) showSnack(context, 'Saved a copy for next time.');
               }
             },
-            itemBuilder: (_) => const [
-              PopupMenuItem(value: 'pdf', child: Text('Export as PDF')),
-              PopupMenuItem(value: 'compare', child: Text('Compare supermarkets')),
-              PopupMenuItem(value: 'shop', child: Text('Change supermarket')),
-              PopupMenuItem(value: 'budget', child: Text('Change budget')),
-              PopupMenuItem(value: 'rename', child: Text('Rename')),
-              PopupMenuItem(value: 'save', child: Text('Save a copy for future use')),
+            itemBuilder: (_) => [
+              if (s.household != null && !l.shared) const PopupMenuItem(value: 'household', child: T('Share with household')),
+              const PopupMenuItem(value: 'pdf', child: T('Export as PDF')),
+              const PopupMenuItem(value: 'compare', child: T('Compare supermarkets')),
+              const PopupMenuItem(value: 'shop', child: T('Change supermarket')),
+              const PopupMenuItem(value: 'budget', child: T('Change budget')),
+              const PopupMenuItem(value: 'rename', child: T('Rename')),
+              const PopupMenuItem(value: 'save', child: T('Save a copy for future use')),
             ],
           ),
         ],
       ),
       body: ListView(padding: const EdgeInsets.fromLTRB(16, 0, 16, 140), children: [
-        Text('${l.items.length} items · ${s.catalog.supermarkets[l.supermarketId]?.name ?? 'Cheapest anywhere'}',
+        Text('${l.items.length} items · ${s.catalog.supermarkets[l.supermarketId]?.name ?? 'Cheapest anywhere'}'
+            '${l.shared ? ' · 🏠 ${tr('Shared')}${l.updatedBy.isEmpty ? '' : ' · ${l.updatedBy}'}' : ''}',
             style: const TextStyle(color: GrubColors.muted)),
         const SizedBox(height: 10),
         if (l.items.any((i) => i.priceStatus == 'demo' || i.priceStatus == 'estimated')) const DemoBanner(),
@@ -97,7 +104,7 @@ class ShoppingListDetailScreen extends StatelessWidget {
           if (grouped[sec] != null) ...[
             Padding(
               padding: const EdgeInsets.fromLTRB(4, 18, 4, 6),
-              child: Text((productCategories[sec] ?? sec).toUpperCase(),
+              child: Text(tr(productCategories[sec] ?? sec).toUpperCase(),
                   style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: GrubColors.muted, letterSpacing: 0.8)),
             ),
             for (final item in grouped[sec]!) _ItemRow(list: l, item: item),
@@ -106,7 +113,7 @@ class ShoppingListDetailScreen extends StatelessWidget {
         OutlinedButton.icon(
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OptimizerScreen())),
           icon: const Icon(Icons.savings_outlined),
-          label: const Text('Find savings'),
+          label: const T('Find savings'),
         ),
       ]),
       bottomSheet: _Totals(list: l, remaining: remaining),
@@ -115,7 +122,7 @@ class ShoppingListDetailScreen extends StatelessWidget {
         child: FloatingActionButton.small(
           backgroundColor: GrubColors.green,
           foregroundColor: Colors.white,
-          tooltip: 'Add product',
+          tooltip: tr('Add product'),
           onPressed: () => _addProduct(context, s, l),
           child: const Icon(Icons.add),
         ),
@@ -128,9 +135,9 @@ class ShoppingListDetailScreen extends StatelessWidget {
     final v = await showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Rename list'),
+        title: const T('Rename list'),
         content: TextField(controller: c, autofocus: true),
-        actions: [TextButton(onPressed: () => Navigator.pop(ctx, c.text.trim()), child: const Text('Save'))],
+        actions: [TextButton(onPressed: () => Navigator.pop(ctx, c.text.trim()), child: const T('Save'))],
       ),
     );
     if (v != null && v.isNotEmpty) await s.saveList(l.copyWith(name: v));
@@ -141,7 +148,7 @@ class ShoppingListDetailScreen extends StatelessWidget {
     final v = await showDialog<int>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Budget for this list'),
+        title: const T('Budget for this list'),
         content: TextField(
           controller: c,
           autofocus: true,
@@ -149,7 +156,7 @@ class ShoppingListDetailScreen extends StatelessWidget {
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           decoration: const InputDecoration(prefixText: 'KSh '),
         ),
-        actions: [TextButton(onPressed: () => Navigator.pop(ctx, int.tryParse(c.text)), child: const Text('Save'))],
+        actions: [TextButton(onPressed: () => Navigator.pop(ctx, int.tryParse(c.text)), child: const T('Save'))],
       ),
     );
     if (v != null) await s.saveList(l.copyWith(budget: Money.ksh(v)));
@@ -161,7 +168,7 @@ class ShoppingListDetailScreen extends StatelessWidget {
       showDragHandle: true,
       builder: (ctx) => SafeArea(
         child: ListView(shrinkWrap: true, children: [
-          ListTile(title: const Text('Cheapest anywhere'), onTap: () => Navigator.pop(ctx, '')),
+          ListTile(title: const T('Cheapest anywhere'), onTap: () => Navigator.pop(ctx, '')),
           for (final sm in s.catalog.shops) ListTile(title: Text(sm.name), subtitle: Text(sm.location), onTap: () => Navigator.pop(ctx, sm.id)),
         ]),
       ),
@@ -276,7 +283,7 @@ class _ItemRow extends StatelessWidget {
                 controller: qty,
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                decoration: const InputDecoration(labelText: 'Quantity (packs / pieces)'),
+                decoration: InputDecoration(labelText: tr('Quantity (packs / pieces)')),
               ),
             ),
             const SizedBox(width: 10),
@@ -284,7 +291,7 @@ class _ItemRow extends StatelessWidget {
               child: TextField(
                 controller: price,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                decoration: const InputDecoration(labelText: 'Estimated price each', prefixText: 'KSh '),
+                decoration: InputDecoration(labelText: tr('Estimated price each'), prefixText: 'KSh '),
               ),
             ),
           ]),
@@ -292,7 +299,7 @@ class _ItemRow extends StatelessWidget {
           TextField(
             controller: actual,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            decoration: const InputDecoration(labelText: 'Actual amount paid (optional)', prefixText: 'KSh '),
+            decoration: InputDecoration(labelText: tr('Actual amount paid (optional)'), prefixText: 'KSh '),
           ),
           const SizedBox(height: 16),
           FilledButton(
@@ -316,7 +323,7 @@ class _ItemRow extends StatelessWidget {
                 ).withRequired(perPack * (n < 1 ? 1 : n)),
               );
             },
-            child: const Text('Save'),
+            child: const T('Save'),
           ),
           if (item.productId.isNotEmpty) ...[
             const SizedBox(height: 8),
@@ -326,7 +333,7 @@ class _ItemRow extends StatelessWidget {
                 _reportPrice(context, s);
               },
               icon: const Icon(Icons.flag_outlined, size: 18),
-              label: const Text('Report the shelf price I saw'),
+              label: const T('Report the shelf price I saw'),
             ),
           ],
         ]),
@@ -358,7 +365,7 @@ class _ItemRow extends StatelessWidget {
               value: shop.isEmpty ? null : shop,
               items: [for (final sm in s.catalog.shops) DropdownMenuItem(value: sm.id, child: Text(sm.name))],
               onChanged: (v) => setS(() => shop = v ?? shop),
-              decoration: const InputDecoration(labelText: 'Shop'),
+              decoration: InputDecoration(labelText: tr('Shop')),
             ),
             const SizedBox(height: 10),
             TextField(
@@ -367,11 +374,11 @@ class _ItemRow extends StatelessWidget {
               decoration: InputDecoration(labelText: 'Price for ${p.defaultPackageLabel}', prefixText: 'KSh '),
             ),
             const SizedBox(height: 8),
-            const Text('Reports are checked by the Grub team before they become "verified".', style: TextStyle(fontSize: 11, color: GrubColors.muted)),
+            const T('Reports are checked by the Grub team before they become "verified".', style: TextStyle(fontSize: 11, color: GrubColors.muted)),
           ]),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
-            TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Submit')),
+            TextButton(onPressed: () => Navigator.pop(ctx, false), child: const T('Cancel')),
+            TextButton(onPressed: () => Navigator.pop(ctx, true), child: const T('Submit')),
           ],
         ),
       ),
@@ -420,12 +427,14 @@ class _Totals extends StatelessWidget {
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Row(children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text('Estimated total', style: TextStyle(fontSize: 12, color: GrubColors.muted)),
+              const T('Estimated total', style: TextStyle(fontSize: 12, color: GrubColors.muted)),
               TweenAnimationBuilder<int>(
                 tween: IntTween(end: list.estimatedTotal.cents),
                 duration: const Duration(milliseconds: 300),
                 builder: (_, v, __) => Text(Money(v).format(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
               ),
+              Text('${tr('likely')} ${priceRangeLabel(list.items.where((i) => !i.purchased).map((i) => (i.total, i.priceStatus)))}',
+                  style: const TextStyle(fontSize: 11, color: GrubColors.muted)),
             ]),
             const Spacer(),
             Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
@@ -452,20 +461,20 @@ class _Totals extends StatelessWidget {
       context: context,
       builder: (ctx) => StatefulBuilder(
         builder: (ctx, setS) => AlertDialog(
-          title: const Text('Finish shopping'),
+          title: const T('Finish shopping'),
           content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text('Estimated for bought items: ${list.purchasedEstimate.format()}'),
             const SizedBox(height: 10),
             TextField(
               controller: ctrl,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'What did you actually pay?', prefixText: 'KSh '),
+              decoration: InputDecoration(labelText: tr('What did you actually pay?'), prefixText: 'KSh '),
             ),
             CheckboxListTile(
               contentPadding: EdgeInsets.zero,
               value: addToPantry,
               onChanged: (v) => setS(() => addToPantry = v ?? true),
-              title: const Text('Add bought items to my pantry'),
+              title: const T('Add bought items to my pantry'),
             ),
           ]),
           actions: [
@@ -474,9 +483,9 @@ class _Totals extends StatelessWidget {
                 Navigator.pop(ctx, false);
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ReceiptScanScreen()));
               },
-              child: const Text('Scan receipt instead'),
+              child: const T('Scan receipt instead'),
             ),
-            TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Save')),
+            TextButton(onPressed: () => Navigator.pop(ctx, true), child: const T('Save')),
           ],
         ),
       ),
@@ -514,7 +523,7 @@ class _AddProductSheetState extends State<_AddProductSheet> {
         padding: EdgeInsets.fromLTRB(16, 0, 16, MediaQuery.viewInsetsOf(context).bottom),
         child: Column(children: [
           TextField(
-            decoration: const InputDecoration(hintText: 'Search products', prefixIcon: Icon(Icons.search)),
+            decoration: InputDecoration(hintText: tr('Search products'), prefixIcon: Icon(Icons.search)),
             onChanged: (v) => setState(() => _q = v),
           ),
           Expanded(
@@ -532,17 +541,17 @@ class _AddProductSheetState extends State<_AddProductSheet> {
                   );
                 }),
               const Divider(),
-              const Text('Something else?', style: TextStyle(fontWeight: FontWeight.w700)),
+              const T('Something else?', style: TextStyle(fontWeight: FontWeight.w700)),
               const SizedBox(height: 8),
               Row(children: [
-                Expanded(flex: 3, child: TextField(controller: _customName, decoration: const InputDecoration(hintText: 'e.g. Tissue paper'))),
+                Expanded(flex: 3, child: TextField(controller: _customName, decoration: InputDecoration(hintText: tr('e.g. Tissue paper')))),
                 const SizedBox(width: 8),
                 Expanded(
                   flex: 2,
                   child: TextField(
                     controller: _customPrice,
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    decoration: const InputDecoration(hintText: 'Price', prefixText: 'KSh '),
+                    decoration: InputDecoration(hintText: tr('Price'), prefixText: 'KSh '),
                   ),
                 ),
                 IconButton(

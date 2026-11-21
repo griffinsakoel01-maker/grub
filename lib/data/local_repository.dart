@@ -128,9 +128,37 @@ class LocalRepository implements Repository {
   }
 
   @override
+  Future<List<Recipe>> loadMyRecipes(String uid) async =>
+      (await _list('recipes_$uid')).map((m) => Recipe.fromMap(m)).toList();
+
+  @override
+  Future<void> saveMyRecipe(String uid, Recipe r) => _upsert('recipes_$uid', 'id', r.id, r.toMap());
+
+  @override
+  Future<void> deleteMyRecipe(String uid, String id) => _remove('recipes_$uid', 'id', id);
+
+  @override
+  bool get supportsHouseholds => false;
+  @override
+  Future<Household?> loadHousehold(String householdId) async => null;
+  @override
+  Stream<Household?> householdStream(String householdId) => const Stream.empty();
+  @override
+  Stream<List<ShoppingList>> householdListsStream(String householdId) => const Stream.empty();
+  @override
+  Future<Household> createHousehold({required String uid, required String displayName, required String name}) =>
+      throw UnsupportedError('Households need the online version.');
+  @override
+  Future<Household> joinHousehold(String code) => throw UnsupportedError('Households need the online version.');
+  @override
+  Future<void> leaveHousehold(String uid, String householdId) async {}
+  @override
+  Future<void> deleteSharedList(String householdId, String listId) async {}
+
+  @override
   Future<void> deleteAllUserData(String uid) async {
     final p = await _p;
-    for (final k in ['profile_$uid', 'plan_$uid', 'lists_$uid', 'pantry_$uid', 'expenses_$uid']) {
+    for (final k in ['profile_$uid', 'plan_$uid', 'lists_$uid', 'pantry_$uid', 'expenses_$uid', 'recipes_$uid']) {
       await p.remove(k);
     }
   }

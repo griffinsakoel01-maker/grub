@@ -5,6 +5,7 @@ import '../core/money.dart';
 import '../core/theme.dart';
 import '../models/catalog.dart';
 import '../services/calculation_service.dart';
+import '../core/i18n.dart';
 
 class GrubLogo extends StatelessWidget {
   final double height;
@@ -60,9 +61,9 @@ class SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.fromLTRB(4, 20, 4, 10),
         child: Row(children: [
-          Expanded(child: Text(title, style: Theme.of(context).textTheme.titleLarge)),
+          Expanded(child: Text(tr(title), style: Theme.of(context).textTheme.titleLarge)),
           if (action != null)
-            TextButton(onPressed: onAction, child: Text(action!, style: const TextStyle(color: GrubColors.green, fontWeight: FontWeight.w600))),
+            TextButton(onPressed: onAction, child: Text(tr(action!), style: const TextStyle(color: GrubColors.green, fontWeight: FontWeight.w600))),
         ]),
       );
 }
@@ -162,9 +163,9 @@ class BudgetProgress extends StatelessWidget {
       ),
       const SizedBox(height: 10),
       Row(children: [
-        _kv('Spent', spent.format()),
+        _kv(tr('Spent'), spent.format()),
         const Spacer(),
-        _kv(over ? 'Over by' : 'Remaining', (over ? -remaining : remaining).format(), color: over ? GrubColors.danger : GrubColors.green, end: true),
+        _kv(over ? tr('Over by') : tr('Remaining'), (over ? -remaining : remaining).format(), color: over ? GrubColors.danger : GrubColors.green, end: true),
       ]),
     ]);
   }
@@ -213,12 +214,12 @@ class EmptyState extends StatelessWidget {
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             EmojiTile(emoji, size: 84),
             const SizedBox(height: 18),
-            Text(title, style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
+            Text(tr(title), style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
             const SizedBox(height: 8),
-            Text(message, style: const TextStyle(color: GrubColors.muted), textAlign: TextAlign.center),
+            Text(tr(message), style: const TextStyle(color: GrubColors.muted), textAlign: TextAlign.center),
             if (actionLabel != null) ...[
               const SizedBox(height: 20),
-              SizedBox(width: 240, child: FilledButton(onPressed: onAction, child: Text(actionLabel!))),
+              SizedBox(width: 240, child: FilledButton(onPressed: onAction, child: Text(tr(actionLabel!)))),
             ],
           ]),
         ),
@@ -232,7 +233,7 @@ class LoadingView extends StatelessWidget {
   Widget build(BuildContext context) => Center(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           const CircularProgressIndicator(color: GrubColors.green),
-          if (message != null) ...[const SizedBox(height: 14), Text(message!, style: const TextStyle(color: GrubColors.muted))],
+          if (message != null) ...[const SizedBox(height: 14), Text(tr(message!), style: const TextStyle(color: GrubColors.muted))],
         ]),
       );
 }
@@ -301,10 +302,10 @@ class SelectCard extends StatelessWidget {
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
                     Text(emoji, style: TextStyle(fontSize: compact ? 26 : 30)),
                     const SizedBox(height: 6),
-                    Text(title, textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis,
+                    Text(tr(title), textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis,
                         style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
                     if (subtitle != null)
-                      Text(subtitle!, textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis,
+                      Text(tr(subtitle!), textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis,
                           style: const TextStyle(fontSize: 11, color: GrubColors.muted)),
                   ]),
                 ),
@@ -340,8 +341,8 @@ class CheckRow extends StatelessWidget {
             const SizedBox(width: 14),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
-                if (subtitle != null) Text(subtitle!, style: const TextStyle(color: GrubColors.muted, fontSize: 12)),
+                Text(tr(title), style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
+                if (subtitle != null) Text(tr(subtitle!), style: const TextStyle(color: GrubColors.muted, fontSize: 12)),
               ]),
             ),
             AnimatedContainer(
@@ -364,7 +365,7 @@ void showSnack(BuildContext context, String message, {bool error = false}) {
   ScaffoldMessenger.of(context)
     ..hideCurrentSnackBar()
     ..showSnackBar(SnackBar(
-      content: Text(message),
+      content: Text(tr(message)),
       behavior: SnackBarBehavior.floating,
       backgroundColor: error ? GrubColors.danger : GrubColors.greenDark,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -382,7 +383,7 @@ class DemoBanner extends StatelessWidget {
           Icon(Icons.info_outline, size: 16, color: GrubColors.warning),
           SizedBox(width: 8),
           Expanded(
-            child: Text('Prices shown are demo estimates, not live shop prices.',
+            child: T('Prices shown are demo estimates, not live shop prices.',
                 style: TextStyle(fontSize: 12, color: GrubColors.warning, fontWeight: FontWeight.w600)),
           ),
         ]),

@@ -11,6 +11,8 @@ import '../../services/meal_planner_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../recipes/recipe_detail_screen.dart';
+import '../../core/i18n.dart';
+import '../../services/calculation_service.dart';
 
 const _dayNames = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
@@ -87,7 +89,7 @@ class _PlanBuilderScreenState extends State<PlanBuilderScreen> {
         builder: (_, ctrl) => ListView(controller: ctrl, padding: const EdgeInsets.fromLTRB(16, 0, 16, 16), children: [
           Text('Swap ${mealSlotLabel(meal.slot).toLowerCase()}', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 4),
-          const Text('Cheapest first. Only meals that fit your diet and allergies.', style: TextStyle(color: GrubColors.muted)),
+          const T('Cheapest first. Only meals that fit your diet and allergies.', style: TextStyle(color: GrubColors.muted)),
           const SizedBox(height: 12),
           for (final r in options) _RecipeRow(recipe: r, portions: meal.portions, onTap: () => Navigator.pop(context, r)),
         ]),
@@ -146,7 +148,7 @@ class _PlanBuilderScreenState extends State<PlanBuilderScreen> {
     return Column(key: const ValueKey('ready'), children: [
       Expanded(
         child: ListView(padding: const EdgeInsets.fromLTRB(20, 0, 20, 12), children: [
-          Text('Your week is ready!', style: Theme.of(context).textTheme.headlineSmall),
+          T('Your week is ready!', style: Theme.of(context).textTheme.headlineSmall),
           const SizedBox(height: 14),
           Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Expanded(
@@ -156,6 +158,7 @@ class _PlanBuilderScreenState extends State<PlanBuilderScreen> {
                   Text('SPENT OF ${r.budget.format().toUpperCase()}', style: const TextStyle(fontSize: 10, color: GrubColors.muted, fontWeight: FontWeight.w700)),
                   const SizedBox(height: 4),
                   FittedBox(child: Text(r.total.format(), style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800))),
+                  Text('${tr('likely')} ${r.basket.rangeLabel}', style: const TextStyle(fontSize: 11, color: GrubColors.muted)),
                   const SizedBox(height: 8),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(6),
@@ -185,7 +188,7 @@ class _PlanBuilderScreenState extends State<PlanBuilderScreen> {
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   const EmojiTile('🛒', size: 38),
                   const SizedBox(height: 10),
-                  const Text('Grocery list', style: TextStyle(fontWeight: FontWeight.w700)),
+                  const T('Grocery list', style: TextStyle(fontWeight: FontWeight.w700)),
                   Text('${r.basket.lines.length} items', style: const TextStyle(color: GrubColors.muted, fontSize: 12)),
                 ]),
               ),
@@ -205,12 +208,12 @@ class _PlanBuilderScreenState extends State<PlanBuilderScreen> {
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
         child: Row(children: [
           IconButton.outlined(
-            tooltip: 'Shuffle',
+            tooltip: tr('Shuffle'),
             onPressed: _saving ? null : () => setState(() => _result = s.generatePlan(days: widget.days, start: _start, budget: widget.budget, seed: math.Random().nextInt(1 << 30))),
             icon: const Icon(Icons.shuffle),
           ),
           const SizedBox(width: 10),
-          Expanded(child: FilledButton(onPressed: _saving ? null : _accept, child: Text(_saving ? 'Saving…' : 'Looks great'))),
+          Expanded(child: FilledButton(onPressed: _saving ? null : _accept, child: Text(tr(_saving ? 'Saving…' : 'Looks great')))),
         ]),
       ),
     ]);
@@ -236,7 +239,7 @@ class _PlanBuilderScreenState extends State<PlanBuilderScreen> {
                   style: const TextStyle(fontSize: 12, color: GrubColors.muted)),
             ]),
           ),
-          TextButton.icon(onPressed: () => _swap(i), icon: const Icon(Icons.swap_horiz, size: 18), label: const Text('Swap')),
+          TextButton.icon(onPressed: () => _swap(i), icon: const Icon(Icons.swap_horiz, size: 18), label: const T('Swap')),
         ]),
       ),
     );
@@ -292,10 +295,10 @@ class BasketPreviewScreen extends StatelessWidget {
         const Divider(),
         ListTile(
           contentPadding: EdgeInsets.zero,
-          title: const Text('Estimated total', style: TextStyle(fontWeight: FontWeight.w700)),
+          title: const T('Estimated total', style: TextStyle(fontWeight: FontWeight.w700)),
           trailing: Text(result.total.format(), style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 18)),
         ),
-        const Text('Save the plan to turn this into an editable shopping list.', style: TextStyle(color: GrubColors.muted)),
+        const T('Save the plan to turn this into an editable shopping list.', style: TextStyle(color: GrubColors.muted)),
       ]),
     );
   }

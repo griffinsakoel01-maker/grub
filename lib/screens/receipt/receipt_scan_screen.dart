@@ -8,6 +8,7 @@ import '../../models/catalog.dart';
 import '../../services/receipt_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
+import '../../core/i18n.dart';
 
 /// Snap a shop receipt → Grub reads it → you check it → spending, pantry and
 /// real shop prices are all updated at once.
@@ -90,7 +91,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
   Widget build(BuildContext context) {
     final s = context.watch<AppState>();
     return Scaffold(
-      appBar: AppBar(title: const Text('Scan a receipt')),
+      appBar: AppBar(title: const T('Scan a receipt')),
       body: s.isDemo
           ? const EmptyState(
               emoji: '🧾',
@@ -118,7 +119,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
         const SizedBox(height: 10),
         const EmojiTile('🧾', size: 84),
         const SizedBox(height: 16),
-        Text('Snap your shop receipt', textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineSmall),
+        T('Snap your shop receipt', textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 8),
         const Text(
           'Grub reads every item and price, records what you spent, adds the food to your pantry and – if you agree – shares the shelf prices so other families get real prices.',
@@ -129,18 +130,18 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
         if (_busy) ...[
           const LoadingView(message: 'Reading your receipt…'),
           const SizedBox(height: 12),
-          const Text('This takes about 10 seconds.', textAlign: TextAlign.center, style: TextStyle(color: GrubColors.muted, fontSize: 12)),
+          const T('This takes about 10 seconds.', textAlign: TextAlign.center, style: TextStyle(color: GrubColors.muted, fontSize: 12)),
         ] else ...[
           if (_error != null)
             Padding(
               padding: const EdgeInsets.only(bottom: 14),
               child: SoftCard(color: const Color(0xFFFDECEC), child: Text(_error!, style: const TextStyle(color: GrubColors.danger))),
             ),
-          FilledButton.icon(onPressed: () => _pick(ImageSource.camera), icon: const Icon(Icons.photo_camera), label: const Text('Take a photo')),
+          FilledButton.icon(onPressed: () => _pick(ImageSource.camera), icon: const Icon(Icons.photo_camera), label: const T('Take a photo')),
           const SizedBox(height: 10),
-          OutlinedButton.icon(onPressed: () => _pick(ImageSource.gallery), icon: const Icon(Icons.photo_library_outlined), label: const Text('Choose from gallery')),
+          OutlinedButton.icon(onPressed: () => _pick(ImageSource.gallery), icon: const Icon(Icons.photo_library_outlined), label: const T('Choose from gallery')),
           const SizedBox(height: 18),
-          const Text('Tips: lay the receipt flat, fill the screen, good light. Long receipts: fold or take the photo from a bit further.',
+          const T('Tips: lay the receipt flat, fill the screen, good light. Long receipts: fold or take the photo from a bit further.',
               textAlign: TextAlign.center, style: TextStyle(color: GrubColors.muted, fontSize: 12)),
         ],
         if (_photo != null && _busy) const SizedBox(height: 8),
@@ -156,7 +157,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           DropdownButtonFormField<String>(
             value: r.supermarketId,
-            decoration: const InputDecoration(labelText: 'Shop'),
+            decoration: InputDecoration(labelText: tr('Shop')),
             items: [
               for (final sm in shops) DropdownMenuItem(value: sm.id, child: Text(sm.name)),
             ],
@@ -166,7 +167,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
             Padding(padding: const EdgeInsets.only(top: 4), child: Text('Receipt says: ${r.shopName}', style: const TextStyle(fontSize: 12, color: GrubColors.muted))),
           const SizedBox(height: 10),
           Row(children: [
-            Expanded(child: TextField(controller: _branch, decoration: const InputDecoration(labelText: 'Branch (optional)'))),
+            Expanded(child: TextField(controller: _branch, decoration: InputDecoration(labelText: tr('Branch (optional)')))),
             const SizedBox(width: 10),
             Expanded(
               child: InkWell(
@@ -174,7 +175,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
                   final d = await showDatePicker(context: context, firstDate: DateTime(2024), lastDate: DateTime.now(), initialDate: r.date.isAfter(DateTime.now()) ? DateTime.now() : r.date);
                   if (d != null) setState(() => r.date = d);
                 },
-                child: InputDecorator(decoration: const InputDecoration(labelText: 'Date'), child: Text('${r.date.day}/${r.date.month}/${r.date.year}')),
+                child: InputDecorator(decoration: InputDecoration(labelText: tr('Date')), child: Text('${r.date.day}/${r.date.month}/${r.date.year}')),
               ),
             ),
           ]),
@@ -183,7 +184,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
             controller: _total,
             keyboardType: TextInputType.number,
             onChanged: (_) => setState(() {}),
-            decoration: const InputDecoration(labelText: 'Total paid', prefixText: 'KSh '),
+            decoration: InputDecoration(labelText: tr('Total paid'), prefixText: 'KSh '),
           ),
         ]),
       ),
@@ -206,15 +207,15 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
         activeColor: GrubColors.green,
         value: _toPantry,
         onChanged: (v) => setState(() => _toPantry = v),
-        title: const Text('Add food items to my pantry'),
+        title: const T('Add food items to my pantry'),
       ),
       SwitchListTile(
         contentPadding: EdgeInsets.zero,
         activeColor: GrubColors.green,
         value: _share,
         onChanged: (v) => setState(() => _share = v),
-        title: const Text('Share these shelf prices (anonymously)'),
-        subtitle: const Text('Only product, shop, branch, price and date are shared – never your name or the photo.'),
+        title: const T('Share these shelf prices (anonymously)'),
+        subtitle: const T('Only product, shop, branch, price and date are shared – never your name or the photo.'),
       ),
       if ((paid - r.itemsTotal).abs() > 1)
         Text('Items add up to KSh ${r.itemsTotal.toStringAsFixed(0)} – check for missed lines or discounts.',
@@ -276,22 +277,22 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
               DropdownButtonFormField<String?>(
                 value: pid,
                 isExpanded: true,
-                decoration: const InputDecoration(labelText: 'This item is…'),
+                decoration: InputDecoration(labelText: tr('This item is…')),
                 items: [
-                  const DropdownMenuItem<String?>(value: null, child: Text('Not food / don\'t track')),
+                  const DropdownMenuItem<String?>(value: null, child: T('Not food / don\'t track')),
                   for (final pr in products) DropdownMenuItem<String?>(value: pr.id, child: Text('${pr.emoji} ${pr.name}')),
                 ],
                 onChanged: (v) => setS(() => pid = v),
               ),
               const SizedBox(height: 10),
               Row(children: [
-                Expanded(child: TextField(controller: qty, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: 'How many'))),
+                Expanded(child: TextField(controller: qty, keyboardType: TextInputType.number, decoration: InputDecoration(labelText: tr('How many')))),
                 const SizedBox(width: 10),
                 Expanded(
                   child: TextField(
                     controller: unit,
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    decoration: const InputDecoration(labelText: 'Price each', prefixText: 'KSh '),
+                    decoration: InputDecoration(labelText: tr('Price each'), prefixText: 'KSh '),
                   ),
                 ),
               ]),
@@ -306,7 +307,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Expanded(child: TextField(controller: label, decoration: const InputDecoration(labelText: 'Label', hintText: '2 kg packet'))),
+                  Expanded(child: TextField(controller: label, decoration: InputDecoration(labelText: tr('Label'), hintText: '2 kg packet'))),
                 ]),
               ],
               const SizedBox(height: 16),
@@ -322,7 +323,7 @@ class _ReceiptScanScreenState extends State<ReceiptScanScreen> {
                   });
                   Navigator.pop(ctx);
                 },
-                child: const Text('Done'),
+                child: const T('Done'),
               ),
             ]),
           );

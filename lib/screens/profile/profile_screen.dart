@@ -11,7 +11,9 @@ import '../budget/expense_history_screen.dart';
 import '../onboarding/onboarding_flow.dart';
 import '../prices/compare_prices_screen.dart';
 import '../recipes/recipes_screen.dart';
+import 'household_screen.dart';
 import 'settings_screen.dart';
+import '../../core/i18n.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -22,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
     final p = s.profile;
     if (p == null) return const LoadingView();
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile'), actions: [
+      appBar: AppBar(title: const T('Profile'), actions: [
         IconButton(icon: const Icon(Icons.settings_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SettingsScreen()))),
       ]),
       body: ListView(padding: const EdgeInsets.fromLTRB(16, 0, 16, 32), children: [
@@ -48,6 +50,8 @@ class ProfileScreen extends StatelessWidget {
         const SectionHeader('Household & budget'),
         _tile(context, '👨‍👩‍👧', 'Household', '${p.adults} adults · ${p.kids} kids · ${p.slots.length} meals a day',
             () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const BudgetCalculatorScreen()))),
+        _tile(context, '🏠', 'My household', s.household == null ? 'Share shopping lists with family' : '${s.household!.name} · ${s.household!.members.length} people',
+            () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HouseholdScreen()))),
         _tile(context, '💰', 'Budget', '${p.budget.format()} · ${budgetFrequencyLabel(p.budgetFrequency)}',
             () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const BudgetCalculatorScreen()))),
         _tile(context, '📊', 'Budget tracking', 'Spending charts & savings',
@@ -71,7 +75,7 @@ class ProfileScreen extends StatelessWidget {
         _tile(context, '⚖️', 'Compare prices', 'See which shop is cheapest',
             () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ComparePricesScreen()))),
         const SizedBox(height: 20),
-        OutlinedButton.icon(onPressed: s.signOut, icon: const Icon(Icons.logout), label: const Text('Sign out')),
+        OutlinedButton.icon(onPressed: s.signOut, icon: const Icon(Icons.logout), label: const T('Sign out')),
       ]),
     );
   }
@@ -96,7 +100,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(width: 12),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.w700)),
+                Text(tr(title), style: const TextStyle(fontWeight: FontWeight.w700)),
                 Text(sub, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 12, color: GrubColors.muted)),
               ]),
             ),
@@ -112,18 +116,18 @@ class ProfileScreen extends StatelessWidget {
       context: context,
       builder: (ctx) => StatefulBuilder(
         builder: (ctx, setS) => AlertDialog(
-          title: const Text('Personal information'),
+          title: const T('Personal information'),
           content: Column(mainAxisSize: MainAxisSize.min, children: [
-            TextField(controller: c, decoration: const InputDecoration(labelText: 'Name')),
+            TextField(controller: c, decoration: InputDecoration(labelText: tr('Name'))),
             const SizedBox(height: 10),
             DropdownButtonFormField<String>(
               value: county.isEmpty ? null : county,
-              decoration: const InputDecoration(labelText: 'County'),
+              decoration: InputDecoration(labelText: tr('County')),
               items: [for (final k in kenyanCounties) DropdownMenuItem(value: k, child: Text(k))],
               onChanged: (v) => setS(() => county = v ?? ''),
             ),
           ]),
-          actions: [TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Save'))],
+          actions: [TextButton(onPressed: () => Navigator.pop(ctx, true), child: const T('Save'))],
         ),
       ),
     );
@@ -155,7 +159,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(16),
-              child: FilledButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Save')),
+              child: FilledButton(onPressed: () => Navigator.pop(ctx, true), child: const T('Save')),
             ),
           ]),
         ),

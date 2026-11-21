@@ -4,6 +4,7 @@ import '../../core/config.dart';
 import '../../core/theme.dart';
 import '../../widgets/common.dart';
 import 'auth_screens.dart';
+import '../../core/i18n.dart';
 
 /// First screen (video: food collage + "Get started" / "Already with us? Sign in").
 class WelcomeScreen extends StatelessWidget {
@@ -17,6 +18,16 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8, 12, 0),
+              child: TextButton(
+                onPressed: () => Lang.set(Lang.isSwahili ? 'en' : 'sw'),
+                child: Text(Lang.isSwahili ? 'English' : 'Kiswahili', style: const TextStyle(fontWeight: FontWeight.w700)),
+              ),
+            ),
+          ),
           Expanded(
             child: Stack(alignment: Alignment.center, children: [
               for (var i = 0; i < _foods.length; i++) _FloatingFood(_foods[i], i, size),
@@ -26,8 +37,10 @@ class WelcomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 36),
                   child: Text(
-                    'Tell us your budget and who you\'re cooking for. We\'ll plan the meals, '
-                    'work out the quantities and build your shopping list in shillings.',
+                    Lang.isSwahili
+                        ? 'Tuambie bajeti yako na unampikia nani. Tutapanga milo, tutahesabu vipimo na kukutengenezea orodha ya ununuzi kwa shilingi.'
+                        : 'Tell us your budget and who you\'re cooking for. We\'ll plan the meals, '
+                            'work out the quantities and build your shopping list in shillings.',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: GrubColors.muted, height: 1.4),
                   ),
@@ -44,14 +57,14 @@ class WelcomeScreen extends StatelessWidget {
               ],
               FilledButton(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const RegisterScreen())),
-                child: const Text('Get started'),
+                child: const T('Get started'),
               ),
               const SizedBox(height: 14),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                const Text('Already with us? ', style: TextStyle(color: GrubColors.muted)),
+                const T('Already with us? ', style: TextStyle(color: GrubColors.muted)),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const LoginScreen())),
-                  child: const Text('Sign in',
+                  child: const T('Sign in',
                       style: TextStyle(color: GrubColors.greenDark, fontWeight: FontWeight.w700, decoration: TextDecoration.underline)),
                 ),
               ]),

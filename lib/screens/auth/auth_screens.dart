@@ -5,6 +5,7 @@ import '../../core/theme.dart';
 import '../../services/auth_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
+import '../../core/i18n.dart';
 
 class _AuthScaffold extends StatelessWidget {
   final String title;
@@ -35,7 +36,7 @@ class _GoogleButton extends StatelessWidget {
   Widget build(BuildContext context) => OutlinedButton.icon(
         onPressed: onPressed,
         icon: const Text('G', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18, color: Color(0xFF4285F4))),
-        label: const Text('Continue with Google'),
+        label: const T('Continue with Google'),
       );
 }
 
@@ -92,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             TextFormField(
               controller: _name,
               textCapitalization: TextCapitalization.words,
-              decoration: const InputDecoration(labelText: 'Your name', prefixIcon: Icon(Icons.person_outline)),
+              decoration: InputDecoration(labelText: tr('Your name'), prefixIcon: Icon(Icons.person_outline)),
               validator: (v) => (v == null || v.trim().isEmpty) ? 'Please enter your name' : null,
             ),
             const SizedBox(height: 12),
@@ -100,7 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               controller: _email,
               keyboardType: TextInputType.emailAddress,
               autofillHints: const [AutofillHints.email],
-              decoration: const InputDecoration(labelText: 'Email', prefixIcon: Icon(Icons.mail_outline)),
+              decoration: InputDecoration(labelText: tr('Email'), prefixIcon: Icon(Icons.mail_outline)),
               validator: (v) => (v == null || !v.contains('@')) ? 'Enter a valid email' : null,
             ),
             const SizedBox(height: 12),
@@ -108,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               controller: _pass,
               obscureText: _obscure,
               decoration: InputDecoration(
-                labelText: 'Password',
+                labelText: tr('Password'),
                 prefixIcon: const Icon(Icons.lock_outline),
                 suffixIcon: IconButton(icon: Icon(_obscure ? Icons.visibility : Icons.visibility_off), onPressed: () => setState(() => _obscure = !_obscure)),
               ),
@@ -117,13 +118,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ]),
         ),
         const SizedBox(height: 22),
-        FilledButton(onPressed: _busy ? null : _submit, child: _busy ? const _Spinner() : const Text('Create account')),
+        FilledButton(onPressed: _busy ? null : _submit, child: _busy ? const _Spinner() : const T('Create account')),
         if (auth.supportsGoogle) ...[const SizedBox(height: 12), _GoogleButton(_busy ? null : _google)],
         const SizedBox(height: 16),
         Center(
           child: TextButton(
             onPressed: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const LoginScreen())),
-            child: const Text('I already have an account'),
+            child: const T('I already have an account'),
           ),
         ),
       ],
@@ -169,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
             TextFormField(
               controller: _email,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(labelText: 'Email', prefixIcon: Icon(Icons.mail_outline)),
+              decoration: InputDecoration(labelText: tr('Email'), prefixIcon: Icon(Icons.mail_outline)),
               validator: (v) => (v == null || !v.contains('@')) ? 'Enter a valid email' : null,
             ),
             const SizedBox(height: 12),
@@ -177,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _pass,
               obscureText: _obscure,
               decoration: InputDecoration(
-                labelText: 'Password',
+                labelText: tr('Password'),
                 prefixIcon: const Icon(Icons.lock_outline),
                 suffixIcon: IconButton(icon: Icon(_obscure ? Icons.visibility : Icons.visibility_off), onPressed: () => setState(() => _obscure = !_obscure)),
               ),
@@ -189,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
           alignment: Alignment.centerRight,
           child: TextButton(
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ForgotPasswordScreen())),
-            child: const Text('Forgot password?'),
+            child: const T('Forgot password?'),
           ),
         ),
         const SizedBox(height: 8),
@@ -199,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
               : () {
                   if (_form.currentState!.validate()) _run(() => auth.signIn(_email.text, _pass.text));
                 },
-          child: _busy ? const _Spinner() : const Text('Sign in'),
+          child: _busy ? const _Spinner() : const T('Sign in'),
         ),
         if (auth.supportsGoogle) ...[const SizedBox(height: 12), _GoogleButton(_busy ? null : () => _run(auth.signInWithGoogle))],
       ],
@@ -226,13 +227,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           if (_sent)
             const SoftCard(
               color: GrubColors.greenLight,
-              child: Text('Check your inbox (and spam folder) for the reset link.', style: TextStyle(fontWeight: FontWeight.w600)),
+              child: T('Check your inbox (and spam folder) for the reset link.', style: TextStyle(fontWeight: FontWeight.w600)),
             )
           else ...[
             TextField(
               controller: _email,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(labelText: 'Email', prefixIcon: Icon(Icons.mail_outline)),
+              decoration: InputDecoration(labelText: tr('Email'), prefixIcon: Icon(Icons.mail_outline)),
             ),
             const SizedBox(height: 20),
             FilledButton(
@@ -253,7 +254,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         if (mounted) setState(() => _busy = false);
                       }
                     },
-              child: _busy ? const _Spinner() : const Text('Send reset link'),
+              child: _busy ? const _Spinner() : const T('Send reset link'),
             ),
           ],
         ],

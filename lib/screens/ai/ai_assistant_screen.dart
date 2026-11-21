@@ -7,6 +7,7 @@ import '../../services/ai_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../recipes/recipe_detail_screen.dart';
+import '../../core/i18n.dart';
 
 class _Msg {
   final bool user;
@@ -72,16 +73,16 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Row(children: [Text('✨ '), Text('Grub AI')])),
+      appBar: AppBar(title: const Row(children: [Text('✨ '), T('Grub AI')])),
       body: Column(children: [
         Expanded(
           child: _msgs.isEmpty
               ? ListView(padding: const EdgeInsets.all(20), children: [
                   const GrubLogo(height: 70, iconOnly: true),
                   const SizedBox(height: 12),
-                  Text('Ask me anything about meals and money', textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleLarge),
+                  T('Ask me anything about meals and money', textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 6),
-                  const Text('I use your household, allergies, pantry and Grub\'s price list. I never make up prices – every cost is calculated by the app.',
+                  const T('I use your household, allergies, pantry and Grub\'s price list. I never make up prices – every cost is calculated by the app.',
                       textAlign: TextAlign.center, style: TextStyle(color: GrubColors.muted)),
                   const SizedBox(height: 20),
                   for (final p in _prompts)
@@ -124,7 +125,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
                   maxLines: 4,
                   textInputAction: TextInputAction.send,
                   onSubmitted: _send,
-                  decoration: const InputDecoration(hintText: 'e.g. I have KSh 1,500 for 4 people…'),
+                  decoration: InputDecoration(hintText: tr('e.g. I have KSh 1,500 for 4 people…')),
                 ),
               ),
               const SizedBox(width: 8),

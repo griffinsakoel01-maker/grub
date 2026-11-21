@@ -1,3 +1,4 @@
+import '../core/i18n.dart';
 import '../core/money.dart';
 import 'catalog.dart';
 
@@ -6,13 +7,13 @@ enum BudgetFrequency { daily, weekly, biweekly, monthly, custom }
 BudgetFrequency budgetFrequencyFrom(String? s) =>
     BudgetFrequency.values.firstWhere((e) => e.name == s, orElse: () => BudgetFrequency.weekly);
 
-String budgetFrequencyLabel(BudgetFrequency f) => switch (f) {
+String budgetFrequencyLabel(BudgetFrequency f) => tr(switch (f) {
       BudgetFrequency.daily => 'Daily',
       BudgetFrequency.weekly => 'Weekly',
       BudgetFrequency.biweekly => 'Every 2 weeks',
       BudgetFrequency.monthly => 'Monthly',
       BudgetFrequency.custom => 'Custom',
-    };
+    });
 
 DateTime? _date(dynamic v) {
   if (v == null) return null;
@@ -46,6 +47,8 @@ class UserProfile {
   final bool onboarded;
   final bool notifications;
   final bool shareAnonymousPrices;
+  final String householdId; // '' = not in a household
+  final DateTime? budgetStart; // "I got paid today" – start of the current money period
 
   const UserProfile({
     required this.uid,
@@ -68,6 +71,8 @@ class UserProfile {
     this.onboarded = false,
     this.notifications = true,
     this.shareAnonymousPrices = false,
+    this.householdId = '',
+    this.budgetStart,
   });
 
   /// Kids eat half portions → "portions per meal".
@@ -95,6 +100,9 @@ class UserProfile {
     bool? onboarded,
     bool? notifications,
     bool? shareAnonymousPrices,
+    String? householdId,
+    DateTime? budgetStart,
+    bool clearBudgetStart = false,
   }) =>
       UserProfile(
         uid: uid,
@@ -117,6 +125,8 @@ class UserProfile {
         onboarded: onboarded ?? this.onboarded,
         notifications: notifications ?? this.notifications,
         shareAnonymousPrices: shareAnonymousPrices ?? this.shareAnonymousPrices,
+        householdId: householdId ?? this.householdId,
+        budgetStart: clearBudgetStart ? null : (budgetStart ?? this.budgetStart),
       );
 
   factory UserProfile.fromMap(String uid, Map<String, dynamic> m) => UserProfile(
@@ -140,6 +150,8 @@ class UserProfile {
         onboarded: m['onboarded'] as bool? ?? false,
         notifications: m['notifications'] as bool? ?? true,
         shareAnonymousPrices: m['shareAnonymousPrices'] as bool? ?? false,
+        householdId: m['householdId'] as String? ?? '',
+        budgetStart: _date(m['budgetStart']),
       );
 
   Map<String, dynamic> toMap() => {
@@ -164,7 +176,29 @@ class UserProfile {
         'onboarded': onboarded,
         'notifications': notifications,
         'shareAnonymousPrices': shareAnonymousPrices,
+        'householdId': householdId,
+        'budgetStart': budgetStart?.toIso8601String(),
       };
+}
+
+/// A group of people who share shopping lists (e.g. parent + partner + house help).
+class Household {
+  final String id;
+  final String name;
+  final String ownerId;
+  final List<String> members;
+  final Map<String, String> memberNames;
+  final String inviteCode;
+  const Household({required this.id, required this.name, required this.ownerId, required this.members, required this.memberNames, required this.inviteCode});
+
+  factory Household.fromMap(String id, Map<String, dynamic> m) => Household(
+        id: id,
+        name: m['name'] as String? ?? 'My household',
+        ownerId: m['ownerId'] as String? ?? '',
+        members: List<String>.from(m['members'] ?? const []),
+        memberNames: Map<String, String>.from(m['memberNames'] ?? const {}),
+        inviteCode: m['inviteCode'] as String? ?? '',
+      );
 }
 
 /// One meal in the plan.
@@ -349,6 +383,8 @@ class ShoppingList {
   final List<ShoppingItem> items;
   final DateTime createdAt;
   final String planId;
+  final String householdId; // '' = personal list
+  final String updatedBy;
 
   const ShoppingList({
     required this.id,
@@ -359,7 +395,11 @@ class ShoppingList {
     required this.items,
     required this.createdAt,
     this.planId = '',
+    this.householdId = '',
+    this.updatedBy = '',
   });
+
+  bool get shared => householdId.isNotEmpty;
 
   Money get estimatedTotal => Money.sum(items.map((e) => e.total));
   Money get purchasedEstimate => Money.sum(items.where((e) => e.purchased).map((e) => e.total));
@@ -367,7 +407,7 @@ class ShoppingList {
   Money get remaining => budget - estimatedTotal;
   int get purchasedCount => items.where((e) => e.purchased).length;
 
-  ShoppingList copyWith({String? name, List<ShoppingItem>? items, Money? budget, String? supermarketId}) => ShoppingList(
+  ShoppingList copyWith({String? name, List<ShoppingItem>? items, Money? budget, String? supermarketId, String? updatedBy}) => ShoppingList(
         id: id,
         userId: userId,
         name: name ?? this.name,
@@ -376,6 +416,8 @@ class ShoppingList {
         items: items ?? this.items,
         createdAt: createdAt,
         planId: planId,
+        householdId: householdId,
+        updatedBy: updatedBy ?? this.updatedBy,
       );
 
   factory ShoppingList.fromMap(String id, Map<String, dynamic> m) => ShoppingList(
@@ -387,6 +429,8 @@ class ShoppingList {
         items: ((m['items'] as List?) ?? const []).map((e) => ShoppingItem.fromMap(Map<String, dynamic>.from(e as Map))).toList(),
         createdAt: _date(m['createdAt']) ?? DateTime.now(),
         planId: m['planId'] as String? ?? '',
+        householdId: m['householdId'] as String? ?? '',
+        updatedBy: m['updatedBy'] as String? ?? '',
       );
 
   Map<String, dynamic> toMap() => {
@@ -400,6 +444,8 @@ class ShoppingList {
         'actualTotal': actualTotal.shillings,
         'createdAt': createdAt.toIso8601String(),
         'planId': planId,
+        'householdId': householdId,
+        'updatedBy': updatedBy,
       };
 }
 

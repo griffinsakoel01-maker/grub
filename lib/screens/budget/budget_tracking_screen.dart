@@ -11,6 +11,7 @@ import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import 'expense_history_screen.dart';
 import '../receipt/receipt_scan_screen.dart';
+import '../../core/i18n.dart';
 
 /// Grocery expense tracker: budget vs actual, weekly & monthly charts, savings.
 class BudgetTrackingScreen extends StatefulWidget {
@@ -31,13 +32,13 @@ class _BudgetTrackingScreenState extends State<BudgetTrackingScreen> {
     final buckets = _monthly ? _months(s.expenses) : _weeks(s.expenses);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Budget tracking')),
+      appBar: AppBar(title: const T('Budget tracking')),
       floatingActionButton: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.end, children: [
         FloatingActionButton.small(
           heroTag: 'add-exp',
           backgroundColor: Colors.white,
           foregroundColor: GrubColors.greenDark,
-          tooltip: 'Type a purchase',
+          tooltip: tr('Type a purchase'),
           onPressed: () => showAddExpense(context),
           child: const Icon(Icons.edit_note),
         ),
@@ -48,7 +49,7 @@ class _BudgetTrackingScreenState extends State<BudgetTrackingScreen> {
           foregroundColor: Colors.white,
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ReceiptScanScreen())),
           icon: const Icon(Icons.document_scanner_outlined),
-          label: const Text('Scan receipt'),
+          label: const T('Scan receipt'),
         ),
       ]),
       body: ListView(padding: const EdgeInsets.fromLTRB(16, 0, 16, 96), children: [
@@ -67,7 +68,7 @@ class _BudgetTrackingScreenState extends State<BudgetTrackingScreen> {
           Text(_monthly ? 'Monthly spending' : 'Weekly spending', style: Theme.of(context).textTheme.titleLarge),
           const Spacer(),
           SegmentedButton<bool>(
-            segments: const [ButtonSegment(value: false, label: Text('Weeks')), ButtonSegment(value: true, label: Text('Months'))],
+            segments: const [ButtonSegment(value: false, label: T('Weeks')), ButtonSegment(value: true, label: T('Months'))],
             selected: {_monthly},
             showSelectedIcon: false,
             onSelectionChanged: (v) => setState(() => _monthly = v.first),
@@ -76,13 +77,13 @@ class _BudgetTrackingScreenState extends State<BudgetTrackingScreen> {
         const SizedBox(height: 12),
         SoftCard(
           padding: const EdgeInsets.fromLTRB(8, 20, 16, 8),
-          child: SizedBox(height: 220, child: s.expenses.isEmpty ? const Center(child: Text('No purchases recorded yet', style: TextStyle(color: GrubColors.muted))) : _chart(buckets, p)),
+          child: SizedBox(height: 220, child: s.expenses.isEmpty ? const Center(child: T('No purchases recorded yet', style: TextStyle(color: GrubColors.muted))) : _chart(buckets, p)),
         ),
         const SizedBox(height: 8),
         Text('Dashed line: your budget for each ${_monthly ? 'month' : 'week'}.', style: const TextStyle(fontSize: 11, color: GrubColors.muted)),
         SectionHeader('Recent purchases', action: 'See all', onAction: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ExpenseHistoryScreen()))),
         if (s.expenses.isEmpty)
-          const Text('Finish a shopping list or tap "Add purchase" to record what you spent.', style: TextStyle(color: GrubColors.muted)),
+          const T('Finish a shopping list or tap "Add purchase" to record what you spent.', style: TextStyle(color: GrubColors.muted)),
         for (final e in s.expenses.take(5)) ExpenseTile(expense: e),
       ]),
     );

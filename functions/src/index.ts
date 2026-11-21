@@ -38,6 +38,7 @@ export const mealAssistant = onCall({ secrets: [GEMINI_API_KEY], timeoutSeconds:
   const message = String(req.data?.message ?? '').slice(0, 1000).trim();
   if (!message) throw new HttpsError('invalid-argument', 'Message is empty.');
   const history: { role: string; content: string }[] = Array.isArray(req.data?.history) ? req.data.history.slice(-10) : [];
+  const lang = req.data?.language === 'sw' ? 'sw' : 'en';
   const pantry: Record<string, number> = typeof req.data?.pantry === 'object' && req.data?.pantry ? req.data.pantry : {};
 
   // simple per-user daily rate limit
@@ -76,7 +77,9 @@ export const mealAssistant = onCall({ secrets: [GEMINI_API_KEY], timeoutSeconds:
   const pantryNames = Object.keys(pantry).map((id) => products.get(id)?.name).filter(Boolean).join(', ') || 'nothing recorded';
 
   const system = [
-    'You are Grub, a friendly grocery and meal-planning assistant for Kenyan households. Use Kenyan English and KSh.',
+    lang === 'sw'
+      ? 'You are Grub, a friendly grocery and meal-planning assistant for Kenyan households. Reply in simple Kiswahili (Kenyan), amounts in KSh.'
+      : 'You are Grub, a friendly grocery and meal-planning assistant for Kenyan households. Use Kenyan English and KSh.',
     `Household: ${portions} portions per meal. Diet: ${(profile.preferences ?? []).join(', ') || 'no restrictions'}. Allergies: ${(profile.allergies ?? []).join(', ') || 'none'}.`,
     `Budget: KSh ${profile.budget ?? 'unknown'} (${profile.budgetFrequency ?? 'weekly'}). Pantry: ${pantryNames}.`,
     'RULES: Only recommend recipes from the CATALOGUE below, by id. Only mention costs that appear in the CATALOGUE; never invent prices.',
@@ -197,3 +200,26 @@ export const adminStats = onCall(async (req) => {
 });
 
 export { scanReceipt, saveReceiptPrices } from './receipts';
+
+// --------------------------------------------------------------- households
+/** Join a household with its 6-letter invite code. */
+export const joinHousehold = onCall(async (req) => {
+  const uid = requireAuth(req);
+  const code = String(req.data?.code ?? '').trim().toUpperCase();
+  if (!/^[A-Z0-9]{6}$/.test(code)) throw new HttpsError('invalid-argument', 'Enter the 6-letter household code.');
+  const q = await db.collection('households').where('inviteCode', '==', code).limit(1).get();
+  if (q.empty) throw new HttpsError('not-found', 'No household with that code. Check the code and try again.');
+  const ref = q.docs[0].ref;
+  const user = await db.doc(`users/${uid}`).get();
+  const name = (user.data()?.name as string) || 'Member';
+  await db.runTransaction(async (t) => {
+    const h = await t.get(ref);
+    const members: string[] = h.data()?.members ?? [];
+    if (!members.includes(uid) && members.length >= 12) throw new HttpsError('resource-exhausted', 'This household is full (12 people).');
+    t.update(ref, { members: FieldValue.arrayUnion(uid), [`memberNames.${uid}`]: name });
+    t.set(db.doc(`users/${uid}`), { householdId: ref.id }, { merge: true });
+  });
+  const fresh = (await ref.get()).data() ?? {};
+  delete (fresh as Record<string, unknown>).createdAt;
+  return { id: ref.id, household: fresh };
+});

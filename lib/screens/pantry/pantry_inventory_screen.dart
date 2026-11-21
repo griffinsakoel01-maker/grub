@@ -12,6 +12,7 @@ import '../../widgets/pantry_picker.dart';
 import '../recipes/recipe_detail_screen.dart';
 import 'pantry_selection_screen.dart';
 import '../receipt/receipt_scan_screen.dart';
+import '../../core/i18n.dart';
 
 /// Pantry & food inventory: quantities, purchase/expiry dates, storage,
 /// items close to expiry and recipes that use them.
@@ -32,9 +33,9 @@ class PantryInventoryScreen extends StatelessWidget {
         : s.planner.recipesUsingPantry(s.pantryMap, DietFilter.fromProfile(s.profile!), priority: {for (final e in expiring) e.productId}).take(5).toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Pantry'), actions: [
+      appBar: AppBar(title: const T('Pantry'), actions: [
         IconButton(
-          tooltip: 'Add from a receipt',
+          tooltip: tr('Add from a receipt'),
           icon: const Icon(Icons.document_scanner_outlined),
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ReceiptScanScreen())),
         ),
@@ -44,7 +45,7 @@ class PantryInventoryScreen extends StatelessWidget {
         foregroundColor: Colors.white,
         onPressed: () => _addItem(context),
         icon: const Icon(Icons.add),
-        label: const Text('Add item'),
+        label: const T('Add item'),
       ),
       body: items.isEmpty
           ? EmptyState(
@@ -60,7 +61,7 @@ class PantryInventoryScreen extends StatelessWidget {
                   color: const Color(0xFFFFF4E5),
                   borderColor: const Color(0xFFFFD8A8),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    const Text('⏰ Use soon', style: TextStyle(fontWeight: FontWeight.w800, color: GrubColors.warning)),
+                    const T('⏰ Use soon', style: TextStyle(fontWeight: FontWeight.w800, color: GrubColors.warning)),
                     const SizedBox(height: 6),
                     for (final e in expiring)
                       Text('• ${e.name} – ${_expiryText(e)}', style: const TextStyle(fontSize: 13)),
@@ -196,7 +197,7 @@ class _ProductPickerState extends State<_ProductPicker> {
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
           child: TextField(
             autofocus: true,
-            decoration: const InputDecoration(hintText: 'Search products', prefixIcon: Icon(Icons.search)),
+            decoration: InputDecoration(hintText: tr('Search products'), prefixIcon: Icon(Icons.search)),
             onChanged: (v) => setState(() => _q = v),
           ),
         ),
@@ -250,7 +251,7 @@ class _PantryEditorState extends State<_PantryEditor> {
         ListTile(
           contentPadding: EdgeInsets.zero,
           leading: const Icon(Icons.scale_outlined),
-          title: const Text('Quantity'),
+          title: const T('Quantity'),
           trailing: Text(p == null ? '${_i.quantity}' : Units.display(_i.quantity, p.unit), style: const TextStyle(fontWeight: FontWeight.w700)),
           onTap: p == null
               ? null
@@ -259,14 +260,14 @@ class _PantryEditorState extends State<_PantryEditor> {
                   if (v != null) setState(() => _i = _i.copyWith(quantity: v));
                 },
         ),
-        ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.shopping_bag_outlined), title: const Text('Purchase date'), trailing: Text(fmt(_i.purchaseDate)), onTap: () => _date(false)),
-        ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.event_busy_outlined), title: const Text('Expiry date'), trailing: Text(fmt(_i.expiryDate)), onTap: () => _date(true)),
+        ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.shopping_bag_outlined), title: const T('Purchase date'), trailing: Text(fmt(_i.purchaseDate)), onTap: () => _date(false)),
+        ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.event_busy_outlined), title: const T('Expiry date'), trailing: Text(fmt(_i.expiryDate)), onTap: () => _date(true)),
         const SizedBox(height: 6),
         SegmentedButton<String>(
           segments: const [
-            ButtonSegment(value: 'cupboard', label: Text('Cupboard')),
-            ButtonSegment(value: 'fridge', label: Text('Fridge')),
-            ButtonSegment(value: 'freezer', label: Text('Freezer')),
+            ButtonSegment(value: 'cupboard', label: T('Cupboard')),
+            ButtonSegment(value: 'fridge', label: T('Fridge')),
+            ButtonSegment(value: 'freezer', label: T('Freezer')),
           ],
           selected: {_i.storage},
           onSelectionChanged: (v) => setState(() => _i = _i.copyWith(storage: v.first)),
@@ -279,7 +280,7 @@ class _PantryEditorState extends State<_PantryEditor> {
                 await context.read<AppState>().deletePantryItem(_i);
                 if (context.mounted) Navigator.pop(context);
               },
-              child: const Text('Used it all'),
+              child: const T('Used it all'),
             ),
           ),
           const SizedBox(width: 10),
@@ -293,7 +294,7 @@ class _PantryEditorState extends State<_PantryEditor> {
                 }
                 if (context.mounted) Navigator.pop(context);
               },
-              child: const Text('Save'),
+              child: const T('Save'),
             ),
           ),
         ]),

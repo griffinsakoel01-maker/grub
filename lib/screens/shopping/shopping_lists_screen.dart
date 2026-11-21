@@ -7,6 +7,7 @@ import '../../widgets/common.dart';
 import '../planner/plan_builder_screen.dart';
 import '../prices/compare_prices_screen.dart';
 import 'shopping_list_detail_screen.dart';
+import '../../core/i18n.dart';
 
 class ShoppingListsScreen extends StatelessWidget {
   const ShoppingListsScreen({super.key});
@@ -21,14 +22,14 @@ class ShoppingListsScreen extends StatelessWidget {
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           ListTile(
             leading: const EmojiTile('🗓️'),
-            title: const Text('From my meal plan'),
+            title: const T('From my meal plan'),
             subtitle: Text(s.plan == null ? 'Plan your meals first' : 'Quantities calculated, pantry subtracted'),
             onTap: () => Navigator.pop(ctx, 'plan'),
           ),
           ListTile(
             leading: const EmojiTile('📝'),
-            title: const Text('Empty list'),
-            subtitle: const Text('Add products yourself'),
+            title: const T('Empty list'),
+            subtitle: const T('Add products yourself'),
             onTap: () => Navigator.pop(ctx, 'empty'),
           ),
           const SizedBox(height: 12),
@@ -48,11 +49,11 @@ class ShoppingListsScreen extends StatelessWidget {
     final name = await showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('List name'),
+        title: const T('List name'),
         content: TextField(controller: ctrl, autofocus: true),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          TextButton(onPressed: () => Navigator.pop(ctx, ctrl.text.trim()), child: const Text('Create')),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: const T('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(ctx, ctrl.text.trim()), child: const T('Create')),
         ],
       ),
     );
@@ -66,10 +67,10 @@ class ShoppingListsScreen extends StatelessWidget {
     final s = context.watch<AppState>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shopping Lists'),
+        title: const T('Shopping Lists'),
         actions: [
           IconButton(
-            tooltip: 'Compare prices',
+            tooltip: tr('Compare prices'),
             icon: const Icon(Icons.compare_arrows),
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ComparePricesScreen())),
           ),
@@ -80,7 +81,7 @@ class ShoppingListsScreen extends StatelessWidget {
         foregroundColor: Colors.white,
         onPressed: () => _new(context),
         icon: const Icon(Icons.add),
-        label: const Text('New list'),
+        label: const T('New list'),
       ),
       body: s.lists.isEmpty
           ? EmptyState(
@@ -103,11 +104,11 @@ class ShoppingListsScreen extends StatelessWidget {
                   confirmDismiss: (_) => showDialog<bool>(
                     context: context,
                     builder: (ctx) => AlertDialog(
-                      title: const Text('Delete list?'),
+                      title: const T('Delete list?'),
                       content: Text('"${l.name}" will be removed.'),
                       actions: [
-                        TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
-                        TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Delete', style: TextStyle(color: GrubColors.danger))),
+                        TextButton(onPressed: () => Navigator.pop(ctx, false), child: const T('Cancel')),
+                        TextButton(onPressed: () => Navigator.pop(ctx, true), child: const T('Delete', style: TextStyle(color: GrubColors.danger))),
                       ],
                     ),
                   ),
@@ -126,7 +127,7 @@ class ShoppingListsScreen extends StatelessWidget {
                         const SizedBox(width: 12),
                         Expanded(
                           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                            Text(l.name, style: const TextStyle(fontWeight: FontWeight.w700)),
+                            Text(l.shared ? '🏠 ${l.name}' : l.name, style: const TextStyle(fontWeight: FontWeight.w700)),
                             Text('${l.items.length} items · ${s.catalog.supermarkets[l.supermarketId]?.name ?? 'Cheapest anywhere'}',
                                 style: const TextStyle(color: GrubColors.muted, fontSize: 12)),
                           ]),

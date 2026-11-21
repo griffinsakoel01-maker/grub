@@ -5,6 +5,7 @@ import '../../core/theme.dart';
 import '../../services/optimizer_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
+import '../../core/i18n.dart';
 
 /// Smart budget optimisation – accept or reject each suggestion.
 class OptimizerScreen extends StatefulWidget {
@@ -22,13 +23,13 @@ class _OptimizerScreenState extends State<OptimizerScreen> {
     final report = s.optimise();
     if (report == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Find savings')),
+        appBar: AppBar(title: const T('Find savings')),
         body: const EmptyState(emoji: '💡', title: 'No plan yet', message: 'Plan your meals first, then we\'ll look for ways to save.'),
       );
     }
     final list = report.suggestions.where((x) => !_rejected.contains(x.id)).toList();
     return Scaffold(
-      appBar: AppBar(title: const Text('Find savings')),
+      appBar: AppBar(title: const T('Find savings')),
       body: ListView(padding: const EdgeInsets.all(16), children: [
         SoftCard(
           color: GrubColors.greenLight,
@@ -44,7 +45,7 @@ class _OptimizerScreenState extends State<OptimizerScreen> {
           ]),
         ),
         const SizedBox(height: 8),
-        const Text('Suggestions never include your allergens, diet restrictions or dislikes.', style: TextStyle(fontSize: 12, color: GrubColors.muted)),
+        const T('Suggestions never include your allergens, diet restrictions or dislikes.', style: TextStyle(fontSize: 12, color: GrubColors.muted)),
         const SizedBox(height: 12),
         if (list.isEmpty) const EmptyState(emoji: '✅', title: 'No more suggestions', message: 'You\'ve reviewed everything.'),
         for (final x in list)
@@ -72,7 +73,7 @@ class _OptimizerScreenState extends State<OptimizerScreen> {
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(minimumSize: const Size(0, 40)),
                         onPressed: () => setState(() => _rejected.add(x.id)),
-                        child: const Text('No thanks'),
+                        child: const T('No thanks'),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -83,7 +84,7 @@ class _OptimizerScreenState extends State<OptimizerScreen> {
                           await s.applySuggestion(x);
                           if (context.mounted) showSnack(context, 'Applied. Create a new shopping list from your plan to use it.');
                         },
-                        child: const Text('Apply'),
+                        child: const T('Apply'),
                       ),
                     ),
                   ]),

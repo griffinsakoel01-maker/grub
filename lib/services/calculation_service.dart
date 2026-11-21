@@ -333,3 +333,30 @@ class CalculationService {
         _ => c,
       };
 }
+
+/// How far a price might be off, by how it was collected.
+double priceUncertainty(String status) => switch (status) {
+      'verified' => 0.03,
+      'user_submitted' || 'userSubmitted' => 0.05,
+      'estimated' => 0.12,
+      'manual' => 0.0,
+      _ => 0.20,
+    };
+
+/// "KSh 1,240–1,410": a likely range for a set of (cost, status) pairs, rounded to KSh 10.
+String priceRangeLabel(Iterable<(Money, String)> parts) {
+  var lo = 0.0, hi = 0.0;
+  for (final (cost, status) in parts) {
+    final u = priceUncertainty(status);
+    lo += cost.cents * (1 - u);
+    hi += cost.cents * (1 + u);
+  }
+  final l = Money(((lo / 1000).floor() * 1000));
+  final h = Money(((hi / 1000).ceil() * 1000));
+  if (h.cents - l.cents <= 1000) return l.format();
+  return '${l.format()}–${h.format().replaceFirst(RegExp(r'^KSh\s?'), '')}';
+}
+
+extension BasketRange on Basket {
+  String get rangeLabel => priceRangeLabel(lines.where((l) => l.hasPrice).map((l) => (l.cost, priceStatusKey(l.price!.status))));
+}

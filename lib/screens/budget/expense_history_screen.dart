@@ -7,6 +7,7 @@ import '../../core/theme.dart';
 import '../../models/user_data.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
+import '../../core/i18n.dart';
 
 class ExpenseHistoryScreen extends StatelessWidget {
   const ExpenseHistoryScreen({super.key});
@@ -20,7 +21,7 @@ class ExpenseHistoryScreen extends StatelessWidget {
       byMonth.putIfAbsent('${names[e.date.month - 1]} ${e.date.year}', () => []).add(e);
     }
     return Scaffold(
-      appBar: AppBar(title: const Text('Expense history')),
+      appBar: AppBar(title: const T('Expense history')),
       floatingActionButton: FloatingActionButton(
         backgroundColor: GrubColors.green,
         foregroundColor: Colors.white,
@@ -113,21 +114,21 @@ Future<void> showAddExpense(BuildContext context, {Expense? existing}) async {
             autofocus: existing == null,
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: const InputDecoration(labelText: 'Amount paid', prefixText: 'KSh '),
+            decoration: InputDecoration(labelText: tr('Amount paid'), prefixText: 'KSh '),
           ),
           const SizedBox(height: 10),
           TextField(
             controller: est,
             keyboardType: TextInputType.number,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: const InputDecoration(labelText: 'Estimated cost (optional)', prefixText: 'KSh '),
+            decoration: InputDecoration(labelText: tr('Estimated cost (optional)'), prefixText: 'KSh '),
           ),
           const SizedBox(height: 10),
-          TextField(controller: note, decoration: const InputDecoration(labelText: 'Note (e.g. weekly shop)')),
+          TextField(controller: note, decoration: InputDecoration(labelText: tr('Note (e.g. weekly shop)'))),
           const SizedBox(height: 10),
           DropdownButtonFormField<String>(
             value: shop.isEmpty ? null : shop,
-            decoration: const InputDecoration(labelText: 'Shop (optional)'),
+            decoration: InputDecoration(labelText: tr('Shop (optional)')),
             items: [for (final sm in s.catalog.shops) DropdownMenuItem(value: sm.id, child: Text(sm.name))],
             onChanged: (v) => setS(() => shop = v ?? ''),
           ),
@@ -156,7 +157,7 @@ Future<void> showAddExpense(BuildContext context, {Expense? existing}) async {
               ));
               if (ctx.mounted) Navigator.pop(ctx);
             },
-            child: const Text('Save'),
+            child: const T('Save'),
           ),
           if (existing != null)
             TextButton(
@@ -164,7 +165,7 @@ Future<void> showAddExpense(BuildContext context, {Expense? existing}) async {
                 await s.deleteExpense(existing);
                 if (ctx.mounted) Navigator.pop(ctx);
               },
-              child: const Text('Delete', style: TextStyle(color: GrubColors.danger)),
+              child: const T('Delete', style: TextStyle(color: GrubColors.danger)),
             ),
         ]),
       ),

@@ -1,4 +1,5 @@
-# Imports official average food prices from the KNBS monthly CPI report.
+# Imports official average food prices from the KNBS monthly CPI report
+# and open-market prices from the WFP Kenya dataset on HDX.
 # Runs by itself on the 2nd, 9th and 16th of every month (KNBS publishes at
 # month end) and can be run by hand: Actions → "Update prices" → Run workflow.
 name: Update prices
@@ -47,6 +48,16 @@ jobs:
           printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
           mkdir -p ../ci
           GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" node scripts/import-knbs.js "${{ inputs.months || '4' }}" 2>&1 | tee ../ci/knbs.txt
+      - name: Import open-market prices (WFP / HDX)
+        if: always()
+        working-directory: functions
+        env:
+          SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          set -o pipefail
+          printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
+          mkdir -p ../ci
+          GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" node scripts/import-wfp.js 2>&1 | tee ../ci/wfp.txt
       - name: Save report
         if: always()
         run: |

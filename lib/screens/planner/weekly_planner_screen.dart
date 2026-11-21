@@ -15,6 +15,7 @@ import 'ingredient_calculator_screen.dart';
 import 'plan_builder_screen.dart';
 import 'quick_plan_screen.dart';
 import 'today_screen.dart';
+import '../../core/i18n.dart';
 
 /// Weekly meal calendar: breakfast / lunch / dinner (+ snacks) per day.
 class WeeklyPlannerScreen extends StatefulWidget {
@@ -33,10 +34,10 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
     final plan = s.plan;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Meal Planner'),
+        title: const T('Meal Planner'),
         actions: [
           IconButton(
-            tooltip: 'Explore recipes',
+            tooltip: tr('Explore recipes'),
             icon: const Icon(Icons.menu_book_outlined),
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const RecipesScreen())),
           ),
@@ -55,18 +56,18 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
         ),
         FilledButton(
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const QuickPlanScreen())),
-          child: const Text('Quick plan (3 questions)'),
+          child: const T('Quick plan (3 questions)'),
         ),
         const SizedBox(height: 10),
         OutlinedButton(
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PlanBuilderScreen())),
-          child: const Text('Plan a week from my budget settings'),
+          child: const T('Plan a week from my budget settings'),
         ),
         const SizedBox(height: 10),
         OutlinedButton.icon(
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TodayScreen())),
           icon: const Text('🍲'),
-          label: const Text('Just today – what can I cook?'),
+          label: const T('Just today – what can I cook?'),
         ),
       ]);
 
@@ -90,7 +91,7 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
                   style: OutlinedButton.styleFrom(minimumSize: const Size(0, 40)),
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const IngredientCalculatorScreen())),
                   icon: const Icon(Icons.scale_outlined, size: 18),
-                  label: const Text('Ingredients'),
+                  label: const T('Ingredients'),
                 ),
               ),
               const SizedBox(width: 8),
@@ -99,7 +100,7 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
                   style: OutlinedButton.styleFrom(minimumSize: const Size(0, 40)),
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const OptimizerScreen())),
                   icon: const Icon(Icons.savings_outlined, size: 18),
-                  label: const Text('Find savings'),
+                  label: const T('Find savings'),
                 ),
               ),
             ]),
@@ -142,7 +143,7 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
       ),
       const Padding(
         padding: EdgeInsets.fromLTRB(16, 6, 16, 0),
-        child: Text('Tip: long-press a meal and drag it onto another day to rearrange.', style: TextStyle(fontSize: 11, color: GrubColors.muted)),
+        child: T('Tip: long-press a meal and drag it onto another day to rearrange.', style: TextStyle(fontSize: 11, color: GrubColors.muted)),
       ),
       Expanded(
         child: ListView(padding: const EdgeInsets.fromLTRB(16, 8, 16, 16), children: [
@@ -154,7 +155,7 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
             Expanded(
               child: OutlinedButton(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PantrySelectionScreen())),
-                child: const Text('What I have'),
+                child: const T('What I have'),
               ),
             ),
             const SizedBox(width: 10),
@@ -167,7 +168,7 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
                     Navigator.of(context).push(MaterialPageRoute(builder: (_) => ShoppingListDetailScreen(listId: list.id)));
                   }
                 },
-                child: const Text('Shopping list'),
+                child: const T('Shopping list'),
               ),
             ),
           ]),
@@ -177,14 +178,14 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
               child: TextButton.icon(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const QuickPlanScreen())),
                 icon: const Icon(Icons.refresh),
-                label: const Text('New plan'),
+                label: const T('New plan'),
               ),
             ),
             Expanded(
               child: TextButton.icon(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TodayScreen())),
                 icon: const Text('🍲'),
-                label: const Text('Just today'),
+                label: const T('Just today'),
               ),
             ),
           ]),
@@ -227,9 +228,9 @@ class _WeeklyPlannerScreenState extends State<WeeklyPlannerScreen> {
               }
             },
             itemBuilder: (_) => [
-              const PopupMenuItem(value: 'swap', child: Text('Replace meal')),
+              const PopupMenuItem(value: 'swap', child: T('Replace meal')),
               PopupMenuItem(value: 'cooked', child: Text(m.cooked ? 'Mark not cooked' : 'Mark cooked & update pantry')),
-              const PopupMenuItem(value: 'remove', child: Text('Remove')),
+              const PopupMenuItem(value: 'remove', child: T('Remove')),
             ],
           ),
       ]),

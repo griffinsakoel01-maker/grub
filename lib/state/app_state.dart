@@ -38,6 +38,10 @@ class AppState extends ChangeNotifier {
   List<Expense> expenses = [];
   bool catalogLoaded = false;
   StreamSubscription<AppUser?>? _sub;
+  Household? household;
+  List<Recipe> myRecipes = [];
+  StreamSubscription<Household?>? _hhSub;
+  StreamSubscription<List<ShoppingList>>? _hhListsSub;
 
   bool get isDemo => !repo.isCloud;
   bool get signedIn => user != null;
@@ -65,7 +69,109 @@ class AppState extends ChangeNotifier {
   @override
   void dispose() {
     _sub?.cancel();
+    _hhSub?.cancel();
+    _hhListsSub?.cancel();
     super.dispose();
+  }
+
+  // -------------------------------------------------------------- household
+  void _watchHousehold() {
+    _hhSub?.cancel();
+    _hhListsSub?.cancel();
+    household = null;
+    final hid = profile?.householdId ?? '';
+    if (hid.isEmpty || !repo.supportsHouseholds) return;
+    _hhSub = repo.householdStream(hid).listen((h) {
+      household = h;
+      notifyListeners();
+    }, onError: (_) {});
+    _hhListsSub = repo.householdListsStream(hid).listen((shared) {
+      lists = [...lists.where((l) => !l.shared), ...shared]..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+      notifyListeners();
+    }, onError: (_) {});
+  }
+
+  Future<void> createHousehold(String name) async {
+    final p = profile!;
+    household = await repo.createHousehold(uid: p.uid, displayName: p.name.isEmpty ? 'Me' : p.name, name: name);
+    profile = p.copyWith(householdId: household!.id);
+    _watchHousehold();
+    notifyListeners();
+  }
+
+  Future<void> joinHousehold(String code) async {
+    final h = await repo.joinHousehold(code);
+    household = h;
+    profile = profile!.copyWith(householdId: h.id);
+    _watchHousehold();
+    notifyListeners();
+  }
+
+  Future<void> leaveHousehold() async {
+    final p = profile!;
+    if (p.householdId.isEmpty) return;
+    await repo.leaveHousehold(p.uid, p.householdId);
+    profile = p.copyWith(householdId: '');
+    lists = lists.where((l) => !l.shared).toList();
+    _watchHousehold();
+    notifyListeners();
+  }
+
+  /// Copies a personal list into the household so everyone can tick it.
+  Future<void> shareListWithHousehold(ShoppingList l) async {
+    final hid = profile?.householdId ?? '';
+    if (hid.isEmpty || l.shared) return;
+    final shared = ShoppingList(
+      id: l.id,
+      userId: l.userId,
+      name: l.name,
+      supermarketId: l.supermarketId,
+      budget: l.budget,
+      items: l.items,
+      createdAt: l.createdAt,
+      planId: l.planId,
+      householdId: hid,
+      updatedBy: profile?.name ?? '',
+    );
+    await repo.saveList(shared);
+    await repo.deleteList(l.userId, l.id);
+    lists = [...lists.where((x) => x.id != l.id), shared];
+    notifyListeners();
+  }
+
+  // ------------------------------------------------------------ my recipes
+  void _mergeMyRecipes() {
+    catalog.recipes.removeWhere((k, v) => k.startsWith('my_'));
+    for (final r in myRecipes) {
+      catalog.recipes[r.id] = r;
+    }
+  }
+
+  Future<void> saveMyRecipe(Recipe r) async {
+    myRecipes = [...myRecipes.where((x) => x.id != r.id), r];
+    _mergeMyRecipes();
+    notifyListeners();
+    await repo.saveMyRecipe(user!.uid, r);
+  }
+
+  Future<void> deleteMyRecipe(String id) async {
+    myRecipes = myRecipes.where((x) => x.id != id).toList();
+    _mergeMyRecipes();
+    notifyListeners();
+    await repo.deleteMyRecipe(user!.uid, id);
+  }
+
+  // ------------------------------------------------------------- pay day
+  /// "I got paid today": [amount] for food must last [days] days from today.
+  Future<void> gotPaid(Money amount, int days) async {
+    final p = profile!;
+    final n = DateTime.now();
+    await saveProfile(p.copyWith(
+      budget: amount,
+      budgetFrequency: BudgetFrequency.custom,
+      customBudgetDays: days,
+      budgetStart: DateTime(n.year, n.month, n.day),
+    ));
   }
 
   Future<void> _ensureCatalog() async {
@@ -100,6 +206,11 @@ class AppState extends ChangeNotifier {
       lists = results[2] as List<ShoppingList>;
       pantry = results[3] as List<PantryItem>;
       expenses = results[4] as List<Expense>;
+      try {
+        myRecipes = await repo.loadMyRecipes(u.uid);
+        _mergeMyRecipes();
+      } catch (_) {}
+      _watchHousehold();
       status = LoadStatus.ready;
     } catch (e) {
       status = LoadStatus.error;
@@ -112,6 +223,7 @@ class AppState extends ChangeNotifier {
   Future<void> refreshCatalog() async {
     catalogLoaded = false;
     await _ensureCatalog();
+    _mergeMyRecipes();
   }
 
   // ------------------------------------------------------------- profile
@@ -157,6 +269,10 @@ class AppState extends ChangeNotifier {
     final n = now ?? DateTime.now();
     final today = DateTime(n.year, n.month, n.day);
     final p = profile;
+    final bs = p?.budgetStart;
+    if (bs != null && p!.budgetFrequency == BudgetFrequency.custom && !today.isAfter(bs.add(Duration(days: p.customBudgetDays - 1)))) {
+      return bs;
+    }
     switch (p?.budgetFrequency ?? BudgetFrequency.weekly) {
       case BudgetFrequency.daily:
         return today;
@@ -400,6 +516,8 @@ class AppState extends ChangeNotifier {
       items: CalculationService.basketToItems(basket, newId),
       createdAt: DateTime.now(),
       planId: pl.id,
+      householdId: profile?.householdId ?? '',
+      updatedBy: profile?.name ?? '',
     );
     lists.insert(0, list);
     notifyListeners();
@@ -416,6 +534,8 @@ class AppState extends ChangeNotifier {
       budget: planBudgetFor(7),
       items: const [],
       createdAt: DateTime.now(),
+      householdId: profile?.householdId ?? '',
+      updatedBy: profile?.name ?? '',
     );
     lists.insert(0, list);
     notifyListeners();
@@ -425,7 +545,8 @@ class AppState extends ChangeNotifier {
 
   ShoppingList? listById(String id) => lists.where((l) => l.id == id).maybeFirst;
 
-  Future<void> saveList(ShoppingList l) async {
+  Future<void> saveList(ShoppingList list) async {
+    final l = list.shared ? list.copyWith(updatedBy: profile?.name ?? '') : list;
     final i = lists.indexWhere((x) => x.id == l.id);
     i >= 0 ? lists[i] = l : lists.insert(0, l);
     notifyListeners();
@@ -435,7 +556,11 @@ class AppState extends ChangeNotifier {
   Future<void> deleteList(ShoppingList l) async {
     lists.removeWhere((x) => x.id == l.id);
     notifyListeners();
-    await repo.deleteList(l.userId, l.id);
+    if (l.shared) {
+      await repo.deleteSharedList(l.householdId, l.id);
+    } else {
+      await repo.deleteList(l.userId, l.id);
+    }
   }
 
   Future<void> updateItem(ShoppingList l, ShoppingItem item) =>

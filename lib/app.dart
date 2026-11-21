@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'core/i18n.dart';
 import 'core/theme.dart';
 import 'screens/auth/welcome_screen.dart';
 import 'screens/onboarding/onboarding_flow.dart';
@@ -16,13 +17,16 @@ class GrubApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ValueListenableBuilder<String>(
+      valueListenable: Lang.notifier,
+      builder: (_, lang, __) => MaterialApp(
+      key: ValueKey(lang),
       title: 'Grub',
       debugShowCheckedModeBanner: false,
       theme: GrubTheme.light(),
       locale: const Locale('en', 'KE'),
       home: kIsWeb && Uri.base.fragment == 'logo' ? const _LogoPreview() : const _Gate(),
-    );
+    ));
   }
 }
 

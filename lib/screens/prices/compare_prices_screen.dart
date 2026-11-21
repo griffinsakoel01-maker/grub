@@ -7,6 +7,7 @@ import '../../models/catalog.dart';
 import '../../services/calculation_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
+import '../../core/i18n.dart';
 
 /// Supermarket price comparison: whole basket per shop + single products.
 class ComparePricesScreen extends StatefulWidget {
@@ -48,10 +49,10 @@ class _ComparePricesScreenState extends State<ComparePricesScreen> with SingleTi
     final s = context.watch<AppState>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Compare prices'),
+        title: const T('Compare prices'),
         actions: [
           IconButton(
-            tooltip: 'Supermarkets near me',
+            tooltip: tr('Supermarkets near me'),
             icon: const Icon(Icons.map_outlined),
             onPressed: () => launchUrl(
               Uri.parse('https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent('supermarket near ${s.profile?.county.isNotEmpty == true ? s.profile!.county : 'me'} Kenya')}'),
@@ -130,7 +131,7 @@ class _ComparePricesScreenState extends State<ComparePricesScreen> with SingleTi
                 TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero, minimumSize: const Size(0, 30)),
                   onPressed: () => _select(s, b.supermarketId),
-                  child: const Text('Shop here'),
+                  child: const T('Shop here'),
                 ),
               ]),
             ]),
@@ -142,15 +143,15 @@ class _ComparePricesScreenState extends State<ComparePricesScreen> with SingleTi
           const SizedBox(width: 12),
           const Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('Mix & match', style: TextStyle(fontWeight: FontWeight.w700)),
-              Text('Cheapest price for each item, any shop', style: TextStyle(fontSize: 12, color: GrubColors.muted)),
+              T('Mix & match', style: TextStyle(fontWeight: FontWeight.w700)),
+              T('Cheapest price for each item, any shop', style: TextStyle(fontSize: 12, color: GrubColors.muted)),
             ]),
           ),
           Text(mix.total.format(), style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800)),
         ]),
       ),
       const SizedBox(height: 10),
-      const Text('Totals include whole packages (e.g. a 2 kg packet even if you need 1.5 kg). Prices are labelled by source.',
+      const T('Totals include whole packages (e.g. a 2 kg packet even if you need 1.5 kg). Prices are labelled by source.',
           style: TextStyle(fontSize: 11, color: GrubColors.muted)),
     ]);
   }
@@ -183,7 +184,7 @@ class _ComparePricesScreenState extends State<ComparePricesScreen> with SingleTi
       Padding(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
         child: TextField(
-          decoration: const InputDecoration(hintText: 'Search a product (e.g. rice)', prefixIcon: Icon(Icons.search)),
+          decoration: InputDecoration(hintText: tr('Search a product (e.g. rice)'), prefixIcon: Icon(Icons.search)),
           onChanged: (v) => setState(() {
             _q = v;
             _productId = null;
@@ -215,10 +216,10 @@ class _ComparePricesScreenState extends State<ComparePricesScreen> with SingleTi
         EmojiTile(p.emoji, size: 52),
         const SizedBox(width: 12),
         Expanded(child: Text(p.name, style: Theme.of(context).textTheme.titleLarge)),
-        TextButton(onPressed: () => setState(() => _productId = null), child: const Text('Change')),
+        TextButton(onPressed: () => setState(() => _productId = null), child: const T('Change')),
       ]),
       const SizedBox(height: 12),
-      if (prices.isEmpty) const Text('No prices recorded yet.'),
+      if (prices.isEmpty) const T('No prices recorded yet.'),
       for (final pr in prices)
         Padding(
           padding: const EdgeInsets.only(bottom: 8),
@@ -246,7 +247,7 @@ class _ComparePricesScreenState extends State<ComparePricesScreen> with SingleTi
               Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
                 Text(pr.price.format(), style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
                 if (pr == cheapest)
-                  const Text('Cheapest', style: TextStyle(fontSize: 11, color: GrubColors.green, fontWeight: FontWeight.w700))
+                  const T('Cheapest', style: TextStyle(fontSize: 11, color: GrubColors.green, fontWeight: FontWeight.w700))
                 else if (cheapest != null && cheapest.packageSize == pr.packageSize)
                   Text('+${(pr.price - cheapest.price).format()}', style: const TextStyle(fontSize: 11, color: GrubColors.danger)),
               ]),

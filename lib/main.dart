@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
 import 'core/config.dart';
+import 'core/i18n.dart';
 import 'data/firestore_repository.dart';
 import 'data/local_repository.dart';
 import 'data/repository.dart';
@@ -27,6 +28,8 @@ Future<void> main() async {
     AppConfig.introSeen = prefs.getBool('intro_seen') ?? false;
     await prefs.setBool('intro_seen', true);
   } catch (_) {}
+
+  await Lang.load();
 
   Repository repo;
   AuthService auth;

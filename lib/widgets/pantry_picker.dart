@@ -6,6 +6,7 @@ import '../core/units.dart';
 import '../models/catalog.dart';
 import '../state/app_state.dart';
 import 'common.dart';
+import '../core/i18n.dart';
 
 /// Photo/emoji grid of ingredients, grouped by category, with search.
 /// Tap = "I have some" (one default package). Tap again = enter exact amount.
@@ -47,7 +48,7 @@ class _PantryPickerState extends State<PantryPicker> {
 
     return Column(children: [
       TextField(
-        decoration: const InputDecoration(hintText: 'Search foods', prefixIcon: Icon(Icons.search)),
+        decoration: InputDecoration(hintText: tr('Search foods'), prefixIcon: Icon(Icons.search)),
         onChanged: (v) => setState(() => _q = v),
       ),
       const SizedBox(height: 10),
@@ -125,7 +126,7 @@ Future<double?> showQuantitySheet(BuildContext context, Product p, double curren
                 controller: ctrl,
                 autofocus: true,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                decoration: const InputDecoration(hintText: 'Amount'),
+                decoration: InputDecoration(hintText: tr('Amount')),
               ),
             ),
             const SizedBox(width: 10),
@@ -141,7 +142,7 @@ Future<double?> showQuantitySheet(BuildContext context, Product p, double curren
           ]),
           const SizedBox(height: 18),
           Row(children: [
-            Expanded(child: OutlinedButton(onPressed: () => Navigator.pop(ctx, 0.0), child: const Text('Remove'))),
+            Expanded(child: OutlinedButton(onPressed: () => Navigator.pop(ctx, 0.0), child: const T('Remove'))),
             const SizedBox(width: 10),
             Expanded(
               child: FilledButton(
@@ -150,7 +151,7 @@ Future<double?> showQuantitySheet(BuildContext context, Product p, double curren
                   if (v == null || v < 0) return;
                   Navigator.pop(ctx, Units.toBase(v, unit, p.unit));
                 },
-                child: const Text('Save'),
+                child: const T('Save'),
               ),
             ),
           ]),

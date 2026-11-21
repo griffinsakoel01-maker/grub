@@ -12,6 +12,7 @@ import '../../services/meal_planner_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../recipes/recipe_detail_screen.dart';
+import '../../core/i18n.dart';
 
 /// "Just today" mode for people who buy food day by day (kadogo):
 /// "I have KSh 300 for supper for 4" → meals that fit, with what to buy in
@@ -105,11 +106,11 @@ class _TodayScreenState extends State<TodayScreen> {
     final budget = Money.ksh(int.tryParse(_amount.text) ?? 0);
     final options = budget.cents > 0 ? _options(s, budget) : <_TodayOption>[];
     return Scaffold(
-      appBar: AppBar(title: const Text('Just today')),
+      appBar: AppBar(title: const T('Just today')),
       body: ListView(padding: const EdgeInsets.fromLTRB(16, 0, 16, 24), children: [
         SoftCard(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const Text('How much do you have?', style: TextStyle(fontWeight: FontWeight.w700)),
+            const T('How much do you have?', style: TextStyle(fontWeight: FontWeight.w700)),
             const SizedBox(height: 6),
             TextField(
               controller: _amount,
@@ -126,15 +127,15 @@ class _TodayScreenState extends State<TodayScreen> {
             ]),
             const Divider(height: 24),
             Row(children: [
-              const Expanded(child: Text('People eating', style: TextStyle(fontWeight: FontWeight.w600))),
+              const Expanded(child: T('People eating', style: TextStyle(fontWeight: FontWeight.w600))),
               CountStepper(value: _people, min: 1, max: 20, onChanged: (v) => setState(() => _people = v.toInt())),
             ]),
             const SizedBox(height: 10),
             SegmentedButton<MealSlot>(
               segments: const [
-                ButtonSegment(value: MealSlot.breakfast, label: Text('Breakfast')),
-                ButtonSegment(value: MealSlot.lunch, label: Text('Lunch')),
-                ButtonSegment(value: MealSlot.dinner, label: Text('Supper')),
+                ButtonSegment(value: MealSlot.breakfast, label: T('Breakfast')),
+                ButtonSegment(value: MealSlot.lunch, label: T('Lunch')),
+                ButtonSegment(value: MealSlot.dinner, label: T('Supper')),
               ],
               selected: {_meal},
               showSelectedIcon: false,
@@ -145,7 +146,7 @@ class _TodayScreenState extends State<TodayScreen> {
               activeColor: GrubColors.green,
               value: _usePantry,
               onChanged: (v) => setState(() => _usePantry = v),
-              title: const Text('Use what I already have'),
+              title: const T('Use what I already have'),
               subtitle: Text(s.pantry.isEmpty ? 'Your pantry is empty' : '${s.pantry.length} items in your pantry'),
             ),
           ]),
@@ -168,7 +169,7 @@ class _TodayScreenState extends State<TodayScreen> {
           ),
         for (var i = 0; i < options.length; i++) _card(context, options[i], i, budget),
         const SizedBox(height: 8),
-        const Text('Prices: shop receipts and KNBS averages where we have them, otherwise estimates. Market prices may be lower.',
+        const T('Prices: shop receipts and KNBS averages where we have them, otherwise estimates. Market prices may be lower.',
             style: TextStyle(color: GrubColors.muted, fontSize: 11)),
       ]),
     );
@@ -194,12 +195,14 @@ class _TodayScreenState extends State<TodayScreen> {
             ),
             Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
               Text(o.total.format(), style: const TextStyle(fontWeight: FontWeight.w800, color: GrubColors.greenDark)),
-              Text('${left.format()} left', style: const TextStyle(fontSize: 11, color: GrubColors.green)),
+              Text('${tr('likely')} ${priceRangeLabel(o.lines.map((l) => (l.cost, l.status == null ? 'demo' : priceStatusKey(l.status!))))}',
+                  style: const TextStyle(fontSize: 10, color: GrubColors.muted)),
+              Text('${left.format()} ${tr('left')}', style: const TextStyle(fontSize: 11, color: GrubColors.green)),
             ]),
           ]),
           if (open) ...[
             const Divider(height: 20),
-            if (o.lines.isEmpty) const Text('You have everything already 🎉'),
+            if (o.lines.isEmpty) const T('You have everything already 🎉'),
             for (final l in o.lines)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
@@ -219,7 +222,7 @@ class _TodayScreenState extends State<TodayScreen> {
                   style: OutlinedButton.styleFrom(minimumSize: const Size(0, 42)),
                   onPressed: () => launchUrl(Uri.parse('https://wa.me/?text=${Uri.encodeComponent(_shareText(o, budget))}'), mode: LaunchMode.externalApplication),
                   icon: const Icon(Icons.send, size: 18),
-                  label: const Text('WhatsApp'),
+                  label: const T('WhatsApp'),
                 ),
               ),
               const SizedBox(width: 10),
@@ -228,7 +231,7 @@ class _TodayScreenState extends State<TodayScreen> {
                   style: FilledButton.styleFrom(minimumSize: const Size(0, 42)),
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (_) => RecipeDetailScreen(recipeId: o.recipe.id, servings: _people.toDouble()))),
-                  child: const Text('How to cook'),
+                  child: const T('How to cook'),
                 ),
               ),
             ]),

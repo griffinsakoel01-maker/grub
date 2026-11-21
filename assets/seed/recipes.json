@@ -1358,6 +1358,607 @@
   }
  },
  {
+  "id": "wali_nazi",
+  "name": "Wali wa nazi",
+  "category": "lunch",
+  "emoji": "🥥",
+  "description": "Coastal coconut rice – soft, fragrant, perfect with beans or fish. #coast",
+  "prepMinutes": 5,
+  "cookMinutes": 30,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "coast"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "rice",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "coconut_milk",
+    "amount": 400,
+    "unit": "ml"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Wash the rice.",
+   "Bring coconut milk, 400 ml water and salt to a boil.",
+   "Add rice, cover and cook on low 20–25 minutes until the liquid is absorbed. Fluff and serve."
+  ],
+  "nutrition": {
+   "kcal": 520,
+   "protein": 8,
+   "carbs": 86,
+   "fat": 16
+  }
+ },
+ {
+  "id": "maharagwe_nazi",
+  "name": "Maharagwe ya nazi",
+  "category": "dinner",
+  "emoji": "🫘",
+  "description": "Beans simmered in coconut milk, Mombasa style. #coast",
+  "prepMinutes": 10,
+  "cookMinutes": 70,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "coast",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "beans",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "coconut_milk",
+    "amount": 400,
+    "unit": "ml"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "curry_powder",
+    "amount": 1,
+    "unit": "tsp"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 2,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Soak beans overnight; boil 60 minutes until soft.",
+   "Fry onion, add tomatoes and curry powder.",
+   "Add the beans and coconut milk, simmer 10 minutes until creamy. Serve with chapati or wali wa nazi."
+  ],
+  "nutrition": {
+   "kcal": 430,
+   "protein": 18,
+   "carbs": 50,
+   "fat": 18
+  }
+ },
+ {
+  "id": "samaki_kupaka",
+  "name": "Samaki wa kupaka",
+  "category": "dinner",
+  "emoji": "🐟",
+  "description": "Grilled fish in a lemon-coconut sauce. #coast",
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "servings": 4,
+  "tags": [
+   "coast"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "tilapia",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "coconut_milk",
+    "amount": 400,
+    "unit": "ml"
+   },
+   {
+    "productId": "lemons",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "garlic",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "ginger",
+    "amount": 20,
+    "unit": "g"
+   },
+   {
+    "productId": "chilli",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "curry_powder",
+    "amount": 1,
+    "unit": "tsp"
+   },
+   {
+    "productId": "rice",
+    "amount": 400,
+    "unit": "g"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Rub the fish with salt, garlic, ginger and lemon; rest 10 minutes.",
+   "Grill or pan-fry the fish until cooked.",
+   "Simmer coconut milk with curry powder, chilli and lemon juice 5 minutes.",
+   "Pour the sauce over the fish and simmer 5 minutes. Serve with rice."
+  ],
+  "nutrition": {
+   "kcal": 610,
+   "protein": 38,
+   "carbs": 70,
+   "fat": 20
+  }
+ },
+ {
+  "id": "mahamri",
+  "name": "Mahamri and chai",
+  "category": "breakfast",
+  "emoji": "🥯",
+  "description": "Coastal coconut-cardamom doughnuts with spiced tea. #coast",
+  "prepMinutes": 25,
+  "cookMinutes": 25,
+  "servings": 4,
+  "tags": [
+   "vegetarian",
+   "coast"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "wheat_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "coconut_milk",
+    "amount": 250,
+    "unit": "ml"
+   },
+   {
+    "productId": "sugar",
+    "amount": 100,
+    "unit": "g"
+   },
+   {
+    "productId": "cardamom",
+    "amount": 5,
+    "unit": "g"
+   },
+   {
+    "productId": "yeast",
+    "amount": 1,
+    "unit": "tsp"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 400,
+    "unit": "ml"
+   },
+   {
+    "productId": "milk",
+    "amount": 500,
+    "unit": "ml"
+   },
+   {
+    "productId": "tea_leaves",
+    "amount": 2,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Mix flour, sugar, cardamom and yeast; add warm coconut milk and knead to a soft dough.",
+   "Let it rise 1 hour, roll out and cut into triangles.",
+   "Deep fry until golden.",
+   "Boil milk with water, tea leaves and sugar for the chai."
+  ],
+  "nutrition": {
+   "kcal": 560,
+   "protein": 10,
+   "carbs": 80,
+   "fat": 22
+  }
+ },
+ {
+  "id": "muthokoi",
+  "name": "Muthokoi",
+  "category": "lunch",
+  "emoji": "🌽",
+  "description": "Ukambani dehulled maize cooked with beans and greens. #eastern",
+  "prepMinutes": 10,
+  "cookMinutes": 90,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "eastern",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "muthokoi",
+    "amount": 400,
+    "unit": "g"
+   },
+   {
+    "productId": "beans",
+    "amount": 300,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "sukuma",
+    "amount": 1,
+    "unit": "bunch"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Soak muthokoi and beans overnight; boil together 80 minutes.",
+   "Fry onion and tomatoes, add chopped sukuma.",
+   "Stir in the muthokoi and beans, season and simmer 5 minutes."
+  ],
+  "nutrition": {
+   "kcal": 440,
+   "protein": 17,
+   "carbs": 78,
+   "fat": 9
+  }
+ },
+ {
+  "id": "mrenda_ugali",
+  "name": "Ugali na mrenda",
+  "category": "dinner",
+  "emoji": "🌿",
+  "description": "Western-style slippery mrenda greens with ugali. #western",
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "western",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "maize_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "mrenda",
+    "amount": 2,
+    "unit": "bunch"
+   },
+   {
+    "productId": "kienyeji_veg",
+    "amount": 1,
+    "unit": "bunch"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "bicarb",
+    "amount": 0.25,
+    "unit": "tsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Wash and chop the mrenda and kienyeji greens.",
+   "Boil with a pinch of bicarb 10 minutes until soft and slippery.",
+   "Add onion, tomato and salt, simmer 5 minutes.",
+   "Cook a firm ugali and serve together."
+  ],
+  "nutrition": {
+   "kcal": 420,
+   "protein": 12,
+   "carbs": 86,
+   "fat": 3
+  }
+ },
+ {
+  "id": "kuku_kienyeji",
+  "name": "Kuku kienyeji na ugali",
+  "category": "dinner",
+  "emoji": "🍗",
+  "description": "Slow-cooked chicken stew with ugali, Luhya/Luo style. #western",
+  "prepMinutes": 20,
+  "cookMinutes": 70,
+  "servings": 5,
+  "tags": [
+   "western"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "chicken",
+    "amount": 1200,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 3,
+    "unit": "pcs"
+   },
+   {
+    "productId": "garlic",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "dhania",
+    "amount": 1,
+    "unit": "bunch"
+   },
+   {
+    "productId": "maize_flour",
+    "amount": 600,
+    "unit": "g"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Cut the chicken; boil with salt 40–50 minutes until tender.",
+   "Fry onion and garlic, add tomatoes and cook to a paste.",
+   "Add chicken and its soup, simmer 15 minutes; finish with dhania.",
+   "Serve with ugali."
+  ],
+  "nutrition": {
+   "kcal": 720,
+   "protein": 45,
+   "carbs": 82,
+   "fat": 22
+  }
+ },
+ {
+  "id": "ugali_mala",
+  "name": "Ugali na mala",
+  "category": "dinner",
+  "emoji": "🥛",
+  "description": "Kalenjin favourite – millet ugali with mala and greens. #riftvalley",
+  "prepMinutes": 5,
+  "cookMinutes": 20,
+  "servings": 4,
+  "tags": [
+   "vegetarian",
+   "riftvalley",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "millet_flour",
+    "amount": 300,
+    "unit": "g"
+   },
+   {
+    "productId": "maize_flour",
+    "amount": 300,
+    "unit": "g"
+   },
+   {
+    "productId": "mala",
+    "amount": 1000,
+    "unit": "ml"
+   },
+   {
+    "productId": "managu",
+    "amount": 1,
+    "unit": "bunch"
+   },
+   {
+    "productId": "salt",
+    "amount": 0.5,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Cook a firm ugali from the mixed millet and maize flour.",
+   "Boil the managu greens 10 minutes with a pinch of salt.",
+   "Serve the ugali with the greens and a glass of cold mala."
+  ],
+  "nutrition": {
+   "kcal": 560,
+   "protein": 18,
+   "carbs": 90,
+   "fat": 12
+  }
+ },
+ {
+  "id": "mihogo",
+  "name": "Fried mihogo",
+  "category": "snack",
+  "emoji": "🥔",
+  "description": "Crispy coastal cassava with chilli and lemon. #coast",
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "coast"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "cassava",
+    "amount": 1000,
+    "unit": "g"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 400,
+    "unit": "ml"
+   },
+   {
+    "productId": "lemons",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "chilli",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Peel cassava and cut into wedges; boil 15 minutes until just soft.",
+   "Drain, then deep fry until golden.",
+   "Sprinkle salt and chilli, squeeze lemon on top."
+  ],
+  "nutrition": {
+   "kcal": 380,
+   "protein": 2,
+   "carbs": 68,
+   "fat": 12
+  }
+ },
+ {
+  "id": "nduma_tea",
+  "name": "Nduma and tea",
+  "category": "breakfast",
+  "emoji": "🍠",
+  "description": "Boiled arrowroots with milky tea – a Central Kenya classic. #central",
+  "prepMinutes": 5,
+  "cookMinutes": 40,
+  "servings": 4,
+  "tags": [
+   "vegetarian",
+   "central"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "arrowroots",
+    "amount": 1000,
+    "unit": "g"
+   },
+   {
+    "productId": "milk",
+    "amount": 600,
+    "unit": "ml"
+   },
+   {
+    "productId": "tea_leaves",
+    "amount": 2,
+    "unit": "tsp"
+   },
+   {
+    "productId": "sugar",
+    "amount": 3,
+    "unit": "tbsp"
+   }
+  ],
+  "instructions": [
+   "Peel and boil arrowroots in salted water 35–40 minutes until soft.",
+   "Boil milk with water, tea leaves and sugar.",
+   "Serve the nduma with hot tea."
+  ],
+  "nutrition": {
+   "kcal": 360,
+   "protein": 8,
+   "carbs": 72,
+   "fat": 5
+  }
+ },
+ {
   "id": "fruit_bowl",
   "name": "Fruit bowl",
   "category": "snack",
