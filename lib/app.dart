@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,12 +34,12 @@ class _Gate extends StatefulWidget {
 }
 
 class _GateState extends State<_Gate> {
-  bool _splashDone = false;
+  // On the web the same animation already played in web/index.html while the app downloaded.
+  bool _splashDone = kIsWeb;
+  bool _keptSplash = kIsWeb;
 
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(milliseconds: 1600), () {
+  void _onSplashFinished() {
+    Future.delayed(const Duration(milliseconds: 350), () {
       if (mounted) setState(() => _splashDone = true);
     });
   }
@@ -48,11 +49,12 @@ class _GateState extends State<_Gate> {
     final s = context.watch<AppState>();
     Widget child;
     if (!_splashDone || s.status == LoadStatus.idle) {
-      child = const SplashScreen();
+      _keptSplash = true;
+      child = SplashScreen(onFinished: _onSplashFinished);
     } else if (!s.signedIn) {
       child = const WelcomeScreen();
     } else if (s.status == LoadStatus.loading && s.profile == null) {
-      child = const Scaffold(body: LoadingView(message: 'Getting your kitchen ready…'));
+      child = _keptSplash ? const _LogoHold() : const Scaffold(body: LoadingView(message: 'Getting your kitchen ready…'));
     } else if (s.status == LoadStatus.error && s.profile == null) {
       child = Scaffold(
         body: EmptyState(
@@ -70,4 +72,21 @@ class _GateState extends State<_Gate> {
     }
     return AnimatedSwitcher(duration: const Duration(milliseconds: 400), child: KeyedSubtree(key: ValueKey(child.runtimeType), child: child));
   }
+}
+
+/// Final logo frame with a small progress bar, shown if data is still loading
+/// after the animation has finished.
+class _LogoHold extends StatelessWidget {
+  const _LogoHold();
+  @override
+  Widget build(BuildContext context) => const Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            Padding(padding: EdgeInsets.symmetric(horizontal: 32), child: GrubLogo(height: 220)),
+            SizedBox(height: 24),
+            SizedBox(width: 120, child: LinearProgressIndicator(minHeight: 4)),
+          ]),
+        ),
+      );
 }
