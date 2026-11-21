@@ -1,0 +1,1002 @@
+[
+ {
+  "id": "maize_flour",
+  "name": "Maize flour (unga)",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🌽",
+  "defaultPackageSize": 2000,
+  "defaultPackageLabel": "2 kg packet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "rice",
+  "name": "Rice (pishori)",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🍚",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg packet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "rice_white"
+  ],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "rice_white",
+  "name": "Rice (white, long grain)",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🍚",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg packet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "wheat_flour",
+  "name": "Wheat flour (all purpose)",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🌾",
+  "defaultPackageSize": 2000,
+  "defaultPackageLabel": "2 kg packet",
+  "allergens": [
+   "gluten"
+  ],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "bread",
+  "name": "Bread (400 g loaf)",
+  "category": "cereals",
+  "unit": "pcs",
+  "emoji": "🍞",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 loaf",
+  "allergens": [
+   "gluten"
+  ],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 5,
+  "imageUrl": ""
+ },
+ {
+  "id": "spaghetti",
+  "name": "Spaghetti",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🍝",
+  "defaultPackageSize": 400,
+  "defaultPackageLabel": "400 g packet",
+  "allergens": [
+   "gluten"
+  ],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "porridge_flour",
+  "name": "Porridge flour (wimbi mix)",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🥣",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg packet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "oats",
+  "name": "Oats",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🥣",
+  "defaultPackageSize": 500,
+  "defaultPackageLabel": "500 g packet",
+  "allergens": [
+   "gluten"
+  ],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "porridge_flour"
+  ],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "maize_dry",
+  "name": "Maize (dry, for githeri)",
+  "category": "cereals",
+  "unit": "g",
+  "emoji": "🌽",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "beans",
+  "name": "Beans (rosecoco)",
+  "category": "legumes",
+  "unit": "g",
+  "emoji": "🫘",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "ndengu"
+  ],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "ndengu",
+  "name": "Green grams (ndengu)",
+  "category": "legumes",
+  "unit": "g",
+  "emoji": "🫛",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "beans"
+  ],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "lentils",
+  "name": "Lentils (kamande)",
+  "category": "legumes",
+  "unit": "g",
+  "emoji": "🫘",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "beans"
+  ],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "peas",
+  "name": "Green peas",
+  "category": "legumes",
+  "unit": "g",
+  "emoji": "🫛",
+  "defaultPackageSize": 500,
+  "defaultPackageLabel": "500 g",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 5,
+  "imageUrl": ""
+ },
+ {
+  "id": "groundnuts",
+  "name": "Groundnuts (roasted)",
+  "category": "legumes",
+  "unit": "g",
+  "emoji": "🥜",
+  "defaultPackageSize": 250,
+  "defaultPackageLabel": "250 g packet",
+  "allergens": [
+   "peanuts"
+  ],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 90,
+  "imageUrl": ""
+ },
+ {
+  "id": "sukuma",
+  "name": "Sukuma wiki (kale)",
+  "category": "vegetables",
+  "unit": "bunch",
+  "emoji": "🥬",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 bunch",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "cabbage"
+  ],
+  "shelfLifeDays": 3,
+  "imageUrl": ""
+ },
+ {
+  "id": "spinach",
+  "name": "Spinach",
+  "category": "vegetables",
+  "unit": "bunch",
+  "emoji": "🥬",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 bunch",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "sukuma"
+  ],
+  "shelfLifeDays": 3,
+  "imageUrl": ""
+ },
+ {
+  "id": "managu",
+  "name": "Managu (African nightshade)",
+  "category": "vegetables",
+  "unit": "bunch",
+  "emoji": "🌿",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 bunch",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "sukuma"
+  ],
+  "shelfLifeDays": 3,
+  "imageUrl": ""
+ },
+ {
+  "id": "kienyeji_veg",
+  "name": "Terere / kunde (traditional veg)",
+  "category": "vegetables",
+  "unit": "bunch",
+  "emoji": "🌿",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 bunch",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "sukuma"
+  ],
+  "shelfLifeDays": 3,
+  "imageUrl": ""
+ },
+ {
+  "id": "cabbage",
+  "name": "Cabbage",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🥬",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 head",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 10,
+  "imageUrl": ""
+ },
+ {
+  "id": "tomatoes",
+  "name": "Tomatoes",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🍅",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 6,
+  "imageUrl": ""
+ },
+ {
+  "id": "onions",
+  "name": "Onions (red)",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🧅",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 21,
+  "imageUrl": ""
+ },
+ {
+  "id": "carrots",
+  "name": "Carrots",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🥕",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 14,
+  "imageUrl": ""
+ },
+ {
+  "id": "potatoes",
+  "name": "Potatoes (waru)",
+  "category": "vegetables",
+  "unit": "g",
+  "emoji": "🥔",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 21,
+  "imageUrl": ""
+ },
+ {
+  "id": "sweet_potatoes",
+  "name": "Sweet potatoes",
+  "category": "vegetables",
+  "unit": "g",
+  "emoji": "🍠",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 14,
+  "imageUrl": ""
+ },
+ {
+  "id": "matoke",
+  "name": "Matoke (green bananas)",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🍌",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 finger",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "potatoes"
+  ],
+  "shelfLifeDays": 7,
+  "imageUrl": ""
+ },
+ {
+  "id": "pumpkin_leaves",
+  "name": "Pumpkin leaves",
+  "category": "vegetables",
+  "unit": "bunch",
+  "emoji": "🌿",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 bunch",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "sukuma"
+  ],
+  "shelfLifeDays": 3,
+  "imageUrl": ""
+ },
+ {
+  "id": "dhania",
+  "name": "Coriander (dhania)",
+  "category": "vegetables",
+  "unit": "bunch",
+  "emoji": "🌿",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 bunch",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 4,
+  "imageUrl": ""
+ },
+ {
+  "id": "garlic",
+  "name": "Garlic",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🧄",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 bulb",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 30,
+  "imageUrl": ""
+ },
+ {
+  "id": "ginger",
+  "name": "Ginger",
+  "category": "vegetables",
+  "unit": "g",
+  "emoji": "🫚",
+  "defaultPackageSize": 100,
+  "defaultPackageLabel": "100 g",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 21,
+  "imageUrl": ""
+ },
+ {
+  "id": "green_pepper",
+  "name": "Green pepper (hoho)",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🫑",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 7,
+  "imageUrl": ""
+ },
+ {
+  "id": "chilli",
+  "name": "Chilli (pilipili)",
+  "category": "vegetables",
+  "unit": "pcs",
+  "emoji": "🌶️",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 10,
+  "imageUrl": ""
+ },
+ {
+  "id": "avocado",
+  "name": "Avocado",
+  "category": "fruits",
+  "unit": "pcs",
+  "emoji": "🥑",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 5,
+  "imageUrl": ""
+ },
+ {
+  "id": "bananas",
+  "name": "Bananas (ripe)",
+  "category": "fruits",
+  "unit": "pcs",
+  "emoji": "🍌",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "oranges"
+  ],
+  "shelfLifeDays": 5,
+  "imageUrl": ""
+ },
+ {
+  "id": "oranges",
+  "name": "Oranges",
+  "category": "fruits",
+  "unit": "pcs",
+  "emoji": "🍊",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "bananas"
+  ],
+  "shelfLifeDays": 10,
+  "imageUrl": ""
+ },
+ {
+  "id": "mangoes",
+  "name": "Mangoes",
+  "category": "fruits",
+  "unit": "pcs",
+  "emoji": "🥭",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 piece",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "bananas"
+  ],
+  "shelfLifeDays": 6,
+  "imageUrl": ""
+ },
+ {
+  "id": "watermelon",
+  "name": "Watermelon",
+  "category": "fruits",
+  "unit": "pcs",
+  "emoji": "🍉",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 whole",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "bananas"
+  ],
+  "shelfLifeDays": 10,
+  "imageUrl": ""
+ },
+ {
+  "id": "pawpaw",
+  "name": "Pawpaw",
+  "category": "fruits",
+  "unit": "pcs",
+  "emoji": "🍈",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 whole",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "bananas"
+  ],
+  "shelfLifeDays": 6,
+  "imageUrl": ""
+ },
+ {
+  "id": "beef",
+  "name": "Beef (with bone)",
+  "category": "meat",
+  "unit": "g",
+  "emoji": "🥩",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "meat"
+  ],
+  "alternatives": [
+   "chicken",
+   "beans"
+  ],
+  "shelfLifeDays": 3,
+  "imageUrl": ""
+ },
+ {
+  "id": "chicken",
+  "name": "Chicken (kienyeji / broiler)",
+  "category": "meat",
+  "unit": "g",
+  "emoji": "🍗",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "meat"
+  ],
+  "alternatives": [
+   "beef",
+   "eggs"
+  ],
+  "shelfLifeDays": 3,
+  "imageUrl": ""
+ },
+ {
+  "id": "tilapia",
+  "name": "Tilapia (whole fish)",
+  "category": "meat",
+  "unit": "pcs",
+  "emoji": "🐟",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 fish (~500 g)",
+  "allergens": [
+   "fish"
+  ],
+  "dietTags": [
+   "fish"
+  ],
+  "alternatives": [
+   "omena"
+  ],
+  "shelfLifeDays": 2,
+  "imageUrl": ""
+ },
+ {
+  "id": "omena",
+  "name": "Omena (dried silver fish)",
+  "category": "meat",
+  "unit": "g",
+  "emoji": "🐟",
+  "defaultPackageSize": 500,
+  "defaultPackageLabel": "500 g",
+  "allergens": [
+   "fish"
+  ],
+  "dietTags": [
+   "fish"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 60,
+  "imageUrl": ""
+ },
+ {
+  "id": "minced_beef",
+  "name": "Minced beef",
+  "category": "meat",
+  "unit": "g",
+  "emoji": "🥩",
+  "defaultPackageSize": 500,
+  "defaultPackageLabel": "500 g",
+  "allergens": [],
+  "dietTags": [
+   "meat"
+  ],
+  "alternatives": [
+   "beans"
+  ],
+  "shelfLifeDays": 2,
+  "imageUrl": ""
+ },
+ {
+  "id": "milk",
+  "name": "Milk (fresh)",
+  "category": "dairy",
+  "unit": "ml",
+  "emoji": "🥛",
+  "defaultPackageSize": 500,
+  "defaultPackageLabel": "500 ml packet",
+  "allergens": [
+   "dairy"
+  ],
+  "dietTags": [
+   "dairy"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 4,
+  "imageUrl": ""
+ },
+ {
+  "id": "eggs",
+  "name": "Eggs",
+  "category": "dairy",
+  "unit": "pcs",
+  "emoji": "🥚",
+  "defaultPackageSize": 1,
+  "defaultPackageLabel": "1 egg",
+  "allergens": [
+   "eggs"
+  ],
+  "dietTags": [
+   "egg"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 21,
+  "imageUrl": ""
+ },
+ {
+  "id": "yoghurt",
+  "name": "Yoghurt",
+  "category": "dairy",
+  "unit": "ml",
+  "emoji": "🥛",
+  "defaultPackageSize": 500,
+  "defaultPackageLabel": "500 ml",
+  "allergens": [
+   "dairy"
+  ],
+  "dietTags": [
+   "dairy"
+  ],
+  "alternatives": [
+   "bananas"
+  ],
+  "shelfLifeDays": 10,
+  "imageUrl": ""
+ },
+ {
+  "id": "butter",
+  "name": "Margarine / butter",
+  "category": "dairy",
+  "unit": "g",
+  "emoji": "🧈",
+  "defaultPackageSize": 250,
+  "defaultPackageLabel": "250 g",
+  "allergens": [
+   "dairy"
+  ],
+  "dietTags": [
+   "dairy"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 60,
+  "imageUrl": ""
+ },
+ {
+  "id": "mala",
+  "name": "Mala (fermented milk)",
+  "category": "dairy",
+  "unit": "ml",
+  "emoji": "🥛",
+  "defaultPackageSize": 500,
+  "defaultPackageLabel": "500 ml",
+  "allergens": [
+   "dairy"
+  ],
+  "dietTags": [
+   "dairy"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 7,
+  "imageUrl": ""
+ },
+ {
+  "id": "cooking_oil",
+  "name": "Cooking oil",
+  "category": "cooking",
+  "unit": "ml",
+  "emoji": "🫗",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 litre",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "salt",
+  "name": "Salt",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🧂",
+  "defaultPackageSize": 500,
+  "defaultPackageLabel": "500 g packet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 730,
+  "imageUrl": ""
+ },
+ {
+  "id": "sugar",
+  "name": "Sugar",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🍬",
+  "defaultPackageSize": 1000,
+  "defaultPackageLabel": "1 kg",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 730,
+  "imageUrl": ""
+ },
+ {
+  "id": "tea_leaves",
+  "name": "Tea leaves",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🍵",
+  "defaultPackageSize": 250,
+  "defaultPackageLabel": "250 g packet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "royco",
+  "name": "Mchuzi mix / royco",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🥄",
+  "defaultPackageSize": 200,
+  "defaultPackageLabel": "200 g",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "pilau_masala",
+  "name": "Pilau masala",
+  "category": "spices",
+  "unit": "g",
+  "emoji": "🫙",
+  "defaultPackageSize": 50,
+  "defaultPackageLabel": "50 g",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "curry_powder",
+  "name": "Curry powder",
+  "category": "spices",
+  "unit": "g",
+  "emoji": "🫙",
+  "defaultPackageSize": 50,
+  "defaultPackageLabel": "50 g",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "tomato_paste",
+  "name": "Tomato paste",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🥫",
+  "defaultPackageSize": 70,
+  "defaultPackageLabel": "70 g sachet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [
+   "tomatoes"
+  ],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "coconut_milk",
+  "name": "Coconut milk",
+  "category": "cooking",
+  "unit": "ml",
+  "emoji": "🥥",
+  "defaultPackageSize": 400,
+  "defaultPackageLabel": "400 ml tin",
+  "allergens": [
+   "coconut"
+  ],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "baking_powder",
+  "name": "Baking powder",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🧁",
+  "defaultPackageSize": 100,
+  "defaultPackageLabel": "100 g",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ },
+ {
+  "id": "yeast",
+  "name": "Instant yeast",
+  "category": "cooking",
+  "unit": "g",
+  "emoji": "🧁",
+  "defaultPackageSize": 10,
+  "defaultPackageLabel": "10 g sachet",
+  "allergens": [],
+  "dietTags": [
+   "plant"
+  ],
+  "alternatives": [],
+  "shelfLifeDays": 365,
+  "imageUrl": ""
+ }
+]

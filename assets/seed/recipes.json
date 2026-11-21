@@ -1,0 +1,1509 @@
+[
+ {
+  "id": "tea_bread",
+  "name": "Tea and bread",
+  "category": "breakfast",
+  "emoji": "🍞",
+  "description": "Classic Kenyan chai with buttered bread.",
+  "prepMinutes": 5,
+  "cookMinutes": 10,
+  "servings": 2,
+  "tags": [
+   "vegetarian",
+   "quick"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "milk",
+    "amount": 300,
+    "unit": "ml"
+   },
+   {
+    "productId": "tea_leaves",
+    "amount": 2,
+    "unit": "tsp"
+   },
+   {
+    "productId": "sugar",
+    "amount": 2,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "bread",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "butter",
+    "amount": 20,
+    "unit": "g"
+   }
+  ],
+  "instructions": [
+   "Bring the milk and 200 ml water to a boil.",
+   "Add tea leaves and sugar, simmer 2 minutes, then strain.",
+   "Spread butter on the bread slices and serve with the tea."
+  ],
+  "nutrition": {
+   "kcal": 380,
+   "protein": 11,
+   "carbs": 55,
+   "fat": 13
+  }
+ },
+ {
+  "id": "mandazi",
+  "name": "Mandazi",
+  "category": "breakfast",
+  "emoji": "🥯",
+  "description": "Soft, lightly sweet fried dough – perfect with chai.",
+  "prepMinutes": 20,
+  "cookMinutes": 25,
+  "servings": 4,
+  "tags": [
+   "vegetarian"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "wheat_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "sugar",
+    "amount": 80,
+    "unit": "g"
+   },
+   {
+    "productId": "milk",
+    "amount": 250,
+    "unit": "ml"
+   },
+   {
+    "productId": "baking_powder",
+    "amount": 2,
+    "unit": "tsp"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 400,
+    "unit": "ml"
+   },
+   {
+    "productId": "butter",
+    "amount": 30,
+    "unit": "g"
+   }
+  ],
+  "instructions": [
+   "Mix flour, sugar and baking powder.",
+   "Rub in the butter, then add milk and knead to a soft dough.",
+   "Rest 15 minutes, roll out 1 cm thick and cut into triangles.",
+   "Deep fry in hot oil until golden on both sides. Drain on paper."
+  ],
+  "nutrition": {
+   "kcal": 520,
+   "protein": 10,
+   "carbs": 78,
+   "fat": 19
+  }
+ },
+ {
+  "id": "chapati_tea",
+  "name": "Chapati and tea",
+  "category": "breakfast",
+  "emoji": "🫓",
+  "description": "Layered soft chapatis with a cup of chai.",
+  "prepMinutes": 20,
+  "cookMinutes": 30,
+  "servings": 4,
+  "tags": [
+   "vegetarian"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "wheat_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 80,
+    "unit": "ml"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   },
+   {
+    "productId": "milk",
+    "amount": 600,
+    "unit": "ml"
+   },
+   {
+    "productId": "tea_leaves",
+    "amount": 4,
+    "unit": "tsp"
+   },
+   {
+    "productId": "sugar",
+    "amount": 3,
+    "unit": "tbsp"
+   }
+  ],
+  "instructions": [
+   "Mix flour and salt, add warm water gradually and knead a soft dough.",
+   "Divide into balls, roll out, oil, roll up and coil; rest 10 minutes.",
+   "Roll each coil flat and cook on a hot pan, oiling both sides until golden.",
+   "Boil milk with water, tea leaves and sugar; strain and serve."
+  ],
+  "nutrition": {
+   "kcal": 560,
+   "protein": 14,
+   "carbs": 85,
+   "fat": 18
+  }
+ },
+ {
+  "id": "uji",
+  "name": "Porridge (uji wa wimbi)",
+  "category": "breakfast",
+  "emoji": "🥣",
+  "description": "Warm millet porridge – filling and cheap.",
+  "prepMinutes": 2,
+  "cookMinutes": 15,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "quick"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "porridge_flour",
+    "amount": 200,
+    "unit": "g"
+   },
+   {
+    "productId": "sugar",
+    "amount": 4,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "milk",
+    "amount": 200,
+    "unit": "ml"
+   }
+  ],
+  "instructions": [
+   "Mix the flour with 300 ml cold water into a smooth paste.",
+   "Bring 1 litre water to a boil, stir in the paste.",
+   "Simmer 10 minutes stirring often; add milk and sugar to taste."
+  ],
+  "nutrition": {
+   "kcal": 210,
+   "protein": 5,
+   "carbs": 40,
+   "fat": 3
+  }
+ },
+ {
+  "id": "eggs_toast",
+  "name": "Eggs and toast",
+  "category": "breakfast",
+  "emoji": "🍳",
+  "description": "Scrambled eggs with tomato and onion on toast.",
+  "prepMinutes": 5,
+  "cookMinutes": 10,
+  "servings": 2,
+  "tags": [
+   "vegetarian",
+   "quick"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "eggs",
+    "amount": 4,
+    "unit": "pcs"
+   },
+   {
+    "productId": "bread",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "onions",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 1,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 0.25,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Toast the bread slices.",
+   "Fry chopped onion and tomato in oil for 3 minutes.",
+   "Add beaten eggs and salt, stir gently until just set. Serve on toast."
+  ],
+  "nutrition": {
+   "kcal": 420,
+   "protein": 22,
+   "carbs": 35,
+   "fat": 20
+  }
+ },
+ {
+  "id": "nduma_sweet_potato",
+  "name": "Sweet potatoes and tea",
+  "category": "breakfast",
+  "emoji": "🍠",
+  "description": "Boiled sweet potatoes with milky tea.",
+  "prepMinutes": 5,
+  "cookMinutes": 25,
+  "servings": 4,
+  "tags": [
+   "vegetarian"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "sweet_potatoes",
+    "amount": 1000,
+    "unit": "g"
+   },
+   {
+    "productId": "milk",
+    "amount": 500,
+    "unit": "ml"
+   },
+   {
+    "productId": "tea_leaves",
+    "amount": 3,
+    "unit": "tsp"
+   },
+   {
+    "productId": "sugar",
+    "amount": 3,
+    "unit": "tbsp"
+   }
+  ],
+  "instructions": [
+   "Wash the sweet potatoes and boil in salted water for 20–25 minutes until soft.",
+   "Prepare tea with milk, tea leaves and sugar.",
+   "Peel and serve the sweet potatoes with the tea."
+  ],
+  "nutrition": {
+   "kcal": 330,
+   "protein": 7,
+   "carbs": 68,
+   "fat": 4
+  }
+ },
+ {
+  "id": "oats_banana",
+  "name": "Oats with banana",
+  "category": "breakfast",
+  "emoji": "🥣",
+  "description": "Creamy oats topped with sliced banana.",
+  "prepMinutes": 2,
+  "cookMinutes": 8,
+  "servings": 2,
+  "tags": [
+   "vegetarian",
+   "quick"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "oats",
+    "amount": 100,
+    "unit": "g"
+   },
+   {
+    "productId": "milk",
+    "amount": 300,
+    "unit": "ml"
+   },
+   {
+    "productId": "bananas",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "sugar",
+    "amount": 1,
+    "unit": "tbsp"
+   }
+  ],
+  "instructions": [
+   "Simmer oats in the milk and 200 ml water for 5 minutes.",
+   "Sweeten with sugar and top with sliced bananas."
+  ],
+  "nutrition": {
+   "kcal": 330,
+   "protein": 11,
+   "carbs": 58,
+   "fat": 7
+  }
+ },
+ {
+  "id": "ugali_sukuma",
+  "name": "Ugali and sukuma wiki",
+  "category": "lunch",
+  "emoji": "🥬",
+  "description": "Kenya's everyday favourite – firm ugali with sautéed kale.",
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "maize_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "sukuma",
+    "amount": 2,
+    "unit": "bunch"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil 1 litre water, add maize flour gradually while stirring; cook and turn for 8–10 minutes until firm.",
+   "Fry chopped onion in oil until soft, add tomatoes and cook to a paste.",
+   "Add finely chopped sukuma and salt, stir-fry 3–4 minutes.",
+   "Serve ugali with the sukuma."
+  ],
+  "nutrition": {
+   "kcal": 480,
+   "protein": 11,
+   "carbs": 88,
+   "fat": 10
+  }
+ },
+ {
+  "id": "rice_beans",
+  "name": "Rice and beans",
+  "category": "lunch",
+  "emoji": "🍛",
+  "description": "Stewed rosecoco beans over fluffy rice.",
+  "prepMinutes": 15,
+  "cookMinutes": 60,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "rice_white",
+    "amount": 400,
+    "unit": "g"
+   },
+   {
+    "productId": "beans",
+    "amount": 400,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 3,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "royco",
+    "amount": 1,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Soak beans overnight, then boil 45–60 minutes until soft.",
+   "Cook rice with 800 ml salted water.",
+   "Fry onion, add tomatoes and royco, then add the beans and simmer 10 minutes.",
+   "Serve the beans over the rice."
+  ],
+  "nutrition": {
+   "kcal": 560,
+   "protein": 20,
+   "carbs": 98,
+   "fat": 10
+  }
+ },
+ {
+  "id": "githeri",
+  "name": "Githeri",
+  "category": "lunch",
+  "emoji": "🌽",
+  "description": "Maize and beans simmered with tomatoes and onions.",
+  "prepMinutes": 10,
+  "cookMinutes": 90,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "maize_dry",
+    "amount": 400,
+    "unit": "g"
+   },
+   {
+    "productId": "beans",
+    "amount": 300,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "carrots",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Soak maize and beans overnight; boil together 80–90 minutes until soft.",
+   "Fry onion, tomatoes and diced carrot in oil.",
+   "Add the boiled githeri and salt, mix and simmer 5 minutes."
+  ],
+  "nutrition": {
+   "kcal": 450,
+   "protein": 17,
+   "carbs": 80,
+   "fat": 9
+  }
+ },
+ {
+  "id": "pilau",
+  "name": "Beef pilau",
+  "category": "lunch",
+  "emoji": "🍚",
+  "description": "Fragrant spiced rice cooked with beef.",
+  "prepMinutes": 15,
+  "cookMinutes": 50,
+  "servings": 4,
+  "tags": [],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "rice",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "beef",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "garlic",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "ginger",
+    "amount": 20,
+    "unit": "g"
+   },
+   {
+    "productId": "pilau_masala",
+    "amount": 2,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 4,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil the beef with salt until tender; keep the stock.",
+   "Fry onions until deep brown, add garlic, ginger and pilau masala.",
+   "Add beef and rice, stir to coat, then add 1 litre of the stock.",
+   "Cover and cook on low heat 20 minutes until the rice is done."
+  ],
+  "nutrition": {
+   "kcal": 690,
+   "protein": 32,
+   "carbs": 90,
+   "fat": 22
+  }
+ },
+ {
+  "id": "chapati_ndengu",
+  "name": "Chapati and ndengu",
+  "category": "lunch",
+  "emoji": "🫛",
+  "description": "Green gram stew with soft chapatis.",
+  "prepMinutes": 20,
+  "cookMinutes": 50,
+  "servings": 4,
+  "tags": [
+   "vegan"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "wheat_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "ndengu",
+    "amount": 300,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "curry_powder",
+    "amount": 1,
+    "unit": "tsp"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 100,
+    "unit": "ml"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil ndengu 35–40 minutes until soft.",
+   "Make chapatis (see Chapati and tea).",
+   "Fry onion, tomatoes and curry powder, add ndengu with some cooking water and simmer 10 minutes."
+  ],
+  "nutrition": {
+   "kcal": 620,
+   "protein": 22,
+   "carbs": 95,
+   "fat": 18
+  }
+ },
+ {
+  "id": "beef_stew_rice",
+  "name": "Rice and beef stew",
+  "category": "lunch",
+  "emoji": "🍲",
+  "description": "Rich tomato beef stew with rice.",
+  "prepMinutes": 15,
+  "cookMinutes": 60,
+  "servings": 2,
+  "tags": [],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "rice",
+    "amount": 250,
+    "unit": "g"
+   },
+   {
+    "productId": "beef",
+    "amount": 300,
+    "unit": "g"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 50,
+    "unit": "ml"
+   },
+   {
+    "productId": "salt",
+    "amount": 0.5,
+    "unit": "tsp"
+   },
+   {
+    "productId": "royco",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil the beef until tender.",
+   "Fry onion in oil, add tomatoes and royco and cook to a sauce.",
+   "Add beef with a little stock and simmer 15 minutes.",
+   "Cook rice with 500 ml salted water and serve with the stew."
+  ],
+  "nutrition": {
+   "kcal": 720,
+   "protein": 35,
+   "carbs": 92,
+   "fat": 24
+  }
+ },
+ {
+  "id": "mukimo",
+  "name": "Mukimo",
+  "category": "lunch",
+  "emoji": "🥔",
+  "description": "Mashed potatoes, peas, maize and pumpkin leaves.",
+  "prepMinutes": 15,
+  "cookMinutes": 40,
+  "servings": 4,
+  "tags": [
+   "vegetarian"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "potatoes",
+    "amount": 1000,
+    "unit": "g"
+   },
+   {
+    "productId": "peas",
+    "amount": 200,
+    "unit": "g"
+   },
+   {
+    "productId": "maize_dry",
+    "amount": 200,
+    "unit": "g"
+   },
+   {
+    "productId": "pumpkin_leaves",
+    "amount": 1,
+    "unit": "bunch"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "butter",
+    "amount": 30,
+    "unit": "g"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil the soaked maize until soft.",
+   "Boil potatoes, peas and chopped pumpkin leaves together until soft; drain.",
+   "Mash with butter and salt, then mix in the maize and fried onion."
+  ],
+  "nutrition": {
+   "kcal": 430,
+   "protein": 12,
+   "carbs": 78,
+   "fat": 8
+  }
+ },
+ {
+  "id": "ugali_fish",
+  "name": "Ugali and fish",
+  "category": "dinner",
+  "emoji": "🐟",
+  "description": "Fried tilapia in tomato sauce with ugali.",
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "servings": 4,
+  "tags": [],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "tilapia",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "maize_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 3,
+    "unit": "pcs"
+   },
+   {
+    "productId": "dhania",
+    "amount": 1,
+    "unit": "bunch"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 150,
+    "unit": "ml"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Clean, salt and fry the fish until golden.",
+   "Fry onion and tomatoes to a sauce, add a little water and the fish; simmer 5 minutes.",
+   "Make ugali and garnish fish with dhania."
+  ],
+  "nutrition": {
+   "kcal": 610,
+   "protein": 38,
+   "carbs": 80,
+   "fat": 16
+  }
+ },
+ {
+  "id": "ugali_omena",
+  "name": "Ugali and omena",
+  "category": "dinner",
+  "emoji": "🐟",
+  "description": "Budget-friendly omena in tomato sauce with ugali.",
+  "prepMinutes": 10,
+  "cookMinutes": 25,
+  "servings": 4,
+  "tags": [
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "omena",
+    "amount": 250,
+    "unit": "g"
+   },
+   {
+    "productId": "maize_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 3,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 0.5,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Rinse omena in warm water and drain.",
+   "Fry onions, add omena and fry 5 minutes, then add tomatoes and simmer.",
+   "Serve with ugali."
+  ],
+  "nutrition": {
+   "kcal": 540,
+   "protein": 34,
+   "carbs": 82,
+   "fat": 12
+  }
+ },
+ {
+  "id": "ugali_beef",
+  "name": "Ugali and beef",
+  "category": "dinner",
+  "emoji": "🥩",
+  "description": "Beef wet-fry with ugali and kachumbari.",
+  "prepMinutes": 15,
+  "cookMinutes": 50,
+  "servings": 4,
+  "tags": [],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "beef",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "maize_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 3,
+    "unit": "pcs"
+   },
+   {
+    "productId": "green_pepper",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil beef until tender.",
+   "Fry onions and pepper, add tomatoes, then beef; simmer 10 minutes.",
+   "Make ugali. Slice 1 onion and 1 tomato for kachumbari."
+  ],
+  "nutrition": {
+   "kcal": 700,
+   "protein": 36,
+   "carbs": 84,
+   "fat": 22
+  }
+ },
+ {
+  "id": "rice_chicken",
+  "name": "Rice and chicken",
+  "category": "dinner",
+  "emoji": "🍗",
+  "description": "Kenyan chicken stew with rice.",
+  "prepMinutes": 15,
+  "cookMinutes": 50,
+  "servings": 4,
+  "tags": [],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "chicken",
+    "amount": 1000,
+    "unit": "g"
+   },
+   {
+    "productId": "rice",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 3,
+    "unit": "pcs"
+   },
+   {
+    "productId": "garlic",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 4,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Cut chicken and brown in oil.",
+   "Add onions and garlic, then tomatoes and 300 ml water; simmer 30 minutes.",
+   "Cook rice and serve with the chicken."
+  ],
+  "nutrition": {
+   "kcal": 760,
+   "protein": 42,
+   "carbs": 90,
+   "fat": 24
+  }
+ },
+ {
+  "id": "chapati_beans",
+  "name": "Chapati and beans",
+  "category": "dinner",
+  "emoji": "🫘",
+  "description": "Coconut bean stew with chapatis.",
+  "prepMinutes": 20,
+  "cookMinutes": 60,
+  "servings": 4,
+  "tags": [
+   "vegan"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "wheat_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "beans",
+    "amount": 400,
+    "unit": "g"
+   },
+   {
+    "productId": "coconut_milk",
+    "amount": 200,
+    "unit": "ml"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 100,
+    "unit": "ml"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil soaked beans until soft.",
+   "Fry onion and tomatoes, add beans and coconut milk; simmer 10 minutes.",
+   "Make chapatis and serve."
+  ],
+  "nutrition": {
+   "kcal": 680,
+   "protein": 22,
+   "carbs": 96,
+   "fat": 22
+  }
+ },
+ {
+  "id": "potatoes_veg",
+  "name": "Potatoes and vegetables",
+  "category": "dinner",
+  "emoji": "🥔",
+  "description": "Potato and carrot stew with cabbage.",
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "potatoes",
+    "amount": 1000,
+    "unit": "g"
+   },
+   {
+    "productId": "carrots",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cabbage",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "royco",
+    "amount": 1,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Fry onion, add tomatoes and royco.",
+   "Add peeled potato chunks and carrots with 400 ml water; simmer 20 minutes.",
+   "Stir-fry shredded cabbage separately for 5 minutes and serve alongside."
+  ],
+  "nutrition": {
+   "kcal": 390,
+   "protein": 9,
+   "carbs": 72,
+   "fat": 9
+  }
+ },
+ {
+  "id": "matoke_stew",
+  "name": "Matoke",
+  "category": "dinner",
+  "emoji": "🍌",
+  "description": "Green bananas stewed in tomato and onion.",
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "servings": 4,
+  "tags": [
+   "vegan"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "matoke",
+    "amount": 12,
+    "unit": "pcs"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 3,
+    "unit": "pcs"
+   },
+   {
+    "productId": "dhania",
+    "amount": 1,
+    "unit": "bunch"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 3,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Peel matoke (oil your hands) and cut in halves.",
+   "Fry onions and tomatoes, add matoke and 500 ml water.",
+   "Simmer 20–25 minutes until soft; garnish with dhania."
+  ],
+  "nutrition": {
+   "kcal": 410,
+   "protein": 5,
+   "carbs": 90,
+   "fat": 9
+  }
+ },
+ {
+  "id": "traditional_veg",
+  "name": "Traditional vegetables and ugali",
+  "category": "dinner",
+  "emoji": "🌿",
+  "description": "Managu and terere cooked with milk, served with ugali.",
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "servings": 4,
+  "tags": [
+   "vegetarian",
+   "budget"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "managu",
+    "amount": 2,
+    "unit": "bunch"
+   },
+   {
+    "productId": "kienyeji_veg",
+    "amount": 1,
+    "unit": "bunch"
+   },
+   {
+    "productId": "maize_flour",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "milk",
+    "amount": 200,
+    "unit": "ml"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 2,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil the chopped greens 5 minutes and drain.",
+   "Fry onion and tomatoes, add greens and milk; simmer 10 minutes.",
+   "Serve with ugali."
+  ],
+  "nutrition": {
+   "kcal": 450,
+   "protein": 14,
+   "carbs": 84,
+   "fat": 9
+  }
+ },
+ {
+  "id": "spaghetti_mince",
+  "name": "Spaghetti and mince",
+  "category": "dinner",
+  "emoji": "🍝",
+  "description": "Minced beef in tomato sauce over spaghetti.",
+  "prepMinutes": 10,
+  "cookMinutes": 30,
+  "servings": 4,
+  "tags": [],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "spaghetti",
+    "amount": 400,
+    "unit": "g"
+   },
+   {
+    "productId": "minced_beef",
+    "amount": 500,
+    "unit": "g"
+   },
+   {
+    "productId": "onions",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 3,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomato_paste",
+    "amount": 70,
+    "unit": "g"
+   },
+   {
+    "productId": "garlic",
+    "amount": 0.5,
+    "unit": "pcs"
+   },
+   {
+    "productId": "cooking_oil",
+    "amount": 2,
+    "unit": "tbsp"
+   },
+   {
+    "productId": "salt",
+    "amount": 1,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Brown mince with onion and garlic.",
+   "Add tomatoes and paste with 200 ml water; simmer 15 minutes.",
+   "Boil spaghetti until al dente, drain and serve with the sauce."
+  ],
+  "nutrition": {
+   "kcal": 690,
+   "protein": 34,
+   "carbs": 82,
+   "fat": 22
+  }
+ },
+ {
+  "id": "fruit_bowl",
+  "name": "Fruit bowl",
+  "category": "snack",
+  "emoji": "🍉",
+  "description": "Seasonal fruit – bananas, oranges and mango.",
+  "prepMinutes": 5,
+  "cookMinutes": 0,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "quick"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "bananas",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "oranges",
+    "amount": 2,
+    "unit": "pcs"
+   },
+   {
+    "productId": "mangoes",
+    "amount": 1,
+    "unit": "pcs"
+   }
+  ],
+  "instructions": [
+   "Wash, peel and slice the fruit. Serve chilled."
+  ],
+  "nutrition": {
+   "kcal": 120,
+   "protein": 2,
+   "carbs": 30,
+   "fat": 0
+  }
+ },
+ {
+  "id": "groundnuts_snack",
+  "name": "Roasted groundnuts",
+  "category": "snack",
+  "emoji": "🥜",
+  "description": "A handful of roasted groundnuts.",
+  "prepMinutes": 0,
+  "cookMinutes": 0,
+  "servings": 4,
+  "tags": [
+   "vegan",
+   "quick"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "groundnuts",
+    "amount": 200,
+    "unit": "g"
+   }
+  ],
+  "instructions": [
+   "Portion into small bowls."
+  ],
+  "nutrition": {
+   "kcal": 290,
+   "protein": 13,
+   "carbs": 8,
+   "fat": 24
+  }
+ },
+ {
+  "id": "yoghurt_snack",
+  "name": "Yoghurt",
+  "category": "snack",
+  "emoji": "🥛",
+  "description": "Chilled yoghurt with banana.",
+  "prepMinutes": 2,
+  "cookMinutes": 0,
+  "servings": 4,
+  "tags": [
+   "vegetarian",
+   "quick"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "yoghurt",
+    "amount": 500,
+    "unit": "ml"
+   },
+   {
+    "productId": "bananas",
+    "amount": 2,
+    "unit": "pcs"
+   }
+  ],
+  "instructions": [
+   "Divide yoghurt into cups and top with sliced banana."
+  ],
+  "nutrition": {
+   "kcal": 150,
+   "protein": 6,
+   "carbs": 24,
+   "fat": 3
+  }
+ },
+ {
+  "id": "boiled_eggs",
+  "name": "Boiled eggs",
+  "category": "snack",
+  "emoji": "🥚",
+  "description": "Boiled eggs with a pinch of salt and kachumbari.",
+  "prepMinutes": 2,
+  "cookMinutes": 10,
+  "servings": 4,
+  "tags": [
+   "vegetarian",
+   "quick"
+  ],
+  "imageUrl": "",
+  "ingredients": [
+   {
+    "productId": "eggs",
+    "amount": 4,
+    "unit": "pcs"
+   },
+   {
+    "productId": "tomatoes",
+    "amount": 1,
+    "unit": "pcs"
+   },
+   {
+    "productId": "salt",
+    "amount": 0.25,
+    "unit": "tsp"
+   }
+  ],
+  "instructions": [
+   "Boil eggs 10 minutes, cool, peel and serve with sliced tomato."
+  ],
+  "nutrition": {
+   "kcal": 90,
+   "protein": 7,
+   "carbs": 1,
+   "fat": 6
+  }
+ }
+]

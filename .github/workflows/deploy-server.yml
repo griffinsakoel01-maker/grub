@@ -1,0 +1,57 @@
+# Run by hand: Actions → "Deploy server" → Run workflow.
+# Deploys database rules + indexes, storage rules and Cloud Functions (AI assistant,
+# admin tools, account deletion). Kept separate so the website keeps publishing
+# even before the server parts are ready.
+name: Deploy server
+
+on:
+  workflow_dispatch:
+    inputs:
+      what:
+        description: What to deploy
+        type: choice
+        default: everything
+        options: [everything, rules-only, functions-only]
+
+env:
+  PROJECT_ID: grub-kenya
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install server packages
+        run: npm install --no-audit --no-fund
+        working-directory: functions
+
+      - name: Sign in to Google Cloud
+        env:
+          SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/sa.json" >> "$GITHUB_ENV"
+
+      - name: Store the Gemini key in Secret Manager
+        if: inputs.what != 'rules-only'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then echo "::error::Add the GEMINI_API_KEY secret in GitHub first."; exit 1; fi
+          printf '%s' "$GEMINI_API_KEY" > "$RUNNER_TEMP/gemini.txt"
+          npx --yes firebase-tools@latest functions:secrets:set GEMINI_API_KEY --data-file "$RUNNER_TEMP/gemini.txt" --project "$PROJECT_ID" --non-interactive --force
+          rm -f "$RUNNER_TEMP/gemini.txt"
+
+      - name: Deploy
+        run: |
+          case "${{ inputs.what }}" in
+            rules-only)     ONLY="firestore,storage" ;;
+            functions-only) ONLY="functions" ;;
+            *)              ONLY="firestore,storage,functions" ;;
+          esac
+          npx --yes firebase-tools@latest deploy --only "$ONLY" --project "$PROJECT_ID" --non-interactive --force

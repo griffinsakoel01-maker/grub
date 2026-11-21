@@ -1,0 +1,44 @@
+[
+ {
+  "id": "naivas",
+  "name": "Naivas",
+  "color": "#E4002B",
+  "location": "Nationwide",
+  "address": "Multiple branches"
+ },
+ {
+  "id": "carrefour",
+  "name": "Carrefour",
+  "color": "#004E9F",
+  "location": "Nationwide",
+  "address": "Multiple branches"
+ },
+ {
+  "id": "quickmart",
+  "name": "Quickmart",
+  "color": "#E30613",
+  "location": "Nationwide",
+  "address": "Multiple branches"
+ },
+ {
+  "id": "chandarana",
+  "name": "Chandarana Foodplus",
+  "color": "#00843D",
+  "location": "Nairobi & Mombasa",
+  "address": "Multiple branches"
+ },
+ {
+  "id": "cleanshelf",
+  "name": "Cleanshelf",
+  "color": "#F7A800",
+  "location": "Nairobi & Central",
+  "address": "Multiple branches"
+ },
+ {
+  "id": "mama_mboga",
+  "name": "Local market / mama mboga",
+  "color": "#6B8E23",
+  "location": "Your neighbourhood",
+  "address": "Local"
+ }
+]

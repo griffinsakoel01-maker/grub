@@ -1,0 +1,103 @@
+# Publishes Grub to Firebase Hosting every time a change lands on the main branch.
+#   https://<project>.web.app        → the Grub app (web version)
+#   https://<project>.web.app/admin  → the admin dashboard
+# Needs the GitHub secret FIREBASE_SERVICE_ACCOUNT (see GITHUB_FIREBASE_SETUP.md).
+# Without it the build still runs (and reports problems) but nothing is published.
+name: Publish app
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+env:
+  PROJECT_ID: grub-kenya
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Prepare Flutter project
+        run: bash scripts/ci_prepare.sh
+
+      - name: Connect to Firebase (web settings)
+        env:
+          SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -z "$SA_JSON" ]; then
+            echo "HAS_SA=false" >> "$GITHUB_ENV"
+            echo "No FIREBASE_SERVICE_ACCOUNT secret yet – building in demo mode, not publishing."
+            exit 0
+          fi
+          echo "HAS_SA=true" >> "$GITHUB_ENV"
+          printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
+          GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" node scripts/write_firebase_options.js "$PROJECT_ID"
+
+      - name: Check code (report only)
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          mkdir -p ci
+          flutter analyze --no-fatal-infos --no-fatal-warnings 2>&1 | tee ci/analyze.txt
+
+      - name: Run calculation tests
+        id: tests
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          flutter test 2>&1 | tee ci/test.txt
+
+      - name: Build admin dashboard (/admin)
+        id: admin
+        run: |
+          set -o pipefail
+          flutter build web --release -t lib/admin/main_admin.dart --base-href /admin/ 2>&1 | tee ci/build-admin.txt
+          rm -rf "$RUNNER_TEMP/admin" && mv build/web "$RUNNER_TEMP/admin"
+
+      - name: Build Grub app (/)
+        id: app
+        run: |
+          set -o pipefail
+          flutter build web --release 2>&1 | tee ci/build-app.txt
+          mkdir -p build/web/admin && cp -r "$RUNNER_TEMP/admin/." build/web/admin/
+
+      - name: Save build report to the ci-report branch
+        if: always()
+        run: |
+          mkdir -p ci
+          cat > ci/status.json <<JSON
+          {"commit":"${GITHUB_SHA}","tests":"${{ steps.tests.outcome }}","admin_build":"${{ steps.admin.outcome }}","app_build":"${{ steps.app.outcome }}","run":"${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"}
+          JSON
+          cd ci
+          git init -q -b ci-report
+          git config user.name "grub-ci"
+          git config user.email "ci@users.noreply.github.com"
+          git add -A && git commit -qm "CI report for ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ci-report
+
+      - name: Publish to Firebase Hosting
+        if: env.HAS_SA == 'true'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ env.PROJECT_ID }}
+          channelId: live

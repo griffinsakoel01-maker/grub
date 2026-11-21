@@ -1,0 +1,45 @@
+# Run by hand: Actions → "Set up data" → Run workflow.
+#  • seed-catalogue        uploads the 58 products, 27 recipes, 6 shops and DEMO prices
+#  • seed-without-prices   same, but no demo prices (add real ones in /admin)
+#  • make-admin            gives an existing Grub account admin access (type the email)
+name: Set up data
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: What to do
+        type: choice
+        default: seed-catalogue
+        options: [seed-catalogue, seed-without-prices, make-admin]
+      email:
+        description: Email for make-admin (the person must have signed up in Grub first)
+        required: false
+
+env:
+  PROJECT_ID: grub-kenya
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+        working-directory: functions
+      - name: Run
+        working-directory: functions
+        env:
+          SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          GCLOUD_PROJECT: ${{ env.PROJECT_ID }}
+          GOOGLE_CLOUD_PROJECT: ${{ env.PROJECT_ID }}
+        run: |
+          printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          case "${{ inputs.action }}" in
+            seed-catalogue)      node scripts/seed.js ;;
+            seed-without-prices) node scripts/seed.js --skip-prices ;;
+            make-admin)          node scripts/make-admin.js "${{ inputs.email }}" ;;
+          esac

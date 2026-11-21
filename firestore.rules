@@ -1,0 +1,66 @@
+rules_version = '2';
+
+// Grub – Firestore security rules
+// • Catalogue data (products, recipes, supermarkets, prices) is readable by
+//   signed-in users and writable ONLY by admins (custom claim admin == true).
+// • Personal data lives under users/{uid}/… and only its owner can touch it.
+// • Users may create price reports; only admins can approve/reject them.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+
+    // ---------- public catalogue ----------
+    match /products/{id}     { allow read: if signedIn(); allow write: if isAdmin(); }
+    match /supermarkets/{id} { allow read: if signedIn(); allow write: if isAdmin(); }
+    match /categories/{id}   { allow read: if signedIn(); allow write: if isAdmin(); }
+    match /recipes/{id} {
+      allow read: if signedIn() && (resource.data.published == true || isAdmin());
+      allow write: if isAdmin();
+    }
+    match /prices/{id} {
+      allow read: if signedIn() && (resource.data.active == true || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // ---------- user submitted price reports ----------
+    match /priceReports/{id} {
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.price is number
+        && request.resource.data.price > 0
+        && request.resource.data.price < 1000000
+        && request.resource.data.productId is string
+        && request.resource.data.supermarketId is string;
+      allow read: if isAdmin() || (signedIn() && resource.data.userId == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+
+    // ---------- content reports (flagging) ----------
+    match /contentReports/{id} {
+      allow create: if signedIn() && request.resource.data.userId == request.auth.uid;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ---------- private user data ----------
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow create, update: if isOwner(uid)
+        && !('admin' in request.resource.data)
+        && !('role' in request.resource.data);
+      allow delete: if isOwner(uid);
+
+      match /{collection}/{docId} {
+        allow read, write: if isOwner(uid)
+          && collection in ['mealPlans', 'shoppingLists', 'pantry', 'expenses'];
+        allow read: if isAdmin();
+      }
+    }
+
+    // ---------- admin-only ----------
+    match /adminStats/{id} { allow read, write: if isAdmin(); }
+  }
+}
