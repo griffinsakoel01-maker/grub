@@ -1,0 +1,33 @@
+name: Probe price sources
+on:
+  push:
+    branches: [probe]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch pages
+        run: |
+          mkdir -p out && cd out
+          UA="Mozilla/5.0 (compatible; GrubPriceBot/1.0)"
+          get(){ curl -sSL -A "$UA" --max-time 40 -o "$1" -w "%{http_code} %{url_effective}\n" "$2" >> status.txt 2>&1 || echo "FAIL $2" >> status.txt; }
+          get kamis_home.html "https://kamis.kilimo.go.ke/"
+          get kamis_site_market.html "https://kamis.kilimo.go.ke/site/market"
+          get kamis_index_market.html "https://kamis.kilimo.go.ke/index.php/site/market"
+          get kamis_robots.txt "https://kamis.kilimo.go.ke/robots.txt"
+          get knbs_cpi_list.html "https://www.knbs.or.ke/consumer-price-indices/"
+          get knbs_robots.txt "https://www.knbs.or.ke/robots.txt"
+          get knbs_oct2025.pdf "https://www.knbs.or.ke/wp-content/uploads/2025/10/Kenya-Consumer-Price-Indices-and-Inflation-Rates-October-2025.pdf"
+          sudo apt-get install -y poppler-utils >/dev/null 2>&1 || true
+          for f in *.pdf; do pdftotext -layout "$f" "$f.txt" || true; done
+          grep -o 'href="[^"]*"' kamis_home.html | sort -u | head -150 > kamis_links.txt || true
+          grep -o 'href="[^"]*\.pdf"' knbs_cpi_list.html | sort -u | head -80 > knbs_pdf_links.txt || true
+          ls -la >> status.txt
+      - name: Save
+        run: |
+          cd out
+          git init -q -b probe-report && git config user.name ci && git config user.email ci@users.noreply.github.com
+          git add -A && git commit -qm probe
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" probe-report
