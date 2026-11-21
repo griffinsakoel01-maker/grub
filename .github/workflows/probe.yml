@@ -1,0 +1,39 @@
+name: Probe market price sources
+on:
+  push:
+    branches: [probe2]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch
+        run: |
+          mkdir -p out && cd out
+          UA="Mozilla/5.0 (compatible; GrubPriceBot/1.0)"
+          get(){ curl -sSL -A "$UA" --max-time 60 -o "$1" -w "%{http_code} %{size_download} %{url_effective}\n" "$2" >> status.txt 2>&1 || echo "FAIL $2" >> status.txt; }
+          get kamis.html "https://kamis.kilimo.go.ke/"
+          get kamis_http.html "http://kamis.kilimo.go.ke/"
+          get hdx_pkg.json "https://data.humdata.org/api/3/action/package_show?id=wfp-food-prices-for-kenya"
+          get wb_api.json "https://microdata.worldbank.org/index.php/api/catalog/6167/data_files"
+          python3 - <<'PY' >> status.txt 2>&1
+          import json
+          try:
+              d=json.load(open('hdx_pkg.json'))
+              for r in d['result']['resources']:
+                  print('HDX', r.get('name'), r.get('url'), r.get('last_modified'))
+          except Exception as e: print('hdx parse', e)
+          PY
+          URL=$(python3 -c "import json;d=json.load(open('hdx_pkg.json'));print([r['url'] for r in d['result']['resources'] if r['url'].endswith('.csv') and 'qc' not in r['url'].lower()][0])" 2>/dev/null)
+          [ -n "$URL" ] && get wfp_ken.csv "$URL"
+          head -5 wfp_ken.csv > wfp_head.txt 2>/dev/null || true
+          tail -60 wfp_ken.csv > wfp_tail.txt 2>/dev/null || true
+          cut -d, -f1 wfp_ken.csv | sort | uniq -c | tail -5 > wfp_dates.txt 2>/dev/null || true
+          rm -f wfp_ken.csv
+      - name: Save
+        run: |
+          cd out
+          git init -q -b probe2-report && git config user.name ci && git config user.email ci@users.noreply.github.com
+          git add -A && git commit -qm probe
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" probe2-report
