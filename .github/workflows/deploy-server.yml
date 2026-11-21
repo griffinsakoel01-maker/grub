@@ -13,6 +13,9 @@ on:
         default: everything
         options: [everything, rules-only, functions-only]
 
+permissions:
+  contents: write
+
 env:
   PROJECT_ID: grub-kenya-4965c
 
@@ -27,7 +30,7 @@ jobs:
           node-version: 22
 
       - name: Install server packages
-        run: npm install --no-audit --no-fund
+        run: mkdir -p ci && npm install --no-audit --no-fund 2>&1 | tail -20 > ci/npm.txt
         working-directory: functions
 
       - name: Sign in to Google Cloud
@@ -44,7 +47,9 @@ jobs:
         run: |
           if [ -z "$GEMINI_API_KEY" ]; then echo "::error::Add the GEMINI_API_KEY secret in GitHub first."; exit 1; fi
           printf '%s' "$GEMINI_API_KEY" > "$RUNNER_TEMP/gemini.txt"
-          npx --yes firebase-tools@latest functions:secrets:set GEMINI_API_KEY --data-file "$RUNNER_TEMP/gemini.txt" --project "$PROJECT_ID" --non-interactive --force
+          set -o pipefail
+          mkdir -p ci
+          npx --yes firebase-tools@latest functions:secrets:set GEMINI_API_KEY --data-file "$RUNNER_TEMP/gemini.txt" --project "$PROJECT_ID" --non-interactive --force 2>&1 | tee ci/secret.txt
           rm -f "$RUNNER_TEMP/gemini.txt"
 
       - name: Deploy
@@ -54,4 +59,19 @@ jobs:
             functions-only) ONLY="functions" ;;
             *)              ONLY="firestore,storage,functions" ;;
           esac
-          npx --yes firebase-tools@latest deploy --only "$ONLY" --project "$PROJECT_ID" --non-interactive --force
+          set -o pipefail
+          mkdir -p ci
+          npx --yes firebase-tools@latest deploy --only "$ONLY" --project "$PROJECT_ID" --non-interactive --force 2>&1 | tee ci/deploy.txt
+
+      - name: Save report to the ci-report-server branch
+        if: always()
+        run: |
+          mkdir -p ci
+          [ -f firebase-debug.log ] && tail -80 firebase-debug.log > ci/firebase-debug.txt || true
+          cp functions/ci/npm.txt ci/ 2>/dev/null || true
+          cd ci
+          git init -q -b ci-report-server
+          git config user.name "grub-ci"
+          git config user.email "ci@users.noreply.github.com"
+          git add -A && git commit -qm "Server deploy report" --allow-empty
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ci-report-server
