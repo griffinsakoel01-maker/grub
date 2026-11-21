@@ -43,6 +43,8 @@ jobs:
           bash scripts/ci_prepare.sh 2>&1 | tee ci/prepare.txt
 
       - name: Connect to Firebase (web settings)
+        id: connect
+        continue-on-error: true
         env:
           SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
@@ -89,7 +91,7 @@ jobs:
         run: |
           mkdir -p ci
           cat > ci/status.json <<JSON
-          {"commit":"${GITHUB_SHA}","tests":"${{ steps.tests.outcome }}","admin_build":"${{ steps.admin.outcome }}","app_build":"${{ steps.app.outcome }}","run":"${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"}
+          {"commit":"${GITHUB_SHA}","firebase_connect":"${{ steps.connect.outcome }}","tests":"${{ steps.tests.outcome }}","admin_build":"${{ steps.admin.outcome }}","app_build":"${{ steps.app.outcome }}","run":"${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"}
           JSON
           cd ci
           git init -q -b ci-report
@@ -99,7 +101,7 @@ jobs:
           git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" ci-report
 
       - name: Publish to Firebase Hosting
-        if: env.HAS_SA == 'true'
+        if: env.HAS_SA == 'true' && steps.connect.outcome == 'success'
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

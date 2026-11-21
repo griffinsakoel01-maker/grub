@@ -27,9 +27,26 @@ if (!current.includes('PLACEHOLDER')) {
   process.exit(0);
 }
 
+try {
+  const sa = JSON.parse(fs.readFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS, 'utf8'));
+  console.log(`Service account: ${sa.client_email} (project in key: ${sa.project_id}); target project: ${project}`);
+  if (sa.project_id !== project) console.log('⚠ The key belongs to a different project than PROJECT_ID.');
+} catch (e) {
+  console.log('Could not read service account file:', e.message);
+}
+
 const fb = (args) => {
-  const out = execSync(`npx --yes firebase-tools@latest ${args} --project ${project} --json`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] });
-  return JSON.parse(out.slice(out.indexOf('{')));
+  try {
+    const out = execSync(`npx --yes firebase-tools@latest ${args} --project ${project} --json`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] });
+    return JSON.parse(out.slice(out.indexOf('{')));
+  } catch (e) {
+    console.log('firebase-tools failed:', (e.stdout || '').trim());
+    if (fs.existsSync('firebase-debug.log')) {
+      const log = fs.readFileSync('firebase-debug.log', 'utf8').split('\n');
+      console.log('--- firebase-debug.log (last 40 lines) ---\n' + log.slice(-40).join('\n'));
+    }
+    process.exit(1);
+  }
 };
 
 let apps = fb('apps:list WEB').result || [];
