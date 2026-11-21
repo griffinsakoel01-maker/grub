@@ -1,0 +1,11 @@
+curl: (28) Connection timed out after 60002 milliseconds
+000 0 https://kamis.kilimo.go.ke/
+FAIL https://kamis.kilimo.go.ke/
+curl: (28) Connection timed out after 60002 milliseconds
+000 0 http://kamis.kilimo.go.ke/
+FAIL http://kamis.kilimo.go.ke/
+200 33617 https://data.humdata.org/api/3/action/package_show?id=wfp-food-prices-for-kenya
+400 46 https://microdata.worldbank.org/index.php/api/catalog/6167/data_files
+HDX Kenya - Food Prices https://data.humdata.org/dataset/e0d3fba6-f9a2-45d7-b949-140c455197ff/resource/517ee1bf-2437-4f8c-aa1b-cb9925b9d437/download/wfp_food_prices_ken.csv 2026-11-04T01:24:21.670860
+HDX Kenya - Markets https://data.humdata.org/dataset/e0d3fba6-f9a2-45d7-b949-140c455197ff/resource/fde6f6c7-9776-4b52-a826-d77f9d3f6688/download/wfp_markets_ken.csv 2026-02-18T22:51:14.226114
+200 3793902 https://s3.us-east-1.amazonaws.com/hdx-production-filestore/resources/517ee1bf-2437-4f8c-aa1b-cb9925b9d437/wfp_food_prices_ken.csv?AWSAccessKeyId=ASIAXYC32WNARPAD5EQV&Signature=ads36j5BITTAWh133bTmbelmq4s%3D&x-amz-security-token=FwoGZXIvYXdzEJP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDMUF8Q%2BVJr64whdmUiLBAT3APzrFgM8gr2J2fWJt7%2FTGfUqhF0EAA0us1aMHEEdyxvnnfFNGyfqlOzB7a6gElcrNIGYpJFCTXpms3AXNjP9LTYGQfsz8kUsic36pDgph%2FSZe0Bah9EnQl3MpaGYFdKFK2ggwV%2Frp%2BaEWb0Q4BddnRoBHkd1Jf2to%2B8Aa2vCGnTIdhWDhq54nOsMTVHqOEMV75oepVzpD%2FPEVnEQjCJ5lzTF5LyLHnEeibw%2B3zcw9SJ86JPBLyzNlc9%2BtUbinT4sowa6H2AYyLdpknGjETzhi9jhDF914R5SiehnpvBFti0NSQfp1NGe%2FWbDEaLkPjYFFbwSWag%3D%3D&Expires=1795283748
