@@ -36,7 +36,11 @@ jobs:
           cache: true
 
       - name: Prepare Flutter project
-        run: bash scripts/ci_prepare.sh
+        run: |
+          set -o pipefail
+          mkdir -p ci
+          flutter --version 2>&1 | tee ci/flutter-version.txt
+          bash scripts/ci_prepare.sh 2>&1 | tee ci/prepare.txt
 
       - name: Connect to Firebase (web settings)
         env:
@@ -49,7 +53,8 @@ jobs:
           fi
           echo "HAS_SA=true" >> "$GITHUB_ENV"
           printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
-          GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" node scripts/write_firebase_options.js "$PROJECT_ID"
+          set -o pipefail
+          GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" node scripts/write_firebase_options.js "$PROJECT_ID" 2>&1 | tee ci/firebase-connect.txt
 
       - name: Check code (report only)
         continue-on-error: true
