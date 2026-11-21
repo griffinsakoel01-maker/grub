@@ -1,0 +1,10 @@
+Service account: github-publisher@grub-kenya-4965c.iam.gserviceaccount.com (project in key: grub-kenya-4965c); target project: grub-kenya-4965c
+npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+npm warn deprecated json-ptr@3.1.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated uuid@9.0.1: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+- Preparing the list of your Firebase WEB apps
+✔ Preparing the list of your Firebase WEB apps
+- Downloading configuration data of your Firebase WEB app
+✔ Downloading configuration data of your Firebase WEB app
+✓ Wrote web Firebase settings for grub-kenya-4965c (1:49259328245:web:f5b80d272c9268dfb70bbc).

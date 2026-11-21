@@ -1,0 +1,22 @@
+
+::group::✅ Passing tests
+✅ A. recipe scaling scales 2 → 6 servings by ×3 (spec example)
+✅ A. recipe scaling tablespoons convert to ml
+✅ duplicate ingredients tomatoes from two recipes combine into one entry
+✅ B. pantry subtraction 3 kg needed, 1 kg at home → buy 2 kg
+✅ B. pantry subtraction fully covered items are dropped
+✅ C/D/E. costs fixed packages round up
+✅ C/D/E. costs basket uses cheapest price and totals exactly
+✅ C/D/E. costs per-supermarket baskets are sorted cheapest first
+✅ C/D/E. costs money splits without losing cents
+✅ budget calculator monthly → weekly conversion
+✅ budget calculator breakdown shares per meal
+✅ planner and safety allergy filter removes egg recipes
+✅ planner and safety vegetarian never gets beef
+✅ planner and safety planner swaps to cheaper meals when over budget
+✅ planner and safety optimizer suggests beans for beef, never an allergen
+✅ real prices beat demo prices KNBS average replaces demo, shop receipt price wins at that shop
+✅ shopping list totals update changing quantity changes the total
+::endgroup::
+
+🎉 17 tests passed.
