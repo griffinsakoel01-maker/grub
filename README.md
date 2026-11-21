@@ -58,7 +58,7 @@ Without Firebase the app runs in **demo mode**: one local account, data saved on
 
 ## 3. Connect Firebase (accounts, sync, AI, admin)
 
-**Recommended: publish from GitHub, like CR Loyalty – follow [GITHUB_FIREBASE_SETUP.md](GITHUB_FIREBASE_SETUP.md).** Pushing to `main` publishes the app to https://grub-kenya.web.app and the admin to `/admin`; server deploys, seeding and admin roles are buttons under GitHub Actions.
+**Recommended: publish from GitHub, like CR Loyalty – follow [GITHUB_FIREBASE_SETUP.md](GITHUB_FIREBASE_SETUP.md).** Pushing to `main` publishes the app to https://grub-kenya-4965c.web.app and the admin to `/admin`; server deploys, seeding and admin roles are buttons under GitHub Actions.
 
 Manual route (from your computer):
 
@@ -104,7 +104,7 @@ GOOGLE_APPLICATION_CREDENTIALS=./service-account.json npm run make-admin -- you@
 ### Admin dashboard
 ```bash
 flutter run -d chrome -t lib/admin/main_admin.dart
-# published automatically by GitHub Actions at https://grub-kenya.web.app/admin
+# published automatically by GitHub Actions at https://grub-kenya-4965c.web.app/admin
 ```
 Products, prices (with brand, package size, shop, location, date, **source** and **status**: verified / user-submitted / estimate / demo), supermarkets, recipes (ingredients, quantities, instructions, nutrition, photo upload), categories, user price reports (approve as verified or user-submitted, or reject), reported content, statistics and admin roles. Protected by the `admin` custom claim in the dashboard **and** in Firestore/Storage rules.
 

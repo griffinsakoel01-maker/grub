@@ -17,7 +17,7 @@ on:
         required: false
 
 env:
-  PROJECT_ID: grub-kenya
+  PROJECT_ID: grub-kenya-4965c
 
 jobs:
   run:

@@ -8,7 +8,6 @@ import '../../core/money.dart';
 import '../../core/theme.dart';
 import '../../core/units.dart';
 import '../../models/catalog.dart';
-import '../../models/user_data.dart';
 import '../../services/calculation_service.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';

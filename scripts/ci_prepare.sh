@@ -23,5 +23,8 @@ if [ -f web/manifest.json ]; then
     require("fs").writeFileSync(f,JSON.stringify(m,null,2));'
 fi
 
+# flutter create adds a sample test that doesn't apply to Grub
+rm -f test/widget_test.dart
+
 flutter pub get
 dart run flutter_launcher_icons || echo "icons step skipped"

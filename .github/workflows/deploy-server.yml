@@ -14,7 +14,7 @@ on:
         options: [everything, rules-only, functions-only]
 
 env:
-  PROJECT_ID: grub-kenya
+  PROJECT_ID: grub-kenya-4965c
 
 jobs:
   deploy:
