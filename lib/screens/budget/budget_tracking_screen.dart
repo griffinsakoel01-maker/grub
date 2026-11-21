@@ -10,6 +10,7 @@ import '../../models/user_data.dart';
 import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import 'expense_history_screen.dart';
+import '../receipt/receipt_scan_screen.dart';
 
 /// Grocery expense tracker: budget vs actual, weekly & monthly charts, savings.
 class BudgetTrackingScreen extends StatefulWidget {
@@ -31,13 +32,25 @@ class _BudgetTrackingScreenState extends State<BudgetTrackingScreen> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Budget tracking')),
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: GrubColors.green,
-        foregroundColor: Colors.white,
-        onPressed: () => showAddExpense(context),
-        icon: const Icon(Icons.add),
-        label: const Text('Add purchase'),
-      ),
+      floatingActionButton: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.end, children: [
+        FloatingActionButton.small(
+          heroTag: 'add-exp',
+          backgroundColor: Colors.white,
+          foregroundColor: GrubColors.greenDark,
+          tooltip: 'Type a purchase',
+          onPressed: () => showAddExpense(context),
+          child: const Icon(Icons.edit_note),
+        ),
+        const SizedBox(height: 10),
+        FloatingActionButton.extended(
+          heroTag: 'scan',
+          backgroundColor: GrubColors.green,
+          foregroundColor: Colors.white,
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ReceiptScanScreen())),
+          icon: const Icon(Icons.document_scanner_outlined),
+          label: const Text('Scan receipt'),
+        ),
+      ]),
       body: ListView(padding: const EdgeInsets.fromLTRB(16, 0, 16, 96), children: [
         SoftCard(child: BudgetProgress(budget: p.budget, spent: s.spentThisPeriod, label: '${budgetFrequencyLabel(p.budgetFrequency)} grocery budget')),
         const SizedBox(height: 12),

@@ -66,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
             () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const RecipesScreen(title: 'Favourite meals', favouritesOnly: true)))),
         _tile(context, '🏬', 'Preferred supermarkets',
             p.preferredSupermarkets.isEmpty ? 'Cheapest anywhere' : p.preferredSupermarkets.map((id) => s.catalog.supermarkets[id]?.name ?? id).join(', '),
-            () => _multi(context, s, 'Preferred supermarkets', [for (final sm in s.catalog.supermarkets.values) (sm.id, sm.name)],
+            () => _multi(context, s, 'Preferred supermarkets', [for (final sm in s.catalog.shops) (sm.id, sm.name)],
                 p.preferredSupermarkets, (v) => p.copyWith(preferredSupermarkets: v))),
         _tile(context, '⚖️', 'Compare prices', 'See which shop is cheapest',
             () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ComparePricesScreen()))),

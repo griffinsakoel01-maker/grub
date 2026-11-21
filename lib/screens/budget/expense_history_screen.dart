@@ -128,7 +128,7 @@ Future<void> showAddExpense(BuildContext context, {Expense? existing}) async {
           DropdownButtonFormField<String>(
             value: shop.isEmpty ? null : shop,
             decoration: const InputDecoration(labelText: 'Shop (optional)'),
-            items: [for (final sm in s.catalog.supermarkets.values) DropdownMenuItem(value: sm.id, child: Text(sm.name))],
+            items: [for (final sm in s.catalog.shops) DropdownMenuItem(value: sm.id, child: Text(sm.name))],
             onChanged: (v) => setS(() => shop = v ?? ''),
           ),
           ListTile(

@@ -11,6 +11,7 @@ import '../../state/app_state.dart';
 import '../../widgets/common.dart';
 import '../budget/optimizer_screen.dart';
 import '../prices/compare_prices_screen.dart';
+import '../receipt/receipt_scan_screen.dart';
 
 const _sections = ['vegetables', 'fruits', 'cereals', 'meat', 'dairy', 'cooking', 'household'];
 
@@ -152,7 +153,7 @@ class ShoppingListDetailScreen extends StatelessWidget {
       builder: (ctx) => SafeArea(
         child: ListView(shrinkWrap: true, children: [
           ListTile(title: const Text('Cheapest anywhere'), onTap: () => Navigator.pop(ctx, '')),
-          for (final sm in s.catalog.supermarkets.values) ListTile(title: Text(sm.name), subtitle: Text(sm.location), onTap: () => Navigator.pop(ctx, sm.id)),
+          for (final sm in s.catalog.shops) ListTile(title: Text(sm.name), subtitle: Text(sm.location), onTap: () => Navigator.pop(ctx, sm.id)),
         ]),
       ),
     );
@@ -346,7 +347,7 @@ class _ItemRow extends StatelessWidget {
           content: Column(mainAxisSize: MainAxisSize.min, children: [
             DropdownButtonFormField<String>(
               value: shop.isEmpty ? null : shop,
-              items: [for (final sm in s.catalog.supermarkets.values) DropdownMenuItem(value: sm.id, child: Text(sm.name))],
+              items: [for (final sm in s.catalog.shops) DropdownMenuItem(value: sm.id, child: Text(sm.name))],
               onChanged: (v) => setS(() => shop = v ?? shop),
               decoration: const InputDecoration(labelText: 'Shop'),
             ),
@@ -459,7 +460,13 @@ class _Totals extends StatelessWidget {
             ),
           ]),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx, false);
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ReceiptScanScreen()));
+              },
+              child: const Text('Scan receipt instead'),
+            ),
             TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Save')),
           ],
         ),

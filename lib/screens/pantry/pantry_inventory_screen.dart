@@ -11,6 +11,7 @@ import '../../widgets/common.dart';
 import '../../widgets/pantry_picker.dart';
 import '../recipes/recipe_detail_screen.dart';
 import 'pantry_selection_screen.dart';
+import '../receipt/receipt_scan_screen.dart';
 
 /// Pantry & food inventory: quantities, purchase/expiry dates, storage,
 /// items close to expiry and recipes that use them.
@@ -31,7 +32,13 @@ class PantryInventoryScreen extends StatelessWidget {
         : s.planner.recipesUsingPantry(s.pantryMap, DietFilter.fromProfile(s.profile!), priority: {for (final e in expiring) e.productId}).take(5).toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Pantry')),
+      appBar: AppBar(title: const Text('Pantry'), actions: [
+        IconButton(
+          tooltip: 'Add from a receipt',
+          icon: const Icon(Icons.document_scanner_outlined),
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ReceiptScanScreen())),
+        ),
+      ]),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: GrubColors.green,
         foregroundColor: Colors.white,

@@ -14,6 +14,7 @@ import '../planner/plan_builder_screen.dart';
 import '../prices/compare_prices_screen.dart';
 import '../recipes/recipe_detail_screen.dart';
 import '../recipes/recipes_screen.dart';
+import '../receipt/receipt_scan_screen.dart';
 import '../shell.dart';
 import '../shopping/shopping_list_detail_screen.dart';
 import '../budget/budget_tracking_screen.dart';
@@ -200,7 +201,7 @@ class _QuickActions extends StatelessWidget {
       ('📝', 'Create Shopping List', () => MainShell.of(context)?.goTo(2)),
       ('⚖️', 'Compare Prices', () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ComparePricesScreen()))),
       ('📖', 'Explore Recipes', () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const RecipesScreen()))),
-      ('✨', 'Ask Grub AI', () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AiAssistantScreen()))),
+      ('🧾', 'Scan Receipt', () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ReceiptScanScreen()))),
     ];
     return GridView.count(
       crossAxisCount: 3,

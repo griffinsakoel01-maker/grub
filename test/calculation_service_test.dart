@@ -212,6 +212,32 @@ void main() {
     });
   });
 
+  group('real prices beat demo prices', () {
+    test('KNBS average replaces demo, shop receipt price wins at that shop', () {
+      final products = {'sugar': const Product(id: 'sugar', name: 'Sugar', category: 'cooking', unit: BaseUnit.g)};
+      PriceRecord pr(String id, String shop, num price, PriceStatus st) => PriceRecord(
+          id: id, productId: 'sugar', supermarketId: shop, packageSize: 1000, price: Money.ksh(price), lastUpdated: DateTime(2026), status: st);
+      final c = Catalog(
+        products: products,
+        recipes: {},
+        supermarkets: {
+          'a': const Supermarket(id: 'a', name: 'A'),
+          'b': const Supermarket(id: 'b', name: 'B'),
+          'kenya_avg': const Supermarket(id: 'kenya_avg', name: 'Kenya average', reference: true),
+        },
+        prices: [
+          pr('1', 'a', 150, PriceStatus.demo),
+          pr('2', 'b', 140, PriceStatus.demo),
+          pr('3', 'kenya_avg', 164, PriceStatus.estimated),
+          pr('4', 'a', 170, PriceStatus.userSubmitted),
+        ],
+      );
+      expect(CalculationService.bestPrice('sugar', 1000, c, supermarketId: 'a')!.id, '4');
+      expect(CalculationService.bestPrice('sugar', 1000, c, supermarketId: 'b')!.id, '3');
+      expect(CalculationService.bestPrice('sugar', 1000, c)!.id, '4');
+    });
+  });
+
   group('shopping list totals update', () {
     test('changing quantity changes the total', () {
       final item = ShoppingItem(id: '1', name: 'Rice', unitPrice: Money.ksh(175), packages: 2);

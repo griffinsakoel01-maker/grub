@@ -115,7 +115,7 @@ class OptimizerService {
     }
 
     // 3. Cheaper supermarket for the whole basket.
-    final baskets = CalculationService.basketsBySupermarket(toBuy, catalog).where((b) => b.complete).toList();
+    final baskets = CalculationService.basketsBySupermarket(toBuy, catalog).where((b) => b.complete && !catalog.isReference(b.supermarketId)).toList();
     if (baskets.isNotEmpty && baskets.first.supermarketId != supermarketId) {
       final best = baskets.first;
       final saving = original - best.total;

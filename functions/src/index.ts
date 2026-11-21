@@ -195,3 +195,5 @@ export const adminStats = onCall(async (req) => {
   const plans = await count(db.collectionGroup('mealPlans'));
   return { users, recipes, products, prices, pendingReports: pending, verifiedPrices: verified, shoppingLists: lists, mealPlans: plans };
 });
+
+export { scanReceipt, saveReceiptPrices } from './receipts';

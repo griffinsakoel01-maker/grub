@@ -80,7 +80,9 @@ class Supermarket {
   final String color;
   final String location;
   final String address;
-  const Supermarket({required this.id, required this.name, this.color = '#3DA832', this.location = '', this.address = ''});
+  /// A price reference such as "Kenya average (KNBS)" – not a shop you can pick.
+  final bool reference;
+  const Supermarket({required this.id, required this.name, this.color = '#3DA832', this.location = '', this.address = '', this.reference = false});
 
   factory Supermarket.fromMap(Map<String, dynamic> m, [String? id]) => Supermarket(
         id: id ?? m['id'] as String,
@@ -88,8 +90,9 @@ class Supermarket {
         color: m['color'] as String? ?? '#3DA832',
         location: m['location'] as String? ?? '',
         address: m['address'] as String? ?? '',
+        reference: m['reference'] as bool? ?? false,
       );
-  Map<String, dynamic> toMap() => {'id': id, 'name': name, 'color': color, 'location': location, 'address': address};
+  Map<String, dynamic> toMap() => {'id': id, 'name': name, 'color': color, 'location': location, 'address': address, 'reference': reference};
 }
 
 /// How trustworthy a price is. Shown as a label next to every price.
@@ -307,6 +310,10 @@ class Catalog {
   Catalog({required this.products, required this.recipes, required this.supermarkets, required this.prices});
 
   factory Catalog.empty() => Catalog(products: {}, recipes: {}, supermarkets: {}, prices: []);
+
+  /// Real shops only (no price references like the KNBS national average).
+  List<Supermarket> get shops => supermarkets.values.where((s) => !s.reference).toList();
+  bool isReference(String supermarketId) => supermarkets[supermarketId]?.reference ?? false;
 
   List<PriceRecord> pricesFor(String productId) => prices.where((p) => p.productId == productId).toList();
 

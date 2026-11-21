@@ -144,13 +144,43 @@ class CalculationService {
     return price.price.scale(quantity / price.packageSize);
   }
 
-  /// Cheapest price record for [quantity] of a product, optionally limited to one shop.
+  /// The price to use for [quantity] of a product.
+  ///
+  /// Real prices (verified, receipts, KNBS averages) always win over demo
+  /// prices. For a chosen shop: that shop's real price → the national average
+  /// (KNBS) → that shop's demo price → any real price. With no shop: cheapest
+  /// real shop price → national average → anything.
   static PriceRecord? bestPrice(String productId, double quantity, Catalog catalog, {String? supermarketId}) {
+    final all = catalog.prices.where((p) => p.productId == productId).toList();
+    if (all.isEmpty) return null;
+    bool real(PriceRecord p) => p.status != PriceStatus.demo;
+    bool ref(PriceRecord p) => catalog.isReference(p.supermarketId);
+    final shop = supermarketId ?? '';
+    final tiers = shop.isNotEmpty
+        ? [
+            all.where((p) => p.supermarketId == shop && real(p)),
+            all.where((p) => ref(p) && real(p)),
+            all.where((p) => p.supermarketId == shop),
+            all.where((p) => real(p)),
+            all,
+          ]
+        : [
+            all.where((p) => real(p) && !ref(p)),
+            all.where((p) => ref(p) && real(p)),
+            all.where((p) => !ref(p)),
+            all,
+          ];
+    for (final tier in tiers) {
+      final pick = _cheapest(tier, quantity);
+      if (pick != null) return pick;
+    }
+    return null;
+  }
+
+  static PriceRecord? _cheapest(Iterable<PriceRecord> prices, double quantity) {
     PriceRecord? best;
     Money? bestCost;
-    for (final p in catalog.prices) {
-      if (p.productId != productId) continue;
-      if (supermarketId != null && supermarketId.isNotEmpty && p.supermarketId != supermarketId) continue;
+    for (final p in prices) {
       final c = lineCost(quantity, p);
       if (bestCost == null || c < bestCost || (c == bestCost && _rank(p.status) < _rank(best!.status))) {
         best = p;

@@ -1,0 +1,56 @@
+# Imports official average food prices from the KNBS monthly CPI report.
+# Runs by itself on the 2nd, 9th and 16th of every month (KNBS publishes at
+# month end) and can be run by hand: Actions → "Update prices" → Run workflow.
+name: Update prices
+
+on:
+  schedule:
+    - cron: '23 5 2,9,16 * *'
+  workflow_dispatch:
+    inputs:
+      months:
+        description: How many past months to (re)import
+        default: '4'
+  push:
+    branches: ['run/update-prices']
+
+permissions:
+  contents: write
+
+jobs:
+  knbs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+        working-directory: functions
+      - name: Tools
+        run: sudo apt-get install -y poppler-utils >/dev/null
+      - name: KNBS certificate chain
+        # knbs.or.ke does not send its intermediate certificate; fetch it from the
+        # certificate's own AIA address so the download is still fully verified.
+        run: |
+          openssl s_client -connect www.knbs.or.ke:443 -servername www.knbs.or.ke </dev/null 2>/dev/null | openssl x509 -outform PEM > "$RUNNER_TEMP/leaf.pem"
+          AIA=$(openssl x509 -in "$RUNNER_TEMP/leaf.pem" -noout -text | grep -o 'CA Issuers - URI:[^ ]*' | head -1 | sed 's/CA Issuers - URI://')
+          curl -sSL --max-time 30 -o "$RUNNER_TEMP/inter.der" "$AIA"
+          openssl x509 -inform DER -in "$RUNNER_TEMP/inter.der" -out "$RUNNER_TEMP/inter.pem" 2>/dev/null || cp "$RUNNER_TEMP/inter.der" "$RUNNER_TEMP/inter.pem"
+          echo "NODE_EXTRA_CA_CERTS=$RUNNER_TEMP/inter.pem" >> "$GITHUB_ENV"
+      - name: Import KNBS prices
+        working-directory: functions
+        env:
+          SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          set -o pipefail
+          printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
+          mkdir -p ../ci
+          GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json" node scripts/import-knbs.js "${{ inputs.months || '4' }}" 2>&1 | tee ../ci/knbs.txt
+      - name: Save report
+        if: always()
+        run: |
+          mkdir -p ci && cd ci
+          git init -q -b prices-report && git config user.name grub-ci && git config user.email ci@users.noreply.github.com
+          git add -A && git commit -qm "Price import report" --allow-empty
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" prices-report

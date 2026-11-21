@@ -220,7 +220,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
           crossAxisSpacing: 10,
           childAspectRatio: 0.95,
           children: [
-            for (final sm in c.supermarkets.values)
+            for (final sm in c.shops)
               SelectCard(
                 emoji: sm.id == 'mama_mboga' ? '🧺' : '🏬',
                 title: sm.name,
